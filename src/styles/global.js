@@ -10,7 +10,7 @@ const global = css`
         --color-link: #ec003b;
     }
 
-    .theme-dark {
+    .dark {
         --color-header: #212d40;
         --color-footer: #020202;
         --color-primary: #404040;

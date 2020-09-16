@@ -11,7 +11,7 @@ import {
     faLastfm,
 } from '@fortawesome/free-brands-svg-icons';
 
-import SEO from '../src/components/SEO';
+import SEO from '@app/components/SEO';
 
 const SocialNetworksList = tw.ul`list-none flex justify-center m-0 text-3xl`;
 
@@ -86,7 +86,6 @@ const Contact = () => {
             formData.set('name', name);
             formData.set('email', email);
             formData.set('message', message);
-            formData.set('form-name', 'Contact');
 
             const response = await ky.post('/api/contact', { body: formData });
 

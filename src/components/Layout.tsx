@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import tw from 'twin.macro';
 import { Global } from '@emotion/core';
 
-import global from '../styles/global';
+import global from '@app/styles/global';
 
 import Footer from './Footer';
 import Navigation from './Navigation';
