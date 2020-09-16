@@ -4,6 +4,7 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 
 import 'tailwindcss/dist/base.min.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import "highlight.js/styles/atom-one-dark.css";
 import 'typeface-roboto';
 import 'typeface-open-sans';
 

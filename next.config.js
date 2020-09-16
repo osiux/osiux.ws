@@ -1,26 +1,18 @@
 const withPlugins = require('next-compose-plugins');
-const mdx = require('@next/mdx');
-const images = require('remark-images');
-const emoji = require('remark-emoji');
-const withTM = require('next-transpile-modules')(['ky']);
+const withTM = require('next-transpile-modules')(['ky', 'react-syntax-highlighter']);
 const optimizedImages = require('next-optimized-images');
 
-const nextConfig = {};
+const nextConfig = {
+    webpack: (config, { isServer }) => {
+        // Fixes npm packages that depend on `fs` module
+        if (!isServer) {
+            config.node = {
+                fs: 'empty',
+            };
+        }
 
-module.exports = withPlugins(
-    [
-        withTM,
-        optimizedImages,
-        [
-            mdx,
-            {
-                extension: /\.(md|mdx)$/,
-                options: {
-                    remarkPlugins: [images, emoji],
-                    rehypePlugins: [],
-                },
-            },
-        ],
-    ],
-    nextConfig,
-);
+        return config;
+    },
+};
+
+module.exports = withPlugins([withTM, optimizedImages], nextConfig);
