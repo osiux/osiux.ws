@@ -10,7 +10,7 @@ const SEO = ({ title }: SEOProps) => (
         <title>{title} - Eduardo Reveles</title>
         <meta
             property="og:title"
-            content={`${title} - Eduardo Reveles`}
+            content={`${title} | Eduardo Reveles`}
             key="title"
         />
     </Head>
