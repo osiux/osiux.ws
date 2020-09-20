@@ -8,15 +8,15 @@ import Pagination from '@app/components/Pagination';
 import { getPostsSlug, getPosts, PostData } from '@app/utils/posts';
 import { comparePostDates } from '@app/utils/dates';
 
-const POSTS_PER_PAGE = 10;
+export const POSTS_PER_PAGE = 10;
 
-type BlogPageProps = {
+export type ArchivePageProps = {
     posts: PostData[];
     totalPages: number;
     currentPage: number;
 };
 
-const BlogPage = ({ posts, totalPages, currentPage }: BlogPageProps) => {
+const ArchivePage = ({ posts, totalPages, currentPage }: ArchivePageProps) => {
     return (
         <>
             <SEO title={`Archive - Page ${currentPage}`} />
@@ -65,4 +65,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
     };
 };
 
-export default BlogPage;
+export default ArchivePage;

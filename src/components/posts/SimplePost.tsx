@@ -11,7 +11,7 @@ const ArticleLink = tw.a`no-underline!`;
 const Date = tw.abbr`ml-2`;
 const Title = tw.h2`mb-2! mt-0!`;
 const Meta = tw.p`mb-0!`;
-const Tag = tw.span`px-2 py-1 bg-gray-400 rounded-lg mr-2 hover:(bg-gray-600 text-gray-100) no-underline!`;
+const Tag = tw.a`px-2 py-1 bg-gray-400 rounded-lg mr-2 hover:(bg-gray-600 text-gray-100) no-underline!`;
 
 type SimplePostsProps = {
     title: string;
@@ -43,7 +43,14 @@ const SimplePost = ({ title, slug, date, tags = [] }: SimplePostsProps) => {
                                     icon={faTags}
                                 />{' '}
                                 {tags.map((tag) => (
-                                    <Tag key={tag}>{tag}</Tag>
+                                    <Link
+                                        key={tag}
+                                        href="/blog/tag/[[...tag]]"
+                                        as={`/blog/tag/${tag}`}
+                                        passHref
+                                    >
+                                        <Tag>{tag}</Tag>
+                                    </Link>
                                 ))}
                             </Fragment>
                         )}
