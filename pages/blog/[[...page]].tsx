@@ -1,24 +1,17 @@
 import React from 'react';
-import fs from 'fs';
 import type { GetStaticProps, GetStaticPaths } from 'next';
-import parseISO from 'date-fns/parseISO';
-import compareDesc from 'date-fns/compareDesc';
 
 import SEO from '@app/components/SEO';
 import SimplePost from '@app/components/posts/SimplePost';
 import Pagination from '@app/components/Pagination';
 
-import { getPostData, getPosts } from '@app/utils';
-import type { PostData, PostMeta } from '@app/utils';
+import { getPostsSlug, getPosts, PostData } from '@app/utils/posts';
+import { comparePostDates } from '@app/utils/dates';
 
 const POSTS_PER_PAGE = 10;
 
-type PostDataWithSlug = PostData & {
-    meta: PostMeta & { slug: string };
-};
-
 type BlogPageProps = {
-    posts: PostDataWithSlug[];
+    posts: PostData[];
     totalPages: number;
     currentPage: number;
 };
@@ -40,21 +33,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const [, page] = params?.page?.[0]?.split('-') ?? [, 1];
 
     const allPosts = await getPosts();
-    const postsDataPromises = allPosts.map(async (post) => {
-        const source = fs.readFileSync(post?.path as string);
-        const postData = await getPostData(source);
 
-        return { ...postData, meta: { ...postData.meta, slug: post.slug } };
-    });
-
-    const posts = await Promise.all(postsDataPromises);
-
-    const sortedPosts = posts.sort((a, b) => {
-        const aDate = parseISO(a.meta.date);
-        const bDate = parseISO(b.meta.date);
-
-        return compareDesc(aDate, bDate);
-    });
+    const sortedPosts = allPosts.sort(comparePostDates);
 
     return {
         props: {
@@ -69,7 +49,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const posts = getPosts();
+    const posts = getPostsSlug();
     const paths = Array.from(
         { length: Math.ceil(posts.length / POSTS_PER_PAGE) },
         (_, i) => ({

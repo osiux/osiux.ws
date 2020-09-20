@@ -2,17 +2,21 @@ import React, { Fragment } from 'react';
 import tw from 'twin.macro';
 import Link from 'next/link';
 import type { GetStaticProps, GetStaticPaths } from 'next';
-import fs from 'fs';
 // @ts-ignore
 import hydrate from 'next-mdx-remote/hydrate';
 import format from 'date-fns/format';
-import parseISO from 'date-fns/parseISO';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faTags } from '@fortawesome/free-solid-svg-icons';
 
 import SEO from '@app/components/SEO';
 
-import { getPostData, getPosts, components } from '@app/utils';
+import {
+    getPostData,
+    getPostsSlug,
+    components,
+    PostData,
+} from '@app/utils/posts';
+import { formatDate } from '@app/utils/dates'
 
 const Title = tw.h1`break-words mb-2!`;
 const Meta = tw.p`text-sm mb-0!`;
@@ -22,18 +26,9 @@ const Content = tw.div`text-justify`;
 const Article = tw.article`min-w-full`;
 const Nav = tw.ul`flex flex-wrap justify-between list-none p-0`;
 
-type PostProps = {
-    source: string;
-    meta: {
-        title: string;
-        date: string;
-        tags: string[];
-    };
-};
-
-const Post = ({ source, meta }: PostProps) => {
+const Post = ({ source, meta }: PostData) => {
     const content = hydrate(source, { components });
-    const formattedDate = format(parseISO(meta.date), 'MMM d, yyyy');
+    const formattedDate = formatDate(meta.date);
 
     return (
         <Fragment>
@@ -65,11 +60,7 @@ const Post = ({ source, meta }: PostProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const file = getPosts().find((post) => post.slug === params?.slug);
-
-    const source = fs.readFileSync(file?.path as string);
-
-    const postData = await getPostData(source);
+    const postData = await getPostData(params?.slug as string);
 
     return {
         props: postData,
@@ -77,9 +68,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const paths = getPosts().map((path) => ({
+    const paths = getPostsSlug().map((slug) => ({
         params: {
-            slug: path.slug,
+            slug: slug,
         },
     }));
 

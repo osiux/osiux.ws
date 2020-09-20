@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import tw from 'twin.macro';
-import format from 'date-fns/format';
-import parseISO from 'date-fns/parseISO';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faTags } from '@fortawesome/free-solid-svg-icons';
+
+import { formatDate } from '@app/utils/dates';
 
 const Article = tw.article`mb-1 max-w-none px-2 py-3 rounded border-b border-gray-500 hover:(shadow-md bg-gray-200)`;
 const ArticleLink = tw.a`no-underline!`;
@@ -21,7 +21,7 @@ type SimplePostsProps = {
 };
 
 const SimplePost = ({ title, slug, date, tags = [] }: SimplePostsProps) => {
-    const formattedDate = format(parseISO(date), 'MMM d, yyyy');
+    const formattedDate = formatDate(date);
 
     return (
         <Article>
