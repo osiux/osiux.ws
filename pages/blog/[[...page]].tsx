@@ -21,9 +21,9 @@ const ArchivePage = ({ posts, totalPages, currentPage }: ArchivePageProps) => {
         <>
             <SEO title={`Archive - Page ${currentPage}`} />
             <h1>Archive</h1>
-            {posts.map((post) => {
-                return <SimplePost key={post.meta.slug} {...post.meta} />;
-            })}
+            {posts.map((post) => (
+                <SimplePost key={post.meta.slug} {...post.meta} />
+            ))}
             <Pagination totalPages={totalPages} currentPage={currentPage} />
         </>
     );
