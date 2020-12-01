@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import tw from 'twin.macro';
+import tw, { styled } from 'twin.macro';
 import Link from 'next/link';
 import type { GetStaticProps, GetStaticPaths } from 'next';
 // @ts-ignore
@@ -21,9 +21,14 @@ const Title = tw.h1`break-words mb-2!`;
 const Meta = tw.p`text-sm mb-0!`;
 const Date = tw.abbr`ml-2`;
 const Tag = tw.a`px-2 py-1 bg-gray-400 rounded-lg mr-2 hover:(bg-gray-600 text-gray-100) no-underline!`;
-const Content = tw.div`text-justify`;
+const Content = styled.div`
+    ${tw`text-justify`}
+
+    h1, h2, h3, h4, h5, h6, h7 { 
+        ${tw`relative`}
+    }
+`;
 const Article = tw.article`min-w-full`;
-const Nav = tw.ul`flex flex-wrap justify-between list-none p-0`;
 
 const Post = ({ source, meta }: PostData) => {
     const content = hydrate(source, { components });

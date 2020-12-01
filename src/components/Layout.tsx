@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import tw from 'twin.macro';
 import Head from 'next/head';
-import { Global } from '@emotion/core';
+import { Global } from '@emotion/react';
 
 import global from '@app/styles/global';
 
