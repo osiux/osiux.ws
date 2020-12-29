@@ -11,15 +11,10 @@ import headings from 'rehype-autolink-headings';
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 // @ts-ignore
 import highlight from 'rehype-highlight';
-// @ts-ignore
-import { YouTube, Flickr } from 'mdx-embed';
 
 export const POSTS_PATH = path.join(process.cwd(), 'content/posts');
 
-export const components = {
-    YouTube,
-    Flickr,
-};
+export const components = {};
 
 type PostMeta = {
     title: string;
