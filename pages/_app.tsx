@@ -7,6 +7,7 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import 'highlight.js/styles/lioshi.css';
+import 'react-hint/css/index.css';
 import 'typeface-roboto';
 import 'typeface-open-sans';
 

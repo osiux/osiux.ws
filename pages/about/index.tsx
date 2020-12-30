@@ -1,19 +1,61 @@
 import React, { Fragment } from 'react';
-import tw from 'twin.macro';
+import tw, { styled } from 'twin.macro';
 import Link from 'next/link';
 import Img from 'react-optimized-image';
+// @ts-ignore
+import ReactHintFactory from 'react-hint';
 
 import Me from '@images/eduardo-reveles.jpg';
+import Amelia from '@images/amelia.jpg';
+import Cats from '@images/cats.jpg';
 
 import SEO from '@app/components/SEO';
 
 const UnderlineSpan = tw.span`cursor-pointer border-b border-secondary border-dotted transition-colors duration-500 ease-linear`;
 const Section = tw.section`min-w-full`;
 const PhotoCredit = tw.p`text-center text-sm mb-3`;
+const HintContainer = tw.div`bg-gray-700 text-gray-100 rounded-3xl`;
+const ImageCaption = tw.p`text-center pb-3`;
+
+const ReactHint = ReactHintFactory(React);
+
+const onRenderContent = (target: any) => {
+    const { rhImage } = target.dataset;
+
+    return (
+        <HintContainer className="react-hint__image">
+            {rhImage === 'cats' ? (
+                <Img
+                    src={Cats}
+                    tw="rounded-tl-3xl rounded-tr-3xl"
+                    webp
+                    sizes={[300]}
+                />
+            ) : (
+                <Img
+                    src={Amelia}
+                    tw="rounded-tl-3xl rounded-tr-3xl"
+                    webp
+                    sizes={[300]}
+                />
+            )}
+            <ImageCaption>
+                {rhImage === 'cats' ? 'Salem, Mike and Kiki' : 'Amelia'}
+            </ImageCaption>
+        </HintContainer>
+    );
+};
 
 const About = () => (
     <Fragment>
         <SEO title="About" />
+        <ReactHint autoPosition events />
+        <ReactHint
+            autoPosition
+            events
+            attribute="data-rh-image"
+            onRenderContent={onRenderContent}
+        />
         <Section>
             <Img css={tw`mx-auto`} src={Me} webp sizes={[500]} />
             <PhotoCredit>
@@ -38,17 +80,13 @@ const About = () => (
                 Proudly married to a great{' '}
                 <a href="https://unsplash.com/@melspadawan/">photographer</a>,
                 we have{' '}
-                <UnderlineSpan data-rh-image="cats" data-rh-image-at="bottom">
-                    3 cats
-                </UnderlineSpan>{' '}
-                and{' '}
-                <UnderlineSpan data-rh-image="dog" data-rh-image-at="bottom">
-                    a dog
-                </UnderlineSpan>
+                <UnderlineSpan data-rh-image="cats">3 cats</UnderlineSpan> and{' '}
+                <UnderlineSpan data-rh-image="dog">a dog</UnderlineSpan>
             </p>
             <p>
-                Right now I do mostly Javascript, but for the majority of my
-                career PHP was my main language.
+                Through my career I've used several languages, PHP being my main
+                one for most part of it, but lately I've been very invested in
+                the Javascript ecosystem.
             </p>
             <p>
                 <Link href="/about/uses">

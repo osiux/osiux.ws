@@ -72,7 +72,7 @@ const Navigation = () => {
                     <Link href="/contact" passHref>
                         <NavLink>Contact</NavLink>
                     </Link>
-                    <Form onSubmit={_searchSubmit}>
+                    <Form tw="hidden" onSubmit={_searchSubmit}>
                         <SearchInput
                             type="search"
                             name="q"

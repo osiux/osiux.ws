@@ -71,6 +71,7 @@ const Section = tw.section`min-w-full`;
 const Contact = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [url, setUrl] = useState('');
     const [message, setMessage] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState<boolean | string>(false);
@@ -85,6 +86,7 @@ const Contact = () => {
             const formData = new URLSearchParams();
             formData.set('name', name);
             formData.set('email', email);
+            formData.set('url', url);
             formData.set('message', message);
 
             const response = await ky.post('/api/contact', { body: formData });
@@ -95,9 +97,11 @@ const Contact = () => {
                 );
             } else {
                 setSuccess(true);
+                setName('');
+                setEmail('');
+                setUrl('');
+                setMessage('');
             }
-
-            setSuccess(true);
         } catch (e) {
             setError(
                 'Error sending the form, please try again or send me an email.',
@@ -167,8 +171,6 @@ const Contact = () => {
             <Form
                 name="Contact"
                 onSubmit={_onSubmit}
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
             >
                 <input type="hidden" name="form-name" value="Contact" />
                 <Field>
@@ -192,6 +194,17 @@ const Contact = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
+                    />
+                </Field>
+
+                <Field tw="hidden">
+                    <Label htmlFor="url">Url:</Label>
+                    <Input
+                        type="url"
+                        name="url"
+                        id="url"
+                        value={url}
+                        onChange={(e) => setUrl(e.target.value)}
                     />
                 </Field>
 

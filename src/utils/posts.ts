@@ -12,6 +12,8 @@ import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 // @ts-ignore
 import highlight from 'rehype-highlight';
 
+import embedder from './embedder';
+
 export const POSTS_PATH = path.join(process.cwd(), 'content/posts');
 
 export const components = {};
@@ -40,7 +42,7 @@ export const getPostData = async (postSlug: string) => {
     const mdxSource = await renderToString(content, {
         components,
         mdxOptions: {
-            remarkPlugins: [],
+            remarkPlugins: [embedder],
             rehypePlugins: [
                 slug,
                 [
