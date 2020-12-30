@@ -23,7 +23,7 @@ const Tag = tw.a`px-2 py-1 bg-gray-400 rounded-lg mr-2 hover:(bg-gray-600 text-g
 const Content = styled.div`
     ${tw`text-justify`}
 
-    h1, h2, h3, h4, h5, h6, h7 { 
+    h1, h2, h3, h4, h5, h6, h7 {
         ${tw`relative`}
     }
 `;
@@ -35,7 +35,17 @@ const Post = ({ source, meta }: PostData) => {
 
     return (
         <Fragment>
-            <NextSeo title={meta.title} />
+            <NextSeo
+                title={meta.title}
+                openGraph={{
+                    title: meta.title,
+                    type: 'article',
+                    article: {
+                        publishedTime: meta.date,
+                        tags: meta.tags?.length > 0 ? meta.tags : [],
+                    },
+                }}
+            />
             <Article>
                 <Title>{meta.title}</Title>
                 <Meta>
