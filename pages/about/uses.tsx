@@ -1,15 +1,13 @@
 import React from 'react';
 import tw from 'twin.macro';
 import Link from 'next/link';
-import Head from 'next/head';
-
-import SEO from '../../src/components/SEO';
+import { NextSeo } from 'next-seo';
 
 const Section = tw.section`min-w-full`;
 
 const Uses = () => (
     <Section>
-        <SEO title="About: Uses" />
+        <NextSeo title="About: Uses" />
         <h1>Uses</h1>
         <p>
             Inspired by <a href="https://wesbos.com/uses/">Wes Bos</a>, here is

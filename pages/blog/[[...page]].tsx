@@ -1,7 +1,7 @@
 import React from 'react';
 import type { GetStaticProps, GetStaticPaths } from 'next';
+import { NextSeo } from 'next-seo';
 
-import SEO from '@app/components/SEO';
 import SimplePost from '@app/components/posts/SimplePost';
 import Pagination from '@app/components/Pagination';
 
@@ -19,7 +19,7 @@ export type ArchivePageProps = {
 const ArchivePage = ({ posts, totalPages, currentPage }: ArchivePageProps) => {
     return (
         <>
-            <SEO title={`Archive - Page ${currentPage}`} />
+            <NextSeo title={`Archive - Page ${currentPage}`} />
             <h1>Archive</h1>
             {posts.map((post) => (
                 <SimplePost key={post.meta.slug} {...post.meta} />

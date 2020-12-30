@@ -4,6 +4,7 @@ import { GlobalStyles } from 'twin.macro';
 import { CacheProvider } from '@emotion/react';
 import { cache } from '@emotion/css';
 import { config } from '@fortawesome/fontawesome-svg-core';
+import { DefaultSeo } from 'next-seo';
 
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import 'highlight.js/styles/lioshi.css';
@@ -17,6 +18,21 @@ config.autoAddCss = false;
 
 const App = ({ Component, pageProps }: AppProps) => (
     <CacheProvider value={cache}>
+        <DefaultSeo
+            titleTemplate="%s - Eduardo Reveles"
+            title="Home"
+            description="Personal website for Eduardo Reveles"
+            openGraph={{
+                type: 'website',
+                locale: 'en_US',
+                url: 'https://www.osiux.ws/',
+                site_name: 'Eduardo Reveles',
+            }}
+            twitter={{
+                handle: '@osiux',
+                cardType: 'summary_large_image',
+            }}
+        />
         <GlobalStyles />
         <Layout>
             <Component {...pageProps} />

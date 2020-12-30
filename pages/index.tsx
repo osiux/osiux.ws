@@ -1,7 +1,7 @@
 import React from 'react';
 import type { GetStaticProps } from 'next';
+import { NextSeo } from 'next-seo';
 
-import SEO from '@app/components/SEO';
 import SimplePost from '@app/components/posts/SimplePost';
 
 import { getPosts, PostData } from '@app/utils/posts';
@@ -15,7 +15,7 @@ type HomeProps = {
 
 const Home = ({ posts }: HomeProps) => (
     <>
-        <SEO title="Home" />
+        <NextSeo title="Home" />
         <h1>Latests Blog Posts</h1>
         {posts.map((post) => (
             <SimplePost key={post.meta.slug} {...post.meta} />

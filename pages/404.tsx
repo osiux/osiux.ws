@@ -1,8 +1,7 @@
 import React from 'react';
 import tw from 'twin.macro';
 import Img from 'react-optimized-image';
-
-import SEO from '@app/components/SEO';
+import { NextSeo } from 'next-seo';
 
 import Salem from '@images/salem.png';
 
@@ -10,7 +9,7 @@ const Section = tw.section`flex flex-col content-center text-center pt-3`;
 
 const NotFoundPage = () => (
     <>
-        <SEO title="404: Not found" />
+        <NextSeo title="404: Not found" />
         <Section>
             <Img
                 style={{ margin: '0 auto', clipPath: 'circle(50% at 50% 50%)' }}

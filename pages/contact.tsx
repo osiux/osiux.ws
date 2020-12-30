@@ -10,8 +10,7 @@ import {
     faInstagram,
     faLastfm,
 } from '@fortawesome/free-brands-svg-icons';
-
-import SEO from '@app/components/SEO';
+import { NextSeo } from 'next-seo';
 
 const SocialNetworksList = tw.ul`list-none flex justify-center m-0 text-3xl`;
 
@@ -113,7 +112,7 @@ const Contact = () => {
 
     return (
         <Section>
-            <SEO title="Contact" />
+            <NextSeo title="Contact" />
             <p>
                 If you want to get in touch with me feel free to email me at{' '}
                 <a href="me@osiux.ws?subject=Hello!">me@osiux.ws</a>, send me a

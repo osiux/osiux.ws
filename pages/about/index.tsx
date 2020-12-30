@@ -1,15 +1,14 @@
 import React, { Fragment } from 'react';
-import tw, { styled } from 'twin.macro';
+import tw from 'twin.macro';
 import Link from 'next/link';
 import Img from 'react-optimized-image';
 // @ts-ignore
 import ReactHintFactory from 'react-hint';
+import { NextSeo } from 'next-seo';
 
 import Me from '@images/eduardo-reveles.jpg';
 import Amelia from '@images/amelia.jpg';
 import Cats from '@images/cats.jpg';
-
-import SEO from '@app/components/SEO';
 
 const UnderlineSpan = tw.span`cursor-pointer border-b border-secondary border-dotted transition-colors duration-500 ease-linear`;
 const Section = tw.section`min-w-full`;
@@ -48,7 +47,7 @@ const onRenderContent = (target: any) => {
 
 const About = () => (
     <Fragment>
-        <SEO title="About" />
+        <NextSeo title="About" />
         <ReactHint autoPosition events />
         <ReactHint
             autoPosition

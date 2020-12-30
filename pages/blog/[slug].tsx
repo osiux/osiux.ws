@@ -6,8 +6,7 @@ import type { GetStaticProps, GetStaticPaths } from 'next';
 import hydrate from 'next-mdx-remote/hydrate';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faTags } from '@fortawesome/free-solid-svg-icons';
-
-import SEO from '@app/components/SEO';
+import { NextSeo } from 'next-seo';
 
 import {
     getPostData,
@@ -36,7 +35,7 @@ const Post = ({ source, meta }: PostData) => {
 
     return (
         <Fragment>
-            <SEO title={meta.title} />
+            <NextSeo title={meta.title} />
             <Article>
                 <Title>{meta.title}</Title>
                 <Meta>

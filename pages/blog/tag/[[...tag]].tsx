@@ -1,7 +1,7 @@
 import React from 'react';
 import type { GetStaticProps, GetStaticPaths } from 'next';
+import { NextSeo } from 'next-seo';
 
-import SEO from '@app/components/SEO';
 import SimplePost from '@app/components/posts/SimplePost';
 import Pagination from '@app/components/Pagination';
 
@@ -19,7 +19,7 @@ type PathType = Array<string | { params: { tag: string[] } }>;
 const TagPage = ({ posts, tag, totalPages, currentPage }: TagPageProps) => {
     return (
         <>
-            <SEO title={`Archive - Tag: ${tag} - Page ${currentPage}`} />
+            <NextSeo title={`Archive - Tag: ${tag} - Page ${currentPage}`} />
             <h1>
                 Archive - Tag: <strong>{tag}</strong>
             </h1>
