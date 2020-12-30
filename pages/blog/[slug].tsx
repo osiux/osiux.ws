@@ -36,8 +36,8 @@ const Content = styled.div`
 const Article = tw.article`min-w-full`;
 
 type PostPage = {
-    source: MdxRemote.Source,
-    meta: PostMeta,
+    source: MdxRemote.Source;
+    meta: PostMeta;
 };
 
 const Post = ({ source, meta }: PostPage) => {
