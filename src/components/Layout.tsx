@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import tw from 'twin.macro';
 import Head from 'next/head';
 import { Global } from '@emotion/react';
@@ -15,35 +15,82 @@ type LayoutProps = {
     children: React.ReactNode;
 };
 
-const Layout = ({ children }: LayoutProps) => (
-    <Fragment>
-        <Global styles={global} />
-        <Head>
-            <link
-                rel="apple-touch-icon"
-                sizes="180x180"
-                href="/apple-touch-icon.png"
-            />
-            <link
-                rel="icon"
-                type="image/png"
-                sizes="32x32"
-                href="/favicon-32x32.png"
-            />
-            <link
-                rel="icon"
-                type="image/png"
-                sizes="16x16"
-                href="/favicon-16x16.png"
-            />
-            <link rel="manifest" href="/site.webmanifest" />
-        </Head>
-        <Container>
-            <Navigation />
-            <Main>{children}</Main>
-            <Footer />
-        </Container>
-    </Fragment>
-);
+const Layout = ({ children }: LayoutProps) => {
+    useEffect(() => {
+        if (
+            typeof window !== 'undefined' &&
+            'serviceWorker' in navigator &&
+            // @ts-ignore
+            window.workbox !== undefined
+        ) {
+            // @ts-ignore
+            const wb = window.workbox;
+            // @ts-ignore
+            const promptNewVersionAvailable = (event) => {
+                // `event.wasWaitingBeforeRegister` will be false if this is the first time the updated service worker is waiting.
+                // When `event.wasWaitingBeforeRegister` is true, a previously updated service worker is still waiting.
+                // You may want to customize the UI prompt accordingly.
+                if (
+                    confirm(
+                        'A newer version of this site is available, reload to update?',
+                    )
+                ) {
+                    // @ts-ignore
+                    wb.addEventListener('controlling', (event) => {
+                        window.location.reload();
+                    });
+
+                    // Send a message to the waiting service worker, instructing it to activate.
+                    wb.messageSW({ type: 'SKIP_WAITING' });
+                } else {
+                    console.log(
+                        'User rejected to reload the web app, keep using old version. New version will be automatically load when user open the app next time.',
+                    );
+                }
+            };
+
+            wb.addEventListener('waiting', promptNewVersionAvailable)
+            wb.addEventListener('externalwaiting', promptNewVersionAvailable)
+        }
+    }, []);
+
+    return (
+        <Fragment>
+            <Global styles={global} />
+            <Head>
+                <meta charSet="utf-8" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                <meta
+                    name="viewport"
+                    content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+                />
+                <link
+                    rel="apple-touch-icon"
+                    sizes="180x180"
+                    href="/apple-touch-icon.png"
+                />
+                <link
+                    rel="icon"
+                    type="image/png"
+                    sizes="32x32"
+                    href="/favicon-32x32.png"
+                />
+                <link
+                    rel="icon"
+                    type="image/png"
+                    sizes="16x16"
+                    href="/favicon-16x16.png"
+                />
+                <link rel="manifest" href="/site.webmanifest" />
+                <meta name="theme-color" content="#111827" />
+            </Head>
+            <Container>
+                <Navigation />
+                <Main>{children}</Main>
+                <Footer />
+            </Container>
+        </Fragment>
+    );
+};
 
 export default Layout;
