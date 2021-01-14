@@ -14,6 +14,8 @@
         "@emotion/css": "^11.1.3",
         "@emotion/react": "^11.1.4",
         "@emotion/styled": "^11.0.0",
+        "@fontsource/open-sans": "^4.1.0",
+        "@fontsource/roboto": "^4.1.0",
         "@fortawesome/fontawesome-svg-core": "^1.2.32",
         "@fortawesome/free-brands-svg-icons": "^5.15.1",
         "@fortawesome/free-solid-svg-icons": "^5.15.1",
@@ -21,6 +23,8 @@
         "@tailwindcss/typography": "^0.3.1",
         "@vercel/node": "^1.8.5",
         "date-fns": "^2.16.1",
+        "fontsource-open-sans": "^4.0.0",
+        "fontsource-roboto": "^4.0.0",
         "gatsby-remark-embedder": "^4.1.0",
         "gray-matter": "^4.0.2",
         "hastscript": "^6.0.0",
@@ -44,9 +48,7 @@
         "rehype-highlight": "^4.0.0",
         "rehype-slug": "^4.0.1",
         "tailwindcss": "^2.0.2",
-        "twin.macro": "^2.0.8",
-        "typeface-open-sans": "1.1.13",
-        "typeface-roboto": "1.1.13"
+        "twin.macro": "^2.0.8"
     },
     "devDependencies": {
         "@types/hcaptcha__react-hcaptcha": "^0.1.4",

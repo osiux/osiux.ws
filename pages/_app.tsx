@@ -9,8 +9,9 @@ import { DefaultSeo } from 'next-seo';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import 'highlight.js/styles/lioshi.css';
 import 'react-hint/css/index.css';
-import 'typeface-roboto';
-import 'typeface-open-sans';
+import '@fontsource/roboto';
+import '@fontsource/open-sans';
+import '@fontsource/open-sans/700.css';
 
 import Layout from '@app/components/Layout';
 
