@@ -1,6 +1,9 @@
+import AbortController from 'node-abort-controller';
 // @ts-ignore
-import mailgun from 'mailgun.js';
-import { NowRequest, NowResponse } from '@vercel/node';
+global.AbortController = AbortController;
+import Mailgun from 'mailgun.js';
+import FormData from 'form-data';
+import { VercelRequest, VercelResponse } from '@vercel/node';
 
 type MessageBody = {
     name: string;
@@ -9,7 +12,7 @@ type MessageBody = {
     message: string;
 };
 
-export default async (request: NowRequest, response: NowResponse) => {
+export default async (request: VercelRequest, response: VercelResponse) => {
     if (request.method === 'POST') {
         const { name, email, url, message }: MessageBody = request.body;
 
@@ -17,9 +20,11 @@ export default async (request: NowRequest, response: NowResponse) => {
             // try to avoid spam bots
             response.status(200).json({ message: 'ok' });
         } else {
+            // @ts-ignore
+            const mailgun = new Mailgun(FormData);
             const mg = mailgun.client({
                 username: 'api',
-                key: process.env.MAILGUN_API_KEY,
+                key: process.env.MAILGUN_API_KEY as string,
             });
 
             try {
