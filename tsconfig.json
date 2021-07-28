@@ -17,7 +17,8 @@
         "paths": {
             "@app/*": ["src/*"],
             "@images/*": ["images/*"]
-        }
+        },
+        "jsxImportSource": "@emotion/react"
     },
     "include": [
         "next-env.d.ts",
