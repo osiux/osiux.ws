@@ -1,5 +1,5 @@
 const withPlugins = require('next-compose-plugins');
-const withTM = require('next-transpile-modules')(['ky']);
+const withTM = require('next-transpile-modules')(['ky', 'hastscript']);
 const optimizedImages = require('next-optimized-images');
 const pwa = require('next-pwa');
 
@@ -8,13 +8,9 @@ const nextConfig = {
         domains: ['osiux.ws', 'www.osiux.ws'],
     },
     webpack: (config, { isServer }) => {
-        // Fixes npm packages that depend on `fs` module
         if (!isServer) {
-            config.node = {
-                fs: 'empty',
-            };
+            config.resolve.fallback.fs = false;
         }
-
         return config;
     },
 };

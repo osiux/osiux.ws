@@ -164,7 +164,7 @@ const Contact = () => {
                 </SocialNetworkItem>
             </SocialNetworksList>
 
-            {success && <Success>Thanks! I'll be in touch shortly!</Success>}
+            {success && <Success>Thanks! I&apos;ll be in touch shortly!</Success>}
             {error && <Error>{error}</Error>}
 
             <Form

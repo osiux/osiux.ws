@@ -68,7 +68,7 @@ const About = () => (
                 </a>
             </PhotoCredit>
             <p>
-                Hi! I'm Eduardo.{' '}
+                Hi! I&apos;m Eduardo.{' '}
                 <UnderlineSpan data-rh="Laravel, NodeJs, React">
                     Full Stack Developer
                 </UnderlineSpan>{' '}
@@ -83,8 +83,8 @@ const About = () => (
                 <UnderlineSpan data-rh-image="dog">a dog</UnderlineSpan>
             </p>
             <p>
-                Through my career I've used several languages, PHP being my main
-                one for most part of it, but lately I've been very invested in
+                Through my career I&apos;ve used several languages, PHP being my main
+                one for most part of it, but lately I&apos;ve been very invested in
                 the Javascript ecosystem.
             </p>
             <p>

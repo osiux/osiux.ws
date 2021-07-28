@@ -12,7 +12,7 @@ type MessageBody = {
     message: string;
 };
 
-export default async (request: VercelRequest, response: VercelResponse) => {
+const contact = async (request: VercelRequest, response: VercelResponse) => {
     if (request.method === 'POST') {
         const { name, email, url, message }: MessageBody = request.body;
 
@@ -50,3 +50,5 @@ export default async (request: VercelRequest, response: VercelResponse) => {
         });
     }
 };
+
+export default contact;

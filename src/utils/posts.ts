@@ -1,11 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import type { MdxRemote } from 'next-mdx-remote/types';
 
 export const POSTS_PATH = path.join(process.cwd(), 'content/posts');
 
-export const components: MdxRemote.Components = {};
+export const components = {};
 
 export type PostMeta = {
     title: string;

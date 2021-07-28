@@ -19,6 +19,12 @@
             "@images/*": ["images/*"]
         }
     },
-    "include": ["next-env.d.ts", "twin.d.ts", "**/*.ts", "**/*.tsx"],
+    "include": [
+        "next-env.d.ts",
+        "additional.d.ts",
+        "twin.d.ts",
+        "**/*.ts",
+        "**/*.tsx"
+    ],
     "exclude": ["node_modules"]
 }
