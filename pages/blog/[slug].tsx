@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import tw, { styled } from 'twin.macro';
 import Link from 'next/link';
 import { s } from 'hastscript';

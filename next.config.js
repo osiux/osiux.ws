@@ -10,7 +10,11 @@ const nextConfig = {
     },
     webpack: (config, { isServer }) => {
         if (!isServer) {
-            config.resolve.fallback = { fs: false, module: false, path: false };
+            config.resolve.fallback = {
+                fs: false,
+                module: false,
+                path: require.resolve('path-browserify'),
+            };
         }
         return config;
     },
