@@ -72,20 +72,23 @@ const About = () => (
                 <UnderlineSpan data-rh="Laravel, NodeJs, React">
                     Full Stack Developer
                 </UnderlineSpan>{' '}
-                living in Mexico City, currently working as Web Engineer at{' '}
-                <a href="https://mav.farm/">MavFarm</a>.
+                living in Mexico City, currently working as Senior Application
+                Engineer at{' '}
+                <a href="https://sironamedical.com/">Sirona Medical</a>.
             </p>
             <p>
                 Proudly married to a great{' '}
-                <a href="https://unsplash.com/@melspadawan/">photographer</a>,
-                we have{' '}
+                <a href="https://unsplash.com/@melspadawan/">
+                    photographer & developer
+                </a>
+                , we have{' '}
                 <UnderlineSpan data-rh-image="cats">3 cats</UnderlineSpan> and{' '}
                 <UnderlineSpan data-rh-image="dog">a dog</UnderlineSpan>
             </p>
             <p>
-                Through my career I&apos;ve used several languages, PHP being my main
-                one for most part of it, but lately I&apos;ve been very invested in
-                the Javascript ecosystem.
+                Through my career I&apos;ve used several languages, PHP being my
+                main one for most part of it, but lately I&apos;ve been very
+                invested in the Javascript ecosystem.
             </p>
             <p>
                 <Link href="/about/uses">
