@@ -6,6 +6,7 @@ const pwa = require('next-pwa');
 const nextConfig = {
     images: {
         domains: ['osiux.ws', 'www.osiux.ws'],
+        disableStaticImages: true,
     },
     webpack: (config, { isServer }) => {
         if (!isServer) {
