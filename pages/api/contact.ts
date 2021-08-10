@@ -1,4 +1,4 @@
-import AbortController from 'node-abort-controller';
+import { AbortController } from 'node-abort-controller';
 // @ts-ignore
 global.AbortController = AbortController;
 import Mailgun from 'mailgun.js';

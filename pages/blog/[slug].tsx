@@ -4,17 +4,33 @@ import Link from 'next/link';
 import { s } from 'hastscript';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
-// @ts-ignore
 import slug from 'rehype-slug';
-// @ts-ignore
 import headings from 'rehype-autolink-headings';
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
-// @ts-ignore
 import highlight from 'rehype-highlight';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faTags } from '@fortawesome/free-solid-svg-icons';
 import { NextSeo } from 'next-seo';
 import type { GetStaticProps, GetStaticPaths } from 'next';
+import bash from 'highlight.js/lib/languages/bash';
+import css from 'highlight.js/lib/languages/css';
+import diff from 'highlight.js/lib/languages/diff';
+import ini from 'highlight.js/lib/languages/ini';
+import javascript from 'highlight.js/lib/languages/javascript';
+import json from 'highlight.js/lib/languages/json';
+import less from 'highlight.js/lib/languages/less';
+import makefile from 'highlight.js/lib/languages/makefile';
+import markdown from 'highlight.js/lib/languages/markdown';
+import php from 'highlight.js/lib/languages/php';
+import phpTemplate from 'highlight.js/lib/languages/php-template';
+import plaintext from 'highlight.js/lib/languages/plaintext';
+import python from 'highlight.js/lib/languages/python';
+import scss from 'highlight.js/lib/languages/scss';
+import shell from 'highlight.js/lib/languages/shell';
+import sql from 'highlight.js/lib/languages/sql';
+import typescript from 'highlight.js/lib/languages/typescript';
+import xml from 'highlight.js/lib/languages/xml';
+import yaml from 'highlight.js/lib/languages/yaml';
 
 import { getPostData, getPostsSlug, components } from '@app/utils/posts';
 import { formatDate } from '@app/utils/dates';
@@ -128,7 +144,32 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                     },
                 ],
                 rehypeAccessibleEmojis,
-                highlight,
+                [
+                    highlight,
+                    {
+                        languages: {
+                            bash,
+                            css,
+                            diff,
+                            ini,
+                            javascript,
+                            json,
+                            less,
+                            makefile,
+                            markdown,
+                            php,
+                            phpTemplate,
+                            plaintext,
+                            python,
+                            scss,
+                            shell,
+                            sql,
+                            typescript,
+                            xml,
+                            yaml,
+                        },
+                    },
+                ],
             ],
         },
         scope: meta,
