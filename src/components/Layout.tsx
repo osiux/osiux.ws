@@ -9,7 +9,7 @@ import Footer from './Footer';
 import Navigation from './Navigation';
 
 const Container = tw.div`h-screen grid grid-rows-layout`;
-const Main = tw.main`p-5 mx-auto prose-xl`;
+const Main = tw.main`p-5 container mx-auto prose max-w-none`;
 
 type LayoutProps = {
     children: React.ReactNode;
