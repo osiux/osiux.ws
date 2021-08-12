@@ -1,20 +1,4 @@
 const withPlugins = require('next-compose-plugins');
-const withTM = require('next-transpile-modules')([
-    'ky',
-    'hastscript',
-    'hast-util-parse-selector',
-    'rehype-slug',
-    'hast-util-has-property',
-    'hast-util-heading-rank',
-    'hast-util-to-string',
-    'rehype-autolink-headings',
-    'rehype-highlight',
-    'lowlight',
-    'fault',
-    'hast-util-to-text',
-    'hast-util-is-element',
-    'unist-util-find-after',
-]);
 const optimizedImages = require('next-optimized-images');
 const pwa = require('next-pwa');
 
@@ -33,11 +17,11 @@ const nextConfig = {
         }
         return config;
     },
+    experimental: { esmExternals: true },
 };
 
 module.exports = withPlugins(
     [
-        withTM,
         optimizedImages,
         [
             pwa,
