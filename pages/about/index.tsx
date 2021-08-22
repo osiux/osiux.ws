@@ -10,7 +10,7 @@ import Me from '@images/eduardo-reveles.jpg';
 import Amelia from '@images/amelia.jpg';
 import Cats from '@images/cats.jpg';
 
-const UnderlineSpan = tw.span`cursor-pointer border-b border-secondary border-dotted transition-colors duration-500 ease-linear`;
+const UnderlineSpan = tw.span`cursor-pointer border-b border-dotted transition-colors duration-500 ease-linear`;
 const Section = tw.section`min-w-full`;
 const PhotoCredit = tw.p`text-center text-sm mb-3`;
 const HintContainer = tw.div`bg-gray-700 text-gray-100 rounded-3xl`;

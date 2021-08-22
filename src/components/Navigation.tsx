@@ -3,29 +3,26 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import tw, { styled } from 'twin.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faBars,
-    faTimes,
-    faSearch,
-} from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes, faSearch } from '@fortawesome/free-solid-svg-icons';
 
-const Nav = tw.nav`flex items-center bg-gray-900 text-gray-100 p-3 flex-wrap border-b border-black h-auto w-full z-10`;
-const BrandLink = tw.a`text-xl text-gray-100 font-bold`;
-const NavLink = tw.a`w-full px-3 py-2 text-gray-100 items-center justify-center hover:underline md:inline-flex md:w-auto`;
+const Header = tw.header`container my-3 font-heading`;
+const Nav = tw.nav`flex items-center flex-wrap space-y-6 md:(space-y-0 flex-nowrap)`;
+const BrandLink = tw.a`font-bold text-blue-900 text-3xl flex-1`;
+
+const ToggleMenuButton = tw.button`inline-flex p-3 rounded md:hidden ml-auto outline-none transition-colors duration-500 ease-linear focus:outline-none`;
 
 type NavListProps = {
     open: boolean;
 };
-const NavList = styled.div(({ open }: NavListProps) => [
-    tw`hidden w-full md:inline-flex md:flex-grow md:w-auto`,
+const NavList = styled.ul(({ open }: NavListProps) => [
+    tw`flex items-center justify-center flex-none w-full space-x-2 place-items-center text-xl md:w-auto`,
     open && tw`block`,
     `.current {
         text-decoration: underline;
     }`,
 ]);
-const ToggleMenuButton = tw.button`inline-flex p-3 rounded md:hidden ml-auto outline-none transition-colors duration-500 ease-linear focus:outline-none`;
-
-const LinksContainer = tw.div`w-full items-start flex flex-col md:inline-flex md:flex-row md:ml-auto md:w-auto md:items-center md:h-auto`;
+const NavListItem = tw.li`p-2 rounded-lg transition-all duration-500 hover:bg-gray-200`;
+const NavLink = tw.a`p-2`;
 
 const Form = tw.form`relative mx-auto text-gray-600`;
 
@@ -50,42 +47,50 @@ const Navigation = () => {
     };
 
     return (
-        <Nav id="header">
-            <Link href="/" passHref>
-                <BrandLink>Eduardo Reveles</BrandLink>
-            </Link>
-            <ToggleMenuButton
-                role="button"
-                aria-label="Toggle Menu"
-                onClick={_toggleMenu}
-            >
-                <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
-            </ToggleMenuButton>
-            <NavList open={menuOpen}>
-                <LinksContainer>
-                    <Link href="/blog" passHref>
-                        <NavLink>Blog</NavLink>
-                    </Link>
-                    <Link href="/about" passHref>
-                        <NavLink>About</NavLink>
-                    </Link>
-                    <Link href="/contact" passHref>
-                        <NavLink>Contact</NavLink>
-                    </Link>
-                    <Form tw="hidden" onSubmit={_searchSubmit}>
-                        <SearchInput
-                            type="search"
-                            name="q"
-                            value={query}
-                            onChange={(e) => setQuery(e.target.value)}
-                        />
-                        <SearchButton>
-                            <FontAwesomeIcon icon={faSearch} />
-                        </SearchButton>
-                    </Form>
-                </LinksContainer>
-            </NavList>
-        </Nav>
+        <Header>
+            <Nav id="header">
+                <Link href="/" passHref>
+                    <BrandLink>Eduardo Reveles</BrandLink>
+                </Link>
+                <ToggleMenuButton
+                    role="button"
+                    aria-label="Toggle Menu"
+                    onClick={_toggleMenu}
+                >
+                    <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
+                </ToggleMenuButton>
+                <NavList open={menuOpen}>
+                    <NavListItem>
+                        <Link href="/blog" passHref>
+                            <NavLink>Blog</NavLink>
+                        </Link>
+                    </NavListItem>
+                    <NavListItem>
+                        <Link href="/about" passHref>
+                            <NavLink>About</NavLink>
+                        </Link>
+                    </NavListItem>
+                    <NavListItem>
+                        <Link href="/contact" passHref>
+                            <NavLink>Contact</NavLink>
+                        </Link>
+                    </NavListItem>
+                    <NavListItem>
+                        <Form tw="hidden" onSubmit={_searchSubmit}>
+                            <SearchInput
+                                type="search"
+                                name="q"
+                                value={query}
+                                onChange={(e) => setQuery(e.target.value)}
+                            />
+                            <SearchButton>
+                                <FontAwesomeIcon icon={faSearch} />
+                            </SearchButton>
+                        </Form>
+                    </NavListItem>
+                </NavList>
+            </Nav>
+        </Header>
     );
 };
 

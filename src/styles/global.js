@@ -1,42 +1,18 @@
-import { css } from 'twin.macro';
+import tw, { css } from 'twin.macro';
 
 const global = css`
-    :root {
-        --color-header: #3c366b;
-        --color-footer: #020202;
-        --color-primary: #fafafa;
-        --color-secondary: #222831;
-        --color-tertiary: #0a0a0a;
-        --color-link: #ec003b;
-    }
-
-    .dark {
-        --color-header: #212d40;
-        --color-footer: #020202;
-        --color-primary: #404040;
-        --color-secondary: #fafafa;
-        --color-tertiary: #0a0a0a;
-        --color-link: #7fdbff;
-
-        img:not([src*='.svg']) {
-            filter: grayscale(50%);
-        }
-    }
-
     body {
-        color: var(--color-secondary);
-        background-color: var(--color-primary);
-        transition-property: background-color, border-color, color, fill, stroke;
-        transition-duration: 500ms;
-        transition-timing-function: linear;
+        ${tw`bg-gray-50`}
         font-family: 'Open Sans', sans-serif;
     }
 
-    a {
-        color: var(--color-link);
-        transition-property: background-color, border-color, color, fill, stroke;
-        transition-duration: 100ms;
-        transition-timing-function: linear;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Roboto', serif;
     }
 
     .anchor.before {
@@ -77,8 +53,8 @@ const global = css`
     }
 
     blockquote {
-        border-left: 0.28125rem solid var(--color-link);
-        color: var(--color-secondary);
+        /* border-left: 0.28125rem solid var(--color-link); */
+        /* color: var(--color-secondary); */
     }
 `;
 

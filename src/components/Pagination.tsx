@@ -31,10 +31,10 @@ const Item = styled.li`
 `;
 
 const ItemLink = styled.a`
-    ${tw`no-underline! text-center inline-block border border-solid border-secondary p-1 w-8 text-sm`}
+    ${tw`no-underline! text-center inline-block border border-solid p-1 w-8 text-sm`}
 
     &.current {
-        ${tw`bg-secondary text-primary`}
+        ${tw``}
     }
 `;
 

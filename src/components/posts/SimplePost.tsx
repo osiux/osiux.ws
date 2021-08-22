@@ -1,62 +1,63 @@
-import React, { Fragment } from 'react';
 import tw from 'twin.macro';
 import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarAlt, faTags } from '@fortawesome/free-solid-svg-icons';
 
 import { formatDate } from '@app/utils/dates';
+import type { PostMeta } from '@app/utils/posts';
 
-const Article = tw.article`mb-1 max-w-none px-2 py-3 rounded border-b border-gray-500 hover:(shadow-md bg-gray-200)`;
-const ArticleLink = tw.a`no-underline!`;
-const Date = tw.abbr`ml-2`;
-const Title = tw.h2`mb-2! mt-0!`;
-const Meta = tw.p`mb-0!`;
-const Tag = tw.a`px-2 py-1 bg-gray-400 rounded-lg mr-2 hover:(bg-gray-600 text-gray-100) no-underline!`;
+const Article = tw.article`py-8 flex flex-wrap md:flex-nowrap w-full`;
+const Meta = tw.p`text-gray-500 text-sm mb-2 mt-2 md:mt-0`;
+const Title = tw.h2`text-2xl font-bold text-gray-900 mb-2 font-heading`;
+const ArticleLink = tw.a`hover:underline`;
+const Excerpt = tw.p`leading-relaxed mt-2 prose max-w-full!`;
+const TagList = tw.ul`list-none flex mt-2`;
+const Tag = tw.li`mr-2 bg-gray-200 px-3 py-1 rounded-md hover:bg-gray-400`;
 
-type SimplePostsProps = {
-    title: string;
-    slug: string;
-    date: string;
-    tags: string[];
-};
-
-const SimplePost = ({ title, slug, date, tags = [] }: SimplePostsProps) => {
+const SimplePost = ({
+    title,
+    slug,
+    date,
+    tags = [],
+    image,
+    excerpt,
+    readingTime,
+}: PostMeta) => {
     const formattedDate = formatDate(date);
 
     return (
         <Article>
-            <Link href="/blog/[slug]" as={`/blog/${slug}`} passHref>
-                <ArticleLink>
-                    <Title>{title}</Title>
-                    <Meta>
-                        <FontAwesomeIcon
-                            title="Posted at"
-                            icon={faCalendarAlt}
-                        />{' '}
-                        <Date title={date}>{formattedDate}</Date>
-                        {tags.length > 0 && (
-                            <Fragment>
-                                {' '}
-                                -{' '}
-                                <FontAwesomeIcon
-                                    title="Tagged as"
-                                    icon={faTags}
-                                />{' '}
-                                {tags.map((tag) => (
-                                    <Link
-                                        key={tag}
-                                        href="/blog/tag/[[...tag]]"
-                                        as={`/blog/tag/${tag}`}
-                                        passHref
-                                    >
-                                        <Tag>{tag}</Tag>
-                                    </Link>
-                                ))}
-                            </Fragment>
-                        )}
-                    </Meta>
-                </ArticleLink>
-            </Link>
+            {image && (
+                <Link href={`/blog/${slug}`} passHref>
+                    <a tw="mr-3">
+                        <img
+                            tw="w-full md:max-w-full rounded-md"
+                            src={`${image.url}&w=500&h=350&fit=clamp`}
+                            alt={`${image.description} by ${image.user.name} @ unsplash`}
+                        />
+                    </a>
+                </Link>
+            )}
+            <div tw="w-full md:flex-grow">
+                <Meta>
+                    <abbr title={date}>{formattedDate}</abbr> - {readingTime?.text}
+                </Meta>
+                <Title>
+                    <Link href={`/blog/${slug}`} passHref>
+                        <ArticleLink>{title}</ArticleLink>
+                    </Link>
+                </Title>
+                {excerpt && <Excerpt>{excerpt}</Excerpt>}
+                {tags.length > 0 && (
+                    <TagList>
+                        {tags.map((tag) => (
+                            <Tag key={tag}>
+                                <Link href={`/blog/tag/${tag}`} passHref>
+                                    {tag}
+                                </Link>
+                            </Tag>
+                        ))}
+                    </TagList>
+                )}
+            </div>
         </Article>
     );
 };

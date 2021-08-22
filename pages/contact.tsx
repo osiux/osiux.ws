@@ -28,7 +28,7 @@ const Field = tw.div`flex justify-end mb-4 flex-col md:flex-row md:flex-wrap`;
 const Label = tw.label`w-full mb-2 md:w-1/4 md:mt-1`;
 
 const baseInput = css`
-    ${tw`w-full p-2 bg-primary text-secondary border border-solid border-secondary md:w-3/4`}
+    ${tw`w-full p-2 border border-solid md:w-3/4`}
 `;
 
 const Input = styled.input`
@@ -40,7 +40,7 @@ const TextArea = styled.textarea`
 `;
 
 const Button = styled.button`
-    ${tw`bg-secondary text-primary border border-solid border-secondary outline-none p-3 w-full self-end md:w-auto md:py-3 md:px-5`}
+    ${tw`border border-solid outline-none p-3 w-full self-end md:w-auto md:py-3 md:px-5`}
 
     &[disabled] {
         ${tw`bg-gray-600 opacity-50 border-0`}

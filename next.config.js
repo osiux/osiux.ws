@@ -12,7 +12,6 @@ const nextConfig = {
             config.resolve.fallback = {
                 fs: false,
                 module: false,
-                path: require.resolve('path-browserify'),
             };
         }
         return config;

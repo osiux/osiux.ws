@@ -8,8 +8,8 @@ import global from '@app/styles/global';
 import Footer from './Footer';
 import Navigation from './Navigation';
 
-const Container = tw.div`h-screen grid grid-rows-layout`;
-const Main = tw.main`p-5 container mx-auto prose max-w-none`;
+const Container = tw.div`min-h-screen antialiased grid grid-rows-layout max-w-3xl mx-auto w-full py-6 xl:max-w-4xl px-3 xl:px-0 md:pb-16 md:pt-8`;
+const Main = tw.main``;
 
 type LayoutProps = {
     children: React.ReactNode;
