@@ -10,8 +10,8 @@ import Me from '@images/eduardo-reveles.jpg';
 import Amelia from '@images/amelia.jpg';
 import Cats from '@images/cats.jpg';
 
-const UnderlineSpan = tw.span`cursor-pointer border-b border-dotted transition-colors duration-500 ease-linear`;
-const Section = tw.section`min-w-full`;
+const UnderlineSpan = tw.span`cursor-pointer border-b-2 border-dotted border-gray-900 transition-colors duration-500 ease-linear`;
+const Section = tw.section`prose md:prose-xl max-w-full!`;
 const PhotoCredit = tw.p`text-center text-sm mb-3`;
 const HintContainer = tw.div`bg-gray-700 text-gray-100 rounded-3xl`;
 const ImageCaption = tw.p`text-center pb-3`;
@@ -72,7 +72,7 @@ const About = () => (
                 <UnderlineSpan data-rh="Laravel, NodeJs, React">
                     Full Stack Developer
                 </UnderlineSpan>{' '}
-                living in Mexico City, currently working as Senior Application
+                living in Mexico, currently working as Senior Application
                 Engineer at{' '}
                 <a href="https://sironamedical.com/">Sirona Medical</a>.
             </p>

@@ -3,7 +3,7 @@ import tw from 'twin.macro';
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
 
-const Section = tw.section`min-w-full`;
+const Section = tw.section`prose prose-xl max-w-full!`;
 
 const Uses = () => (
     <Section>
@@ -17,13 +17,15 @@ const Uses = () => (
         <ul>
             <li>
                 Lenovo T450s running{' '}
-                <a href="https://www.archlinux.org/">ArchLinux</a> mainly for
-                dev work.
+                <a href="https://www.archlinux.org/">ArchLinux</a> for personal usage.
             </li>
             <li>
                 Custom built PC with two monitors, dual boot Windows 10/
                 <a href="https://www.archlinux.org/">ArchLinux</a> that I use
                 for gaming and work.
+            </li>
+            <li>
+                Macbook Pro 13&quot; with M1 processor for work.
             </li>
         </ul>
         <h2>Software</h2>

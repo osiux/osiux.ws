@@ -7,7 +7,7 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 import { DefaultSeo } from 'next-seo';
 
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import 'highlight.js/styles/lioshi.css';
+import 'highlight.js/styles/atom-one-light.css';
 import 'react-hint/css/index.css';
 import '@fontsource/roboto';
 import '@fontsource/open-sans';

@@ -22,13 +22,11 @@ const SocialNetworkItem = styled.li`
 `;
 
 const Form = tw.form`flex w-full flex-col md:w-4/5 mx-auto`;
-
 const Field = tw.div`flex justify-end mb-4 flex-col md:flex-row md:flex-wrap`;
-
 const Label = tw.label`w-full mb-2 md:w-1/4 md:mt-1`;
 
 const baseInput = css`
-    ${tw`w-full p-2 border border-solid md:w-3/4`}
+    ${tw`w-full p-2 border border-gray-800 border-solid md:w-3/4`}
 `;
 
 const Input = styled.input`
@@ -40,7 +38,7 @@ const TextArea = styled.textarea`
 `;
 
 const Button = styled.button`
-    ${tw`border border-solid outline-none p-3 w-full self-end md:w-auto md:py-3 md:px-5`}
+    ${tw`border border-solid border-gray-800 outline-none py-3 px-5 w-full self-end md:w-auto md:py-3 md:px-10`}
 
     &[disabled] {
         ${tw`bg-gray-600 opacity-50 border-0`}
@@ -65,7 +63,7 @@ const Error = styled.p`
     border: 1px solid #800007;
 `;
 
-const Section = tw.section`min-w-full`;
+const Section = tw.section`prose prose-xl max-w-full!`;
 
 const Contact = () => {
     const [name, setName] = useState('');

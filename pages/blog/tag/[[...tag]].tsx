@@ -1,4 +1,4 @@
-import React from 'react';
+import tw from 'twin.macro';
 import type { GetStaticProps, GetStaticPaths } from 'next';
 import { NextSeo } from 'next-seo';
 
@@ -20,8 +20,8 @@ const TagPage = ({ posts, tag, totalPages, currentPage }: TagPageProps) => {
     return (
         <>
             <NextSeo title={`Archive - Tag: ${tag} - Page ${currentPage}`} />
-            <h1>
-                Archive - Tag: <strong>{tag}</strong>
+            <h1 tw="font-heading font-bold text-5xl">
+                Archive - Tag: <em>{tag}</em>
             </h1>
             {posts.map((post) => {
                 return <SimplePost key={post.meta.slug} {...post.meta} />;

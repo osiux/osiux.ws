@@ -2,8 +2,7 @@ import tw, { css } from 'twin.macro';
 
 const global = css`
     body {
-        ${tw`bg-gray-50`}
-        font-family: 'Open Sans', sans-serif;
+        ${tw`bg-gray-50 font-text`}
     }
 
     h1,
@@ -12,7 +11,7 @@ const global = css`
     h4,
     h5,
     h6 {
-        font-family: 'Roboto', serif;
+        ${tw`font-heading`}
     }
 
     .anchor.before {
@@ -29,7 +28,7 @@ const global = css`
     h4 .anchor svg,
     h5 .anchor svg,
     h6 .anchor svg {
-        visibility: hidden;
+        ${tw`hidden`}
     }
     h1:hover .anchor svg,
     h2:hover .anchor svg,
@@ -52,9 +51,29 @@ const global = css`
         margin-bottom: 0;
     }
 
+    pre {
+        ${tw`whitespace-pre-wrap break-words`}
+    }
+
     blockquote {
         /* border-left: 0.28125rem solid var(--color-link); */
         /* color: var(--color-secondary); */
+    }
+
+    .tag {
+        ${tw`bg-gray-300 text-gray-800 hover:bg-gray-400`}
+    }
+
+    .tag-gatsbyjs {
+        ${tw`bg-purple-700 text-white hover:bg-purple-900`}
+    }
+
+    .tag-development {
+        ${tw`bg-green-600 text-white hover:bg-green-800`}
+    }
+
+    .tag-travel {
+        ${tw`bg-yellow-500 hover:(bg-yellow-700 text-white)`}
     }
 `;
 

@@ -9,7 +9,7 @@ import Footer from './Footer';
 import Navigation from './Navigation';
 
 const Container = tw.div`min-h-screen antialiased grid grid-rows-layout max-w-3xl mx-auto w-full py-6 xl:max-w-4xl px-3 xl:px-0 md:pb-16 md:pt-8`;
-const Main = tw.main``;
+const Main = tw.main`my-4 md:my-10`;
 
 type LayoutProps = {
     children: React.ReactNode;
