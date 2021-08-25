@@ -5,11 +5,11 @@ import parseISO from 'date-fns/parseISO';
 import { PostData } from './posts';
 
 export const formatDate = (date: string, dateFormat = 'MMM d, yyyy') =>
-    format(parseISO(date), dateFormat);
+	format(parseISO(date), dateFormat);
 
 export const comparePostDates = (a: PostData, b: PostData) => {
-    const aDate = parseISO(a.meta.date);
-    const bDate = parseISO(b.meta.date);
+	const aDate = parseISO(a.meta.date);
+	const bDate = parseISO(b.meta.date);
 
-    return compareDesc(aDate, bDate);
+	return compareDesc(aDate, bDate);
 };

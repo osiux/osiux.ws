@@ -12,44 +12,44 @@ const ArticleLink = tw.a`hover:underline`;
 const Excerpt = tw.p`leading-relaxed mt-2 prose max-w-full!`;
 
 const SimplePost = ({
-    title,
-    slug,
-    date,
-    tags = [],
-    image,
-    excerpt,
-    readingTime,
+	title,
+	slug,
+	date,
+	tags = [],
+	image,
+	excerpt,
+	readingTime,
 }: PostMeta) => {
-    const formattedDate = formatDate(date);
+	const formattedDate = formatDate(date);
 
-    return (
-        <Article>
-            {image && (
-                <Link href={`/blog/${slug}`} passHref>
-                    <a tw="mr-3">
-                        <img
-                            tw="w-full md:max-w-full rounded-md"
-                            src={`${image.url}&w=500&h=350&fit=clamp`}
-                            alt={`${image.description} by ${image.user.name} @ unsplash`}
-                        />
-                    </a>
-                </Link>
-            )}
-            <div tw="w-full md:flex-grow">
-                <Meta>
-                    <abbr title={date}>{formattedDate}</abbr> -{' '}
-                    {readingTime?.text}
-                </Meta>
-                <Title>
-                    <Link href={`/blog/${slug}`} passHref>
-                        <ArticleLink>{title}</ArticleLink>
-                    </Link>
-                </Title>
-                {excerpt && <Excerpt>{excerpt}</Excerpt>}
-                <TagList tags={tags} />
-            </div>
-        </Article>
-    );
+	return (
+		<Article>
+			{image && (
+				<Link href={`/blog/${slug}`} passHref>
+					<a tw="mr-3">
+						<img
+							tw="w-full md:max-w-full rounded-md"
+							src={`${image.url}&w=500&h=350&fit=clamp`}
+							alt={`${image.description} by ${image.user.name} @ unsplash`}
+						/>
+					</a>
+				</Link>
+			)}
+			<div tw="w-full md:flex-grow">
+				<Meta>
+					<abbr title={date}>{formattedDate}</abbr> -{' '}
+					{readingTime?.text}
+				</Meta>
+				<Title>
+					<Link href={`/blog/${slug}`} passHref>
+						<ArticleLink>{title}</ArticleLink>
+					</Link>
+				</Title>
+				{excerpt && <Excerpt>{excerpt}</Excerpt>}
+				<TagList tags={tags} />
+			</div>
+		</Article>
+	);
 };
 
 export default SimplePost;

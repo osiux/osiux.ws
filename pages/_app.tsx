@@ -18,27 +18,27 @@ import Layout from '@app/components/Layout';
 config.autoAddCss = false;
 
 const App = ({ Component, pageProps }: AppProps) => (
-    <CacheProvider value={cache}>
-        <DefaultSeo
-            titleTemplate="%s - Eduardo Reveles"
-            title="Home"
-            description="Personal website for Eduardo Reveles"
-            openGraph={{
-                type: 'website',
-                locale: 'en_US',
-                url: 'https://www.osiux.ws/',
-                site_name: 'Eduardo Reveles',
-            }}
-            twitter={{
-                handle: '@osiux',
-                cardType: 'summary_large_image',
-            }}
-        />
-        <GlobalStyles />
-        <Layout>
-            <Component {...pageProps} />
-        </Layout>
-    </CacheProvider>
+	<CacheProvider value={cache}>
+		<DefaultSeo
+			titleTemplate="%s - Eduardo Reveles"
+			title="Home"
+			description="Personal website for Eduardo Reveles"
+			openGraph={{
+				type: 'website',
+				locale: 'en_US',
+				url: 'https://www.osiux.ws/',
+				site_name: 'Eduardo Reveles',
+			}}
+			twitter={{
+				handle: '@osiux',
+				cardType: 'summary_large_image',
+			}}
+		/>
+		<GlobalStyles />
+		<Layout>
+			<Component {...pageProps} />
+		</Layout>
+	</CacheProvider>
 );
 
 export default App;

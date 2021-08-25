@@ -8,7 +8,8 @@
         "build": "next build",
         "postbuild": "next-sitemap",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "prepare": "husky install"
     },
     "dependencies": {
         "@emotion/babel-preset-css-prop": "^11.2.0",
@@ -66,7 +67,11 @@
         "babel-plugin-macros": "^3.1.0",
         "eslint": "^7.32.0",
         "eslint-config-next": "^11.1.0",
+        "eslint-config-prettier": "^8.3.0",
         "hast-util-is-element": "^2.1.1",
+        "husky": "^7.0.0",
+        "lint-staged": ">=10",
+        "prettier": "2.3.2",
         "tailwindcss": "^2.2.7",
         "twin.macro": "^2.6.2",
         "typescript": "^4.3.5"
@@ -79,5 +84,9 @@
             "debugPlugins": false,
             "debug": false
         }
+    },
+    "lint-staged": {
+        "*.{js,ts,tsx}": "eslint --cache --fix",
+        "*.{js,ts,tsx,css}": "prettier --write"
     }
 }

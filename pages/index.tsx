@@ -9,28 +9,28 @@ import { comparePostDates } from '@app/utils/dates';
 const POSTS_ON_HOME = 6;
 
 type HomeProps = {
-    posts: PostData[];
+	posts: PostData[];
 };
 
 const Home = ({ posts }: HomeProps) => (
-    <>
-        <NextSeo title="Home" />
-        {posts.map((post) => (
-            <SimplePost key={post.meta.slug} {...post.meta} />
-        ))}
-    </>
+	<>
+		<NextSeo title="Home" />
+		{posts.map((post) => (
+			<SimplePost key={post.meta.slug} {...post.meta} />
+		))}
+	</>
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-    const allPosts = await getPosts();
+	const allPosts = await getPosts();
 
-    const sortedPosts = allPosts.sort(comparePostDates);
+	const sortedPosts = allPosts.sort(comparePostDates);
 
-    return {
-        props: {
-            posts: sortedPosts.slice(0, POSTS_ON_HOME),
-        },
-    };
+	return {
+		props: {
+			posts: sortedPosts.slice(0, POSTS_ON_HOME),
+		},
+	};
 };
 
 export default Home;
