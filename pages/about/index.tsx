@@ -13,14 +13,14 @@ import Layout from '@app/components/Layout';
 
 const UnderlineSpan = tw.span`cursor-pointer border-b-2 border-dotted border-gray-900 transition-colors duration-500 ease-linear dark:border-gray-100`;
 const Section = styled.section`
-	${tw`prose transition-all duration-500 md:prose-xl max-w-full! dark:text-gray-100`}
+	${tw`prose transition-colors duration-500 md:prose-xl max-w-full! dark:text-gray-100`}
 
 	img {
 		${tw`mt-0`}
 	}
 
 	a {
-		${tw`transition-all duration-500 dark:text-gray-100`}
+		${tw`transition-colors duration-500 dark:text-gray-100`}
 	}
 `;
 const PhotoCredit = tw.p`text-center text-sm mb-3`;

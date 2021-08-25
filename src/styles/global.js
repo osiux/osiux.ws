@@ -2,7 +2,7 @@ import tw, { css } from 'twin.macro';
 
 const global = css`
 	body {
-		${tw`bg-gray-50 font-text transition-all duration-500 dark:(bg-gray-800 text-gray-100)`}
+		${tw`bg-gray-50 font-text transition-colors duration-500 dark:(bg-gray-800 text-gray-100)`}
 	}
 
 	h1,
@@ -11,7 +11,7 @@ const global = css`
 	h4,
 	h5,
 	h6 {
-		${tw`font-heading transition-all duration-500 dark:text-gray-100`}
+		${tw`font-heading transition-colors duration-500 dark:text-gray-100`}
 	}
 
 	.anchor.before {
