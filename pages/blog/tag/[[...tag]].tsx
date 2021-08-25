@@ -17,7 +17,7 @@ type TagPageProps = ArchivePageProps & {
 
 type PathType = Array<string | { params: { tag: string[] } }>;
 
-const Tag = tw.span`mr-2 px-3 py-1 rounded-md`;
+const Tag = tw.span`mr-2 px-3 py-1 rounded-md inline-block mt-2 md:mt-0`;
 
 const TagPage = ({ posts, tag, totalPages, currentPage }: TagPageProps) => {
 	const tagSlug = slugify(tag, { lower: true, strict: true });

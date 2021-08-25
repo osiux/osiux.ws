@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { Global } from '@emotion/react';
 
 import global from '@app/styles/global';
+import tags from '@app/styles/tags';
 
 import Footer from './Footer';
 import Navigation from './Navigation';
@@ -57,6 +58,7 @@ const Layout = ({ children }: LayoutProps) => {
 	return (
 		<Fragment>
 			<Global styles={global} />
+			<Global styles={tags} />
 			<Head>
 				<meta charSet="utf-8" />
 				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />

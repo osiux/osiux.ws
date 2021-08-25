@@ -11,10 +11,10 @@ import { formatDate } from '@app/utils/dates';
 import type { PostMeta } from '@app/utils/posts';
 import TagList from '@app/components/TagList';
 
-const Title = tw.h1`break-words mb-2! font-heading font-bold text-3xl mb-5 md:(text-5xl mb-10) text-gray-800`;
-const Meta = tw.p`my-10`;
-const Date = tw.abbr``;
-const Tag = tw.a`mr-2 bg-gray-200 px-3 py-1 rounded-md hover:bg-gray-400`;
+const Title = tw.h1`break-words font-heading font-bold text-3xl mb-5 md:(text-5xl mb-10) text-gray-800`;
+const Meta = tw.p`mb-10 flex flex-col md:flex-row md:items-center`;
+const Date = tw.abbr`block mb-5 md:(inline mb-0)`;
+const Separator = tw.span`hidden md:inline mx-2`;
 const Content = styled.div`
 	${tw`text-justify prose md:prose-xl max-w-full!`}
 
@@ -51,8 +51,8 @@ const Post = ({ source, meta }: PostPage) => {
 					<Date title={meta.date}>{formattedDate}</Date>
 					{meta.tags?.length > 0 && (
 						<Fragment>
-							{' '}
-							- <TagList tags={meta.tags} />
+							<Separator>&mdash;</Separator>
+							<TagList tags={meta.tags} />
 						</Fragment>
 					)}
 				</Meta>

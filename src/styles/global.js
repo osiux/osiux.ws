@@ -59,22 +59,6 @@ const global = css`
 		/* border-left: 0.28125rem solid var(--color-link); */
 		/* color: var(--color-secondary); */
 	}
-
-	.tag {
-		${tw`bg-gray-300 text-gray-800 hover:bg-gray-400`}
-	}
-
-	.tag-gatsbyjs {
-		${tw`bg-purple-700 text-white hover:bg-purple-900`}
-	}
-
-	.tag-development {
-		${tw`bg-green-600 text-white hover:bg-green-800`}
-	}
-
-	.tag-travel {
-		${tw`bg-yellow-500 hover:(bg-yellow-700 text-white)`}
-	}
 `;
 
 export default global;

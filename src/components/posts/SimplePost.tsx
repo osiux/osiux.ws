@@ -37,7 +37,7 @@ const SimplePost = ({
 			)}
 			<div tw="w-full md:flex-grow">
 				<Meta>
-					<abbr title={date}>{formattedDate}</abbr> -{' '}
+					<abbr title={date}>{formattedDate}</abbr> &mdash;{' '}
 					{readingTime?.text}
 				</Meta>
 				<Title>

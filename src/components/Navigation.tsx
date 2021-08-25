@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const Header = tw.header`container my-3 font-heading`;
-const Nav = tw.nav`flex items-center flex-wrap space-y-6 md:(space-y-0 flex-nowrap)`;
+const Nav = tw.nav`flex items-center flex-wrap md:(flex-nowrap)`;
 const BrandLink = tw.a`font-bold text-blue-900 text-3xl flex-1`;
 
 const ToggleMenuButton = tw.button`inline-flex p-3 rounded md:hidden ml-auto outline-none transition-colors duration-500 ease-linear focus:outline-none`;
@@ -15,14 +15,14 @@ type NavListProps = {
 	open: boolean;
 };
 const NavList = styled.ul(({ open }: NavListProps) => [
-	tw`flex items-center justify-center flex-none w-full space-x-2 place-items-center text-xl md:w-auto`,
-	open && tw`block`,
+	tw`hidden flex-col items-center justify-center flex-none w-full place-items-center text-xl md:(flex flex-row w-auto)`,
+	open && tw`flex`,
 	`.current {
         text-decoration: underline;
     }`,
 ]);
-const NavListItem = tw.li`p-2 rounded-lg transition-all duration-500 hover:bg-gray-200`;
-const NavLink = tw.a`p-2`;
+const NavListItem = tw.li`ml-2 px-4 py-2 rounded-lg transition-all duration-500 hover:bg-gray-200`;
+const NavLink = tw.a``;
 
 const Form = tw.form`relative mx-auto text-gray-600`;
 
@@ -48,7 +48,7 @@ const Navigation = () => {
 
 	return (
 		<Header>
-			<Nav id="header">
+			<Nav>
 				<Link href="/" passHref>
 					<BrandLink>Eduardo Reveles</BrandLink>
 				</Link>

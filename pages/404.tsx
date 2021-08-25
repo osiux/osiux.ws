@@ -1,4 +1,3 @@
-import React from 'react';
 import tw from 'twin.macro';
 import Img from 'react-optimized-image';
 import { NextSeo } from 'next-seo';
