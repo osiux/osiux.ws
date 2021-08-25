@@ -4,6 +4,7 @@ import { CacheProvider } from '@emotion/react';
 import { cache } from '@emotion/css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import { DefaultSeo } from 'next-seo';
+import { ThemeProvider } from 'next-themes';
 
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import 'highlight.js/styles/atom-one-light.css';
@@ -34,9 +35,11 @@ const App = ({ Component, pageProps }: AppProps) => (
 			}}
 		/>
 		<GlobalStyles />
-		<Layout>
-			<Component {...pageProps} />
-		</Layout>
+		<ThemeProvider attribute="class">
+			<Layout>
+				<Component {...pageProps} />
+			</Layout>
+		</ThemeProvider>
 	</CacheProvider>
 );
 

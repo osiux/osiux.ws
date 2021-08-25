@@ -26,7 +26,7 @@ const Field = tw.div`flex justify-end mb-4 flex-col md:flex-row md:flex-wrap`;
 const Label = tw.label`w-full mb-2 md:w-1/4 md:mt-1`;
 
 const baseInput = css`
-	${tw`w-full p-2 border border-gray-800 border-solid md:w-3/4`}
+	${tw`w-full p-2 border border-gray-800 border-solid transition-all duration-500 md:w-3/4 dark:(text-gray-900 bg-gray-300)`}
 `;
 
 const Input = styled.input`
@@ -38,7 +38,7 @@ const TextArea = styled.textarea`
 `;
 
 const Button = styled.button`
-	${tw`border border-solid border-gray-800 outline-none py-3 px-5 w-full self-end md:w-auto md:py-3 md:px-10`}
+	${tw`transition-all duration-500 border border-solid border-gray-800 bg-gray-900 text-gray-100 outline-none py-3 px-5 w-full self-end md:w-auto md:py-3 md:px-10 dark:(border-gray-100 bg-gray-600)`}
 
 	&[disabled] {
 		${tw`bg-gray-600 opacity-50 border-0`}
@@ -63,7 +63,13 @@ const Error = styled.p`
 	border: 1px solid #800007;
 `;
 
-const Section = tw.section`prose prose-xl max-w-full!`;
+const Section = styled.section`
+	${tw`prose transition-all duration-500 md:prose-xl max-w-full! dark:text-gray-100`}
+
+	a {
+		${tw`transition-all duration-500 dark:text-gray-100`}
+	}
+`;
 
 const Contact = () => {
 	const [name, setName] = useState('');

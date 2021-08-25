@@ -13,7 +13,7 @@ module.exports = {
 	},
 	variants: {},
 	plugins: [require('@tailwindcss/typography')],
-	dark: 'class',
+	darkMode: 'class',
 	experimental: {
 		uniformColorPalette: true,
 		defaultLineHeights: true,

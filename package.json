@@ -45,6 +45,7 @@
         "next-remote-watch": "^1.0.0",
         "next-seo": "^4.26.0",
         "next-sitemap": "^1.6.148",
+        "next-themes": "^0.0.15",
         "node-abort-controller": "^3.0.0",
         "react": "17.0.2",
         "react-dom": "17.0.2",

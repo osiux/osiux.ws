@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
 import tw, { styled } from 'twin.macro';
-import Link from 'next/link';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 import { NextSeo } from 'next-seo';
@@ -12,14 +11,18 @@ import type { PostMeta } from '@app/utils/posts';
 import TagList from '@app/components/TagList';
 
 const Title = tw.h1`break-words font-heading font-bold text-3xl mb-5 md:(text-5xl mb-10) text-gray-800`;
-const Meta = tw.p`mb-10 flex flex-col md:flex-row md:items-center`;
+const Meta = tw.p`mb-10 flex flex-col transition-all duration-500 md:flex-row md:items-center`;
 const Date = tw.abbr`block mb-5 md:(inline mb-0)`;
 const Separator = tw.span`hidden md:inline mx-2`;
 const Content = styled.div`
-	${tw`text-justify prose md:prose-xl max-w-full!`}
+	${tw`text-justify prose transition-all duration-500 md:prose-xl max-w-full! dark:text-gray-100`}
 
-	h1, h2, h3, h4, h5, h6, h7 {
-		${tw`relative`}
+	h1, h2, h3, h4, h5, h6 {
+		${tw`relative transition-all duration-500 dark:text-gray-100`}
+	}
+
+	a {
+		${tw`transition-all duration-500 dark:text-gray-100`}
 	}
 `;
 const Article = tw.article`min-w-full my-12`;

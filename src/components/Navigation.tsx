@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import tw, { styled } from 'twin.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes, faSearch } from '@fortawesome/free-solid-svg-icons';
+import {
+	faBars,
+	faTimes,
+	faSearch,
+	faSun,
+	faMoon,
+} from '@fortawesome/free-solid-svg-icons';
+import { useTheme } from 'next-themes';
 
 const Header = tw.header`container my-3 font-heading`;
 const Nav = tw.nav`flex items-center flex-wrap md:(flex-nowrap)`;
-const BrandLink = tw.a`font-bold text-blue-900 text-3xl flex-1`;
+const BrandLink = tw.a`font-bold text-gray-800 text-3xl flex-1 transition-all duration-500 dark:text-gray-100`;
 
-const ToggleMenuButton = tw.button`inline-flex p-3 rounded md:hidden ml-auto outline-none transition-colors duration-500 ease-linear focus:outline-none`;
+const ToggleMenuButton = tw.button`inline-flex p-3 rounded md:hidden ml-auto outline-none focus:outline-none`;
+const DarkModeButton = tw.button`bg-transparent inline-flex p-3 ml-auto outline-none md:order-3`;
 
 type NavListProps = {
 	open: boolean;
@@ -21,8 +29,8 @@ const NavList = styled.ul(({ open }: NavListProps) => [
         text-decoration: underline;
     }`,
 ]);
-const NavListItem = tw.li`ml-2 px-4 py-2 rounded-lg transition-all duration-500 hover:bg-gray-200`;
-const NavLink = tw.a``;
+const NavListItem = tw.li`ml-2 my-3 md:my-0`;
+const NavLink = tw.a`px-4 py-2 rounded-lg transition-all duration-500 hover:bg-gray-200 dark:hover:bg-gray-500`;
 
 const Form = tw.form`relative mx-auto text-gray-600`;
 
@@ -30,13 +38,21 @@ const SearchInput = tw.input`border-2 border-gray-300 bg-gray-200 h-10 px-3 pr-8
 const SearchButton = tw.button`absolute right-0 top-0 mt-2 mr-2`;
 
 const Navigation = () => {
+	const { theme, setTheme } = useTheme();
+	const [mounted, setMounted] = useState(false);
 	const router = useRouter();
 	const [query, setQuery] = useState((router?.query?.q as string) || '');
 	const [menuOpen, setMenuOpen] = useState(false);
 
-	const _toggleMenu = () => setMenuOpen((prev) => !prev);
+	useEffect(() => setMounted(true), []);
 
-	const _searchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	if (!mounted) return null;
+
+	const toggleMenu = () => setMenuOpen((prev) => !prev);
+
+	const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+
+	const searchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		const searchTerm = query.trim();
@@ -52,12 +68,27 @@ const Navigation = () => {
 				<Link href="/" passHref>
 					<BrandLink>Eduardo Reveles</BrandLink>
 				</Link>
+				<DarkModeButton
+					role="button"
+					aria-label="Toggle Dark Mode"
+					onClick={toggleTheme}
+				>
+					<FontAwesomeIcon
+						fixedWidth
+						size="lg"
+						icon={theme === 'dark' ? faSun : faMoon}
+					/>
+				</DarkModeButton>
 				<ToggleMenuButton
 					role="button"
 					aria-label="Toggle Menu"
-					onClick={_toggleMenu}
+					onClick={toggleMenu}
 				>
-					<FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
+					<FontAwesomeIcon
+						size="lg"
+						fixedWidth
+						icon={menuOpen ? faTimes : faBars}
+					/>
 				</ToggleMenuButton>
 				<NavList open={menuOpen}>
 					<NavListItem>
@@ -75,8 +106,8 @@ const Navigation = () => {
 							<NavLink>Contact</NavLink>
 						</Link>
 					</NavListItem>
-					<NavListItem>
-						<Form tw="hidden" onSubmit={_searchSubmit}>
+					<NavListItem tw="hidden">
+						<Form onSubmit={searchSubmit}>
 							<SearchInput
 								type="search"
 								name="q"

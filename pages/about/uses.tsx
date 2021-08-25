@@ -1,9 +1,18 @@
-import React from 'react';
-import tw from 'twin.macro';
+import tw, { styled } from 'twin.macro';
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
 
-const Section = tw.section`prose prose-xl max-w-full!`;
+const Section = styled.section`
+	${tw`prose transition-all duration-500 md:prose-xl max-w-full! dark:text-gray-100`}
+
+	h1, h2, h3, h4, h5, h6 {
+		${tw`transition-all duration-500 dark:text-gray-100`}
+	}
+
+	a {
+		${tw`transition-all duration-500 dark:text-gray-100`}
+	}
+`;
 
 const Uses = () => (
 	<Section>
