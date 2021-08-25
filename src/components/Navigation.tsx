@@ -13,9 +13,9 @@ import {
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
 
-const Header = tw.header`container my-3 font-heading bg-gray-50 h-auto border-b border-gray-600 border-dotted flex justify-between items-start sticky z-50 top-0 flex-col md:(h-24 flex-row items-center)`;
-const Nav = tw.nav`flex items-center flex-wrap md:(flex-nowrap)`;
-const BrandLink = tw.a`font-bold text-gray-800 text-3xl flex-1 transition-all duration-500 dark:text-gray-100`;
+const Header = tw.header`w-full mb-3 font-heading bg-gray-50 fixed z-50 top-0 transition-all duration-500 dark:(bg-gray-800 text-gray-100)`;
+const Nav = tw.nav`max-w-3xl mx-auto w-full  flex items-center flex-wrap md:(max-w-4xl flex-nowrap) mt-8 mb-8 md:mt-8`;
+const BrandLink = tw.a`font-bold text-gray-800 text-3xl flex-1 transition-all duration-500 dark:text-gray-100 ml-2 md:ml-0`;
 
 const ToggleMenuButton = tw.button`inline-flex p-3 rounded md:hidden ml-auto outline-none focus:outline-none`;
 const DarkModeButton = tw.button`bg-transparent inline-flex p-3 ml-auto outline-none md:order-3`;
@@ -78,10 +78,10 @@ const Navigation = () => {
 
 	return (
 		<Header>
-			<Link href="/" passHref>
-				<BrandLink>Eduardo Reveles</BrandLink>
-			</Link>
-			<div>
+			<Nav>
+				<Link href="/" passHref>
+					<BrandLink>Eduardo Reveles</BrandLink>
+				</Link>
 				<DarkModeButton
 					role="button"
 					aria-label="Toggle Dark Mode"
@@ -104,8 +104,6 @@ const Navigation = () => {
 						icon={menuOpen ? faTimes : faBars}
 					/>
 				</ToggleMenuButton>
-			</div>
-			<Nav>
 				<NavList
 					// variants={navVariants}
 					// animate={menuOpen ? 'open' : 'closed'}

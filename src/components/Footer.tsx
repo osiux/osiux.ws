@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => (
-	<footer>
+	<footer tw="pb-10">
 		<p tw="text-center text-sm">
 			© {new Date().getFullYear()}, Made with{' '}
 			<span

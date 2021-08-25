@@ -30,7 +30,7 @@ const Content = styled.div`
 		${tw`transition-all duration-500 dark:text-gray-100`}
 	}
 `;
-const Article = tw.article`min-w-full my-12`;
+const Article = tw.article`min-w-full mb-12`;
 
 type PostPage = {
 	source: MDXRemoteSerializeResult;
