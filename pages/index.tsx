@@ -2,6 +2,7 @@ import type { GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
 
 import SimplePost from '@app/components/posts/SimplePost';
+import Layout from '@app/components/Layout';
 
 import { getPosts, PostData } from '@app/utils/posts';
 import { comparePostDates } from '@app/utils/dates';
@@ -13,12 +14,12 @@ type HomeProps = {
 };
 
 const Home = ({ posts }: HomeProps) => (
-	<>
+	<Layout>
 		<NextSeo title="Home" />
 		{posts.map((post) => (
 			<SimplePost key={post.meta.slug} {...post.meta} />
 		))}
-	</>
+	</Layout>
 );
 
 export const getStaticProps: GetStaticProps = async () => {

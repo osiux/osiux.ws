@@ -11,8 +11,9 @@ import {
 	faMoon,
 } from '@fortawesome/free-solid-svg-icons';
 import { useTheme } from 'next-themes';
+import { motion } from 'framer-motion';
 
-const Header = tw.header`container my-3 font-heading`;
+const Header = tw.header`container my-3 font-heading bg-gray-50 h-auto border-b border-gray-600 border-dotted flex justify-between items-start sticky z-50 top-0 flex-col md:(h-24 flex-row items-center)`;
 const Nav = tw.nav`flex items-center flex-wrap md:(flex-nowrap)`;
 const BrandLink = tw.a`font-bold text-gray-800 text-3xl flex-1 transition-all duration-500 dark:text-gray-100`;
 
@@ -22,7 +23,7 @@ const DarkModeButton = tw.button`bg-transparent inline-flex p-3 ml-auto outline-
 type NavListProps = {
 	open: boolean;
 };
-const NavList = styled.ul(({ open }: NavListProps) => [
+const NavList = styled(motion.ul)(({ open }: NavListProps) => [
 	tw`hidden flex-col items-center justify-center flex-none w-full place-items-center text-xl md:(flex flex-row w-auto)`,
 	open && tw`flex`,
 	`.current {
@@ -36,6 +37,19 @@ const Form = tw.form`relative mx-auto text-gray-600`;
 
 const SearchInput = tw.input`border-2 border-gray-300 bg-gray-200 h-10 px-3 pr-8 rounded text-sm focus:outline-none`;
 const SearchButton = tw.button`absolute right-0 top-0 mt-2 mr-2`;
+
+const navVariants = {
+	open: {
+		display: 'flex',
+		opacity: 1,
+		height: 'auto',
+	},
+	closed: {
+		opacity: 0,
+		height: 0,
+		transitionEnd: { display: 'none' },
+	},
+};
 
 const Navigation = () => {
 	const { theme, setTheme } = useTheme();
@@ -64,10 +78,10 @@ const Navigation = () => {
 
 	return (
 		<Header>
-			<Nav>
-				<Link href="/" passHref>
-					<BrandLink>Eduardo Reveles</BrandLink>
-				</Link>
+			<Link href="/" passHref>
+				<BrandLink>Eduardo Reveles</BrandLink>
+			</Link>
+			<div>
 				<DarkModeButton
 					role="button"
 					aria-label="Toggle Dark Mode"
@@ -90,7 +104,13 @@ const Navigation = () => {
 						icon={menuOpen ? faTimes : faBars}
 					/>
 				</ToggleMenuButton>
-				<NavList open={menuOpen}>
+			</div>
+			<Nav>
+				<NavList
+					// variants={navVariants}
+					// animate={menuOpen ? 'open' : 'closed'}
+					open={menuOpen}
+				>
 					<NavListItem>
 						<Link href="/blog" passHref>
 							<NavLink>Blog</NavLink>

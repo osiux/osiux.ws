@@ -1,10 +1,11 @@
 import type { AppProps } from 'next/app';
-import { GlobalStyles } from 'twin.macro';
+import tw, { GlobalStyles } from 'twin.macro';
 import { CacheProvider } from '@emotion/react';
 import { cache } from '@emotion/css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
+import { AnimatePresence } from 'framer-motion';
 
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import 'highlight.js/styles/atom-one-light.css';
@@ -13,9 +14,12 @@ import '@fontsource/roboto';
 import '@fontsource/open-sans';
 import '@fontsource/open-sans/700.css';
 
-import Layout from '@app/components/Layout';
-
 config.autoAddCss = false;
+
+import Navigation from '@app/components/Navigation';
+import Footer from '@app/components/Footer';
+
+const Container = tw.div`h-screen antialiased grid grid-rows-layout max-w-3xl mx-auto w-full py-6 xl:(max-w-4xl px-0) px-3 md:(pt-0 pb-16)`;
 
 const App = ({ Component, pageProps }: AppProps) => (
 	<CacheProvider value={cache}>
@@ -36,9 +40,17 @@ const App = ({ Component, pageProps }: AppProps) => (
 		/>
 		<GlobalStyles />
 		<ThemeProvider attribute="class">
-			<Layout>
-				<Component {...pageProps} />
-			</Layout>
+			<Container>
+				<Navigation />
+				<AnimatePresence
+					exitBeforeEnter
+					initial={false}
+					onExitComplete={() => window.scrollTo(0, 0)}
+				>
+					<Component {...pageProps} />
+				</AnimatePresence>
+				<Footer />
+			</Container>
 		</ThemeProvider>
 	</CacheProvider>
 );

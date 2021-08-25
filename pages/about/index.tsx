@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import tw, { styled } from 'twin.macro';
 import Link from 'next/link';
 import Img from 'react-optimized-image';
@@ -9,6 +9,7 @@ import { NextSeo } from 'next-seo';
 import Me from '@images/eduardo-reveles.jpg';
 import Amelia from '@images/amelia.jpg';
 import Cats from '@images/cats.jpg';
+import Layout from '@app/components/Layout';
 
 const UnderlineSpan = tw.span`cursor-pointer border-b-2 border-dotted border-gray-900 transition-colors duration-500 ease-linear dark:border-gray-100`;
 const Section = styled.section`
@@ -56,7 +57,7 @@ const onRenderContent = (target: any) => {
 };
 
 const About = () => (
-	<Fragment>
+	<Layout>
 		<NextSeo title="About" />
 		<ReactHint autoPosition events />
 		<ReactHint
@@ -106,7 +107,7 @@ const About = () => (
 				</Link>
 			</p>
 		</Section>
-	</Fragment>
+	</Layout>
 );
 
 export default About;

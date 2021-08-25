@@ -12,6 +12,8 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { NextSeo } from 'next-seo';
 
+import Layout from '@app/components/Layout';
+
 const SocialNetworksList = tw.ul`list-none flex justify-center m-0 text-3xl`;
 
 const SocialNetworkItem = styled.li`
@@ -115,120 +117,125 @@ const Contact = () => {
 	};
 
 	return (
-		<Section>
-			<NextSeo title="Contact" />
-			<p>
-				If you want to get in touch with me feel free to email me at{' '}
-				<a href="me@osiux.ws?subject=Hello!">me@osiux.ws</a>, send me a
-				message in any of my social networks, or you can use the contact
-				form below.
-			</p>
-			<SocialNetworksList>
-				<SocialNetworkItem>
-					<a href="https://github.com/osiux" title="Github">
-						<FontAwesomeIcon icon={faGithub} fixedWidth />
-					</a>
-				</SocialNetworkItem>
-				<SocialNetworkItem>
-					<a
-						href="https://www.linkedin.com/in/ereveles/"
-						title="Linkedin"
-					>
-						<FontAwesomeIcon icon={faLinkedin} fixedWidth />
-					</a>
-				</SocialNetworkItem>
-				<SocialNetworkItem>
-					<a
-						href="https://stackoverflow.com/users/717643/eduardo-reveles"
-						title="Stack Overflow"
-					>
-						<FontAwesomeIcon icon={faStackOverflow} fixedWidth />
-					</a>
-				</SocialNetworkItem>
-				<SocialNetworkItem>
-					<a href="https://twitter.com/osiux" title="Twitter">
-						<FontAwesomeIcon icon={faTwitter} fixedWidth />
-					</a>
-				</SocialNetworkItem>
-				<SocialNetworkItem>
-					<a
-						href="https://www.instagram.com/oso96_2000/"
-						title="Instagram"
-					>
-						<FontAwesomeIcon icon={faInstagram} fixedWidth />
-					</a>
-				</SocialNetworkItem>
-				<SocialNetworkItem>
-					<a
-						href="https://www.last.fm/user/oso96_2000"
-						title="Last.fm"
-					>
-						<FontAwesomeIcon icon={faLastfm} fixedWidth />
-					</a>
-				</SocialNetworkItem>
-			</SocialNetworksList>
+		<Layout>
+			<Section>
+				<NextSeo title="Contact" />
+				<p>
+					If you want to get in touch with me feel free to email me at{' '}
+					<a href="me@osiux.ws?subject=Hello!">me@osiux.ws</a>, send
+					me a message in any of my social networks, or you can use
+					the contact form below.
+				</p>
+				<SocialNetworksList>
+					<SocialNetworkItem>
+						<a href="https://github.com/osiux" title="Github">
+							<FontAwesomeIcon icon={faGithub} fixedWidth />
+						</a>
+					</SocialNetworkItem>
+					<SocialNetworkItem>
+						<a
+							href="https://www.linkedin.com/in/ereveles/"
+							title="Linkedin"
+						>
+							<FontAwesomeIcon icon={faLinkedin} fixedWidth />
+						</a>
+					</SocialNetworkItem>
+					<SocialNetworkItem>
+						<a
+							href="https://stackoverflow.com/users/717643/eduardo-reveles"
+							title="Stack Overflow"
+						>
+							<FontAwesomeIcon
+								icon={faStackOverflow}
+								fixedWidth
+							/>
+						</a>
+					</SocialNetworkItem>
+					<SocialNetworkItem>
+						<a href="https://twitter.com/osiux" title="Twitter">
+							<FontAwesomeIcon icon={faTwitter} fixedWidth />
+						</a>
+					</SocialNetworkItem>
+					<SocialNetworkItem>
+						<a
+							href="https://www.instagram.com/oso96_2000/"
+							title="Instagram"
+						>
+							<FontAwesomeIcon icon={faInstagram} fixedWidth />
+						</a>
+					</SocialNetworkItem>
+					<SocialNetworkItem>
+						<a
+							href="https://www.last.fm/user/oso96_2000"
+							title="Last.fm"
+						>
+							<FontAwesomeIcon icon={faLastfm} fixedWidth />
+						</a>
+					</SocialNetworkItem>
+				</SocialNetworksList>
 
-			{success && (
-				<Success>Thanks! I&apos;ll be in touch shortly!</Success>
-			)}
-			{error && <Error>{error}</Error>}
+				{success && (
+					<Success>Thanks! I&apos;ll be in touch shortly!</Success>
+				)}
+				{error && <Error>{error}</Error>}
 
-			<Form name="Contact" onSubmit={_onSubmit}>
-				<input type="hidden" name="form-name" value="Contact" />
-				<Field>
-					<Label htmlFor="name">Name:</Label>
-					<Input
-						type="text"
-						name="name"
-						id="name"
-						value={name}
-						onChange={(e) => setName(e.target.value)}
-						required
-					/>
-				</Field>
+				<Form name="Contact" onSubmit={_onSubmit}>
+					<input type="hidden" name="form-name" value="Contact" />
+					<Field>
+						<Label htmlFor="name">Name:</Label>
+						<Input
+							type="text"
+							name="name"
+							id="name"
+							value={name}
+							onChange={(e) => setName(e.target.value)}
+							required
+						/>
+					</Field>
 
-				<Field>
-					<Label htmlFor="email">Email:</Label>
-					<Input
-						type="email"
-						name="email"
-						id="email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-				</Field>
+					<Field>
+						<Label htmlFor="email">Email:</Label>
+						<Input
+							type="email"
+							name="email"
+							id="email"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							required
+						/>
+					</Field>
 
-				<Field tw="hidden">
-					<Label htmlFor="url">Url:</Label>
-					<Input
-						type="url"
-						name="url"
-						id="url"
-						value={url}
-						onChange={(e) => setUrl(e.target.value)}
-					/>
-				</Field>
+					<Field tw="hidden">
+						<Label htmlFor="url">Url:</Label>
+						<Input
+							type="url"
+							name="url"
+							id="url"
+							value={url}
+							onChange={(e) => setUrl(e.target.value)}
+						/>
+					</Field>
 
-				<Field>
-					<Label htmlFor="message">Message:</Label>
-					<TextArea
-						name="message"
-						id="message"
-						rows={10}
-						onChange={(e) => setMessage(e.target.value)}
-						value={message}
-						required
-					/>
-				</Field>
+					<Field>
+						<Label htmlFor="message">Message:</Label>
+						<TextArea
+							name="message"
+							id="message"
+							rows={10}
+							onChange={(e) => setMessage(e.target.value)}
+							value={message}
+							required
+						/>
+					</Field>
 
-				<Field>
-					<Button type="submit" disabled={isSubmitting}>
-						{isSubmitting ? 'Sending...' : 'Send'}
-					</Button>
-				</Field>
-			</Form>
-		</Section>
+					<Field>
+						<Button type="submit" disabled={isSubmitting}>
+							{isSubmitting ? 'Sending...' : 'Send'}
+						</Button>
+					</Field>
+				</Form>
+			</Section>
+		</Layout>
 	);
 };
 

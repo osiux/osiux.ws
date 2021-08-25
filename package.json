@@ -29,6 +29,7 @@
         "cache-manager-fs-hash": "^1.0.0",
         "date-fns": "^2.23.0",
         "form-data": "^4.0.0",
+        "framer-motion": "^4.1.17",
         "fs-extra": "^10.0.0",
         "gatsby-remark-embedder": "^5.0.0",
         "gray-matter": "^4.0.3",

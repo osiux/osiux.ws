@@ -1,16 +1,21 @@
 import React, { Fragment, useEffect } from 'react';
-import tw from 'twin.macro';
+import tw, { styled } from 'twin.macro';
 import Head from 'next/head';
 import { Global } from '@emotion/react';
+import { motion } from 'framer-motion';
 
 import global from '@app/styles/global';
 import tags from '@app/styles/tags';
 
-import Footer from './Footer';
-import Navigation from './Navigation';
+const Main = styled(motion.main)`
+	${tw`my-4 md:my-10`}
+`;
 
-const Container = tw.div`min-h-screen antialiased grid grid-rows-layout max-w-3xl mx-auto w-full py-6 xl:max-w-4xl px-3 xl:px-0 md:pb-16 md:pt-8`;
-const Main = tw.main`my-4 md:my-10`;
+const variants = {
+	hidden: { opacity: 0, x: -200, y: 0 },
+	enter: { opacity: 1, x: 0, y: 0 },
+	exit: { opacity: 0, x: 0, y: -100 },
+};
 
 type LayoutProps = {
 	children: React.ReactNode;
@@ -86,11 +91,16 @@ const Layout = ({ children }: LayoutProps) => {
 				<link rel="manifest" href="/site.webmanifest" />
 				<meta name="theme-color" content="#111827" />
 			</Head>
-			<Container>
-				<Navigation />
-				<Main>{children}</Main>
-				<Footer />
-			</Container>
+
+			<Main
+				variants={variants}
+				initial="hidden"
+				animate="enter"
+				exit="exit"
+				transition={{ type: 'linear' }}
+			>
+				{children}
+			</Main>
 		</Fragment>
 	);
 };

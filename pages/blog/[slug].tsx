@@ -9,6 +9,7 @@ import { getPost, getPostsSlug } from '@app/utils/posts';
 import { formatDate } from '@app/utils/dates';
 import type { PostMeta } from '@app/utils/posts';
 import TagList from '@app/components/TagList';
+import Layout from '@app/components/Layout';
 
 const Title = tw.h1`break-words font-heading font-bold text-3xl mb-5 md:(text-5xl mb-10) text-gray-800`;
 const Meta = tw.p`mb-10 flex flex-col transition-all duration-500 md:flex-row md:items-center`;
@@ -24,6 +25,10 @@ const Content = styled.div`
 	a {
 		${tw`transition-all duration-500 dark:text-gray-100`}
 	}
+
+	code {
+		${tw`transition-all duration-500 dark:text-gray-100`}
+	}
 `;
 const Article = tw.article`min-w-full my-12`;
 
@@ -36,7 +41,7 @@ const Post = ({ source, meta }: PostPage) => {
 	const formattedDate = formatDate(meta.date);
 
 	return (
-		<Fragment>
+		<Layout>
 			<NextSeo
 				title={meta.title}
 				openGraph={{
@@ -64,7 +69,7 @@ const Post = ({ source, meta }: PostPage) => {
 					<MDXRemote {...source} />
 				</Content>
 			</Article>
-		</Fragment>
+		</Layout>
 	);
 };
 

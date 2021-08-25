@@ -5,6 +5,7 @@ import slugify from 'slugify';
 
 import SimplePost from '@app/components/posts/SimplePost';
 import Pagination from '@app/components/Pagination';
+import Layout from '@app/components/Layout';
 
 import { getPosts } from '@app/utils/posts';
 import { comparePostDates } from '@app/utils/dates';
@@ -23,7 +24,7 @@ const TagPage = ({ posts, tag, totalPages, currentPage }: TagPageProps) => {
 	const tagSlug = slugify(tag, { lower: true, strict: true });
 
 	return (
-		<>
+		<Layout>
 			<NextSeo title={`Archive - Tag: ${tag} - Page ${currentPage}`} />
 			<h1 tw="font-heading font-bold text-5xl mb-10">
 				Archive - Tag: <Tag className={`tag tag-${tagSlug}`}>{tag}</Tag>
@@ -37,7 +38,7 @@ const TagPage = ({ posts, tag, totalPages, currentPage }: TagPageProps) => {
 				basePath={`/blog/tag/${tag}/`}
 				nextPath="/blog/tag/[[...tag]]"
 			/>
-		</>
+		</Layout>
 	);
 };
 
