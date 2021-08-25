@@ -20,7 +20,7 @@ const ArchivePage = ({ posts, totalPages, currentPage }: ArchivePageProps) => {
     return (
         <>
             <NextSeo title={`Archive - Page ${currentPage}`} />
-            <h1 tw="font-heading font-bold text-5xl">Archive</h1>
+            <h1 tw="font-heading font-bold text-5xl mb-10">Archive</h1>
             {posts.map((post) => (
                 <SimplePost key={post.meta.slug} {...post.meta} />
             ))}

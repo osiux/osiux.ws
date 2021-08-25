@@ -5,7 +5,7 @@ import { formatDate } from '@app/utils/dates';
 import type { PostMeta } from '@app/utils/posts';
 import TagList from '@app/components/TagList';
 
-const Article = tw.article`py-8 flex flex-wrap md:flex-nowrap w-full`;
+const Article = tw.article`mb-16 flex flex-wrap items-center w-full md:flex-nowrap`;
 const Meta = tw.p`text-gray-500 text-sm mb-2 mt-2 md:mt-0`;
 const Title = tw.h2`text-2xl font-bold text-gray-900 mb-2 font-heading`;
 const ArticleLink = tw.a`hover:underline`;

@@ -1,6 +1,7 @@
 import tw from 'twin.macro';
 import type { GetStaticProps, GetStaticPaths } from 'next';
 import { NextSeo } from 'next-seo';
+import slugify from 'slugify';
 
 import SimplePost from '@app/components/posts/SimplePost';
 import Pagination from '@app/components/Pagination';
@@ -16,12 +17,16 @@ type TagPageProps = ArchivePageProps & {
 
 type PathType = Array<string | { params: { tag: string[] } }>;
 
+const Tag = tw.span`mr-2 px-3 py-1 rounded-md`;
+
 const TagPage = ({ posts, tag, totalPages, currentPage }: TagPageProps) => {
+    const tagSlug = slugify(tag, { lower: true, strict: true });
+
     return (
         <>
             <NextSeo title={`Archive - Tag: ${tag} - Page ${currentPage}`} />
-            <h1 tw="font-heading font-bold text-5xl">
-                Archive - Tag: <em>{tag}</em>
+            <h1 tw="font-heading font-bold text-5xl mb-10">
+                Archive - Tag: <Tag className={`tag tag-${tagSlug}`}>{tag}</Tag>
             </h1>
             {posts.map((post) => {
                 return <SimplePost key={post.meta.slug} {...post.meta} />;

@@ -53,6 +53,7 @@
         "rehype-autolink-headings": "^6.0.0",
         "rehype-highlight": "^5.0.0",
         "rehype-slug": "^5.0.0",
+        "slugify": "^1.6.0",
         "unsplash-js": "^7.0.15"
     },
     "devDependencies": {
