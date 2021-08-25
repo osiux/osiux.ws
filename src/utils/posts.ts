@@ -45,6 +45,8 @@ type Image = {
 	url: string;
 	blur_hash: string;
 	link: string;
+	width: number;
+	height: number;
 	user: {
 		name: string;
 		link: string;
@@ -90,6 +92,8 @@ export const getPostData = async (postSlug: string) => {
 				url: response?.urls.raw,
 				blur_hash: response?.blur_hash,
 				link: response?.links.html,
+				width: response?.width,
+				height: response?.height,
 				user: {
 					name: response?.user.name,
 					link: response?.user.links.html,
