@@ -8,7 +8,6 @@ import { ThemeProvider } from 'next-themes';
 import { AnimatePresence } from 'framer-motion';
 
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import 'highlight.js/styles/atom-one-dark.css';
 import 'react-hint/css/index.css';
 import '@fontsource/roboto';
 import '@fontsource/open-sans';

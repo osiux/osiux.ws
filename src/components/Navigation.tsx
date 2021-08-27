@@ -13,9 +13,9 @@ import {
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
 
-const Header = tw.header`w-full mb-3 font-heading bg-gray-50 fixed z-50 top-0 transition-colors duration-500 dark:(bg-gray-800 text-gray-100)`;
+const Header = tw.header`w-full mb-3 font-heading bg-gray-50 fixed z-50 top-0 transition-colors duration-300 dark:bg-gray-800`;
 const Nav = tw.nav`max-w-3xl mx-auto w-full  flex items-center flex-wrap md:(max-w-4xl flex-nowrap) mt-8 mb-8 md:mt-8`;
-const BrandLink = tw.a`font-bold text-gray-800 text-3xl flex-1 transition-colors duration-500 dark:text-gray-100 ml-2 md:ml-0`;
+const BrandLink = tw.a`font-bold text-gray-800 text-3xl flex-1 transition-colors duration-300 dark:text-gray-100 ml-2 md:ml-0`;
 
 const ToggleMenuButton = tw.button`inline-flex p-3 rounded md:hidden ml-auto outline-none focus:outline-none`;
 const DarkModeButton = tw.button`bg-transparent inline-flex p-3 ml-auto outline-none focus:outline-none md:order-3`;
@@ -31,7 +31,7 @@ const NavList = styled(motion.ul)(({ open }: NavListProps) => [
     }`,
 ]);
 const NavListItem = tw.li`ml-2 my-3 md:my-0`;
-const NavLink = tw.a`px-4 py-2 rounded-lg transition-colors duration-500 hover:bg-gray-200 dark:hover:bg-gray-500`;
+const NavLink = tw.a`px-4 py-2 rounded-lg transition-colors duration-300 text-gray-800 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-500`;
 
 const Form = tw.form`relative mx-auto text-gray-600`;
 

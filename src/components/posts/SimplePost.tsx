@@ -15,9 +15,9 @@ const ImageCaption = styled.caption`
 		${tw`underline`}
 	}
 `;
-const Meta = tw.p`transition-colors duration-500 text-gray-600 text-sm mb-2 mt-2 md:mt-0 dark:text-gray-300`;
-const Title = tw.h2`text-2xl font-bold text-gray-900 mb-2 font-heading`;
-const ArticleLink = tw.a`hover:underline`;
+const Meta = tw.p`transition-colors duration-100 text-gray-600 text-sm mb-2 mt-2 md:mt-0 dark:text-gray-300`;
+const Title = tw.h2`text-2xl font-bold mb-2 font-heading`;
+const ArticleLink = tw.a`transition-colors duration-300 text-gray-900 dark:text-gray-100 hover:underline`;
 const Excerpt = tw.p`leading-relaxed mt-2 prose max-w-full!`;
 
 const SimplePost = ({

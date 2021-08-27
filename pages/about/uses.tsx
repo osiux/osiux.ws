@@ -5,14 +5,14 @@ import { NextSeo } from 'next-seo';
 import Layout from '@app/components/Layout';
 
 const Section = styled.section`
-	${tw`prose transition-colors duration-500 md:prose-xl max-w-full! dark:text-gray-100`}
+	${tw`prose transition-colors duration-300 md:prose-xl max-w-full! dark:text-gray-100`}
 
 	h1, h2, h3, h4, h5, h6 {
-		${tw`transition-colors duration-500 dark:text-gray-100`}
+		${tw`transition-colors duration-300 dark:text-gray-100`}
 	}
 
 	a {
-		${tw`transition-colors duration-500 dark:text-gray-100`}
+		${tw`transition-colors duration-300 dark:text-gray-100`}
 	}
 `;
 
