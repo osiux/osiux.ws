@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { createApi } from 'unsplash-js';
-import readingTime from 'reading-time';
+import readingTime, { ReadTimeResults } from 'reading-time';
 import { s } from 'hastscript';
 import { serialize } from 'next-mdx-remote/serialize';
 import slug from 'rehype-slug';
@@ -60,7 +60,7 @@ export type PostMeta = {
 	slug: string;
 	image?: Image;
 	excerpt?: string;
-	readingTime: readingTime.IReadTimeResults;
+	readingTime: ReadTimeResults;
 };
 
 export type PostData = {

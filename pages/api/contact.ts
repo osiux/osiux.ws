@@ -37,8 +37,8 @@ const contact = async (request: VercelRequest, response: VercelResponse) => {
 				});
 
 				response.status(200).json({ message: 'ok' });
+				// @ts-ignore
 			} catch (e) {
-				console.log(e.message);
 				response.status(400).json({
 					error: 'Error sending message.',
 				});
