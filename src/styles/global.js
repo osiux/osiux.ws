@@ -51,10 +51,6 @@ const global = css`
 		${tw`mb-0`}
 	}
 
-	pre {
-		${tw`whitespace-pre-wrap break-words`}
-	}
-
 	blockquote {
 		/* border-left: 0.28125rem solid var(--color-link); */
 		/* color: var(--color-secondary); */

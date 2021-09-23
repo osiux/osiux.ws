@@ -2114,12 +2114,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/fs-extra@npm:^9.0.12":
-  version: 9.0.12
-  resolution: "@types/fs-extra@npm:9.0.12"
+"@types/fs-extra@npm:^9.0.13":
+  version: 9.0.13
+  resolution: "@types/fs-extra@npm:9.0.13"
   dependencies:
     "@types/node": "*"
-  checksum: c63834f0be8d0993c55abcc0b2c90f3c095cf3aa9e827973472167bd93687df9da546bd5e0823ddc9e83e1651c9cfb09bbac99fa57a15ab28fd21280426e472c
+  checksum: add79e212acd5ac76b97b9045834e03a7996aef60a814185e0459088fd290519a3c1620865d588fa36c4498bf614210d2a703af5cf80aa1dbc125db78f6edac3
   languageName: node
   linkType: hard
 
@@ -2172,10 +2172,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^16.9.1":
+"@types/node@npm:*":
   version: 16.9.1
   resolution: "@types/node@npm:16.9.1"
   checksum: 41afcf183a22d59323a0199dd7e0f46591247f45fc08a4434edb26d56dc279ae4fdb80f37989ddd7a0f45e3857c4933e6e82057ede09c5a829f77e373e680375
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^16.9.6":
+  version: 16.9.6
+  resolution: "@types/node@npm:16.9.6"
+  checksum: 1c11ff4b58af87ddade05784e90bb5a2fe01f461ce489fdb1428d89e709695a26b0dcbac0520305911f5e4017561416747e544f1b9ec36649ccbfad6ffff4a0a
   languageName: node
   linkType: hard
 
@@ -2207,14 +2214,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17.0.20":
-  version: 17.0.20
-  resolution: "@types/react@npm:17.0.20"
+"@types/react@npm:^17.0.24":
+  version: 17.0.24
+  resolution: "@types/react@npm:17.0.24"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: e342bfaa4fe052fc3a445ea49f746f3fd82cfc9c8028eae139a3e0763ead1871f353bd40da2a472f23d2b52544d2781d40e3159c0703e7e2ff08c13f067a3b9c
+  checksum: 99383e2cbaa85831984cc17ec4a5fe7fd091aa21ef023855570440d8d0b5038efb8159701e8e2a0f6ddff3efae655922ded690190e7d172653608cbde016cb66
   languageName: node
   linkType: hard
 
@@ -4252,10 +4259,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^2.23.0":
-  version: 2.23.0
-  resolution: "date-fns@npm:2.23.0"
-  checksum: 485216d550255a548552db16379e7a5cd440e262b90fbdc0362f63ee71d0e74bd00ce29ca8d76b343f6df36c1ecb6f22edba0b72848a4c32674e755619695c1f
+"date-fns@npm:^2.24.0":
+  version: 2.24.0
+  resolution: "date-fns@npm:2.24.0"
+  checksum: f930419e356cf6a6a02c7ed6c6e438df61b4011861002a3dc94a4efc83bc96a7f30ea3cc2e7231c421604c3d5131f9ffb097bf8e7f81a59d68f556864490664f
   languageName: node
   linkType: hard
 
@@ -7299,9 +7306,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mailgun.js@npm:^3.5.8":
-  version: 3.5.8
-  resolution: "mailgun.js@npm:3.5.8"
+"mailgun.js@npm:^3.5.9":
+  version: 3.5.9
+  resolution: "mailgun.js@npm:3.5.9"
   dependencies:
     base-64: ^1.0.0
     bluebird: ^3.7.2
@@ -7311,7 +7318,7 @@ __metadata:
     url-join: 0.0.1
     web-streams-polyfill: ^3.0.1
     webpack-merge: ^5.4.0
-  checksum: 6f08fe8d8e91e2123374f91352b2c7970559b9ca715faaf97798fc2a223bad74e75453a87db8bdf54609086230137706c20f3252b53186129c1106cfc727ecb6
+  checksum: fbf12ba2ab5a641b70c69529d11f20050d99312c3c3ce37e199e8cefd5f9040b847b2a15606e6caaf4fa6109b12cae3429281a5bee6db52301493451878b2698
   languageName: node
   linkType: hard
 
@@ -7815,14 +7822,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-seo@npm:^4.26.0":
-  version: 4.26.0
-  resolution: "next-seo@npm:4.26.0"
+"next-seo@npm:^4.28.1":
+  version: 4.28.1
+  resolution: "next-seo@npm:4.28.1"
   peerDependencies:
     next: ^8.1.1-canary.54 || >=9.0.0
     react: ">=16.0.0"
     react-dom: ">=16.0.0"
-  checksum: 7232685267ab3bd554821b2d200c3a12084148753cc32748d9cf9c25bc596be8408b20e927a095425c724979afc01f7abfd0ea363f4b1de87ddfd903f9dc460a
+  checksum: 4f845275b8dbe1023b983e3c243634a6d13a9f3f4fc0f0b800d4163db5d0933e473d0deca65779bcc95c249317a8e6a8c9df1fedeb531dd83ae66b9827cfa920
   languageName: node
   linkType: hard
 
@@ -8345,15 +8352,15 @@ __metadata:
     "@tailwindcss/typography": ^0.4.1
     "@types/cache-manager": ^3.4.2
     "@types/cache-manager-fs-hash": ^0.0.1
-    "@types/fs-extra": ^9.0.12
-    "@types/node": ^16.9.1
-    "@types/react": ^17.0.20
+    "@types/fs-extra": ^9.0.13
+    "@types/node": ^16.9.6
+    "@types/react": ^17.0.24
     "@vercel/node": ^1.12.1
     babel-plugin-macros: ^3.1.0
     blurhash: ^1.1.4
     cache-manager: ^3.4.4
     cache-manager-fs-hash: ^1.0.0
-    date-fns: ^2.23.0
+    date-fns: ^2.24.0
     eslint: ^7.32.0
     eslint-config-next: ^11.1.2
     eslint-config-prettier: ^8.3.0
@@ -8369,22 +8376,23 @@ __metadata:
     husky: ^7.0.2
     ky: ^0.28.5
     lint-staged: ">=11"
-    mailgun.js: ^3.5.8
+    mailgun.js: ^3.5.9
     next: 11.1.2
     next-compose-plugins: ^2.2.1
     next-mdx-remote: ^3.0.4
     next-optimized-images: ^3.0.0-canary.10
     next-pwa: ^5.3.1
     next-remote-watch: ^1.0.0
-    next-seo: ^4.26.0
+    next-seo: ^4.28.1
     next-sitemap: ^1.6.168
     next-themes: ^0.0.15
     node-abort-controller: ^3.0.0
-    prettier: 2.4.0
+    prettier: 2.4.1
     react: 17.0.2
     react-blurhash: ^0.1.3
     react-dom: 17.0.2
     react-hint: ^3.2.1
+    react-optimized-image: ^0.4.1
     reading-time: ^1.5.0
     rehype-accessible-emojis: ^0.3.2
     rehype-autolink-headings: ^6.1.0
@@ -8885,12 +8893,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.4.0":
-  version: 2.4.0
-  resolution: "prettier@npm:2.4.0"
+"prettier@npm:2.4.1":
+  version: 2.4.1
+  resolution: "prettier@npm:2.4.1"
   bin:
     prettier: bin-prettier.js
-  checksum: ac1bf07566dad5f58469e6d8a954bd5c0f833935597deb00330e9f673e14e4cf81e07dee7eff5776c0edebe11358d199f332d9940be40c8b455516034e553ce0
+  checksum: cc6830588b401b0d742862fe9c46bc9118204fb307c3abe0e49e95b35ed23629573807ffdf9cdd65289c252a0bb51fc0171437f6626ee36378dea80f0ee80b91
   languageName: node
   linkType: hard
 

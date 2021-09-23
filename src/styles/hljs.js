@@ -20,28 +20,28 @@ const hljs = css`
 	}
 
 	pre {
-		${tw`bg-transparent! m-0! p-0!`}
+		${tw`whitespace-pre-wrap break-words transition-colors duration-300 (m-0 p-0 backgroundColor[#fafafa] dark:backgroundColor[#282c34])!`}
 	}
 
 	pre code {
-		${tw`p-5!`}
+		${tw`p-0!`}
 	}
 
 	.hljs {
-		color: #383a42 !important;
-		background: #fafafa !important;
+		color: #383a42;
+		background: #fafafa;
 	}
 
 	.hljs-comment,
 	.hljs-quote {
-		color: #a0a1a7 !important;
+		color: #a0a1a7;
 		font-style: italic;
 	}
 
 	.hljs-doctag,
 	.hljs-keyword,
 	.hljs-formula {
-		color: #a626a4 !important;
+		color: #a626a4;
 	}
 
 	.hljs-section,
@@ -49,11 +49,11 @@ const hljs = css`
 	.hljs-selector-tag,
 	.hljs-deletion,
 	.hljs-subst {
-		color: #e45649 !important;
+		color: #e45649;
 	}
 
 	.hljs-literal {
-		color: #0184bb !important;
+		color: #0184bb;
 	}
 
 	.hljs-string,
@@ -61,7 +61,7 @@ const hljs = css`
 	.hljs-addition,
 	.hljs-attribute,
 	.hljs-meta .hljs-string {
-		color: #50a14f !important;
+		color: #50a14f;
 	}
 
 	.hljs-attr,
@@ -72,7 +72,7 @@ const hljs = css`
 	.hljs-selector-attr,
 	.hljs-selector-pseudo,
 	.hljs-number {
-		color: #986801 !important;
+		color: #986801;
 	}
 
 	.hljs-symbol,
@@ -81,13 +81,13 @@ const hljs = css`
 	.hljs-meta,
 	.hljs-selector-id,
 	.hljs-title {
-		color: #4078f2 !important;
+		color: #4078f2;
 	}
 
 	.hljs-built_in,
 	.hljs-title.class_,
 	.hljs-class .hljs-title {
-		color: #c18401 !important;
+		color: #c18401;
 	}
 
 	.hljs-emphasis {
@@ -104,20 +104,20 @@ const hljs = css`
 
 	.dark {
 		.hljs {
-			color: #abb2bf !important;
-			background: #282c34 !important;
+			color: #abb2bf;
+			background: #282c34;
 		}
 
 		.hljs-comment,
 		.hljs-quote {
-			color: #5c6370 !important;
+			color: #5c6370;
 			font-style: italic;
 		}
 
 		.hljs-doctag,
 		.hljs-keyword,
 		.hljs-formula {
-			color: #c678dd !important;
+			color: #c678dd;
 		}
 
 		.hljs-section,
@@ -125,11 +125,11 @@ const hljs = css`
 		.hljs-selector-tag,
 		.hljs-deletion,
 		.hljs-subst {
-			color: #e06c75 !important;
+			color: #e06c75;
 		}
 
 		.hljs-literal {
-			color: #56b6c2 !important;
+			color: #56b6c2;
 		}
 
 		.hljs-string,
@@ -137,7 +137,7 @@ const hljs = css`
 		.hljs-addition,
 		.hljs-attribute,
 		.hljs-meta .hljs-string {
-			color: #98c379 !important;
+			color: #98c379;
 		}
 
 		.hljs-attr,
@@ -148,7 +148,7 @@ const hljs = css`
 		.hljs-selector-attr,
 		.hljs-selector-pseudo,
 		.hljs-number {
-			color: #d19a66 !important;
+			color: #d19a66;
 		}
 
 		.hljs-symbol,
@@ -157,13 +157,13 @@ const hljs = css`
 		.hljs-meta,
 		.hljs-selector-id,
 		.hljs-title {
-			color: #61aeee !important;
+			color: #61aeee;
 		}
 
 		.hljs-built_in,
 		.hljs-title.class_,
 		.hljs-class .hljs-title {
-			color: #e6c07b !important;
+			color: #e6c07b;
 		}
 	}
 `;

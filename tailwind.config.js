@@ -1,10 +1,17 @@
-module.exports = {
+		module.exports = {
 	purge: [],
 	theme: {
 		extend: {
 			gridTemplateRows: {
 				layout: 'auto 1fr',
 			},
+			typography: {
+				DEFAULT: {
+					css: {
+						pre: null,
+					}
+				}
+			}
 		},
 		fontFamily: {
 			heading: ['Open\\ Sans', 'sans-serif'],
