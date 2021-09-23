@@ -24,8 +24,8 @@ const Section = styled.section`
 	}
 `;
 const PhotoCredit = tw.p`text-center text-sm mb-3`;
-const HintContainer = tw.div`bg-gray-700 text-gray-100 rounded-3xl`;
-const ImageCaption = tw.p`text-center pb-3`;
+const HintContainer = tw.div`bg-gray-300 rounded-3xl dark:(bg-gray-600 text-gray-100)`;
+const ImageCaption = tw.p`text-center py-1`;
 
 const ReactHint = ReactHintFactory(React);
 
