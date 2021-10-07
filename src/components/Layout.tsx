@@ -5,7 +5,6 @@ import { Global } from '@emotion/react';
 import { motion } from 'framer-motion';
 
 import global from '@app/styles/global';
-import tags from '@app/styles/tags';
 import hljs from '@app/styles/hljs';
 
 const Main = styled(motion.main)`
@@ -64,7 +63,6 @@ const Layout = ({ children }: LayoutProps) => {
 	return (
 		<Fragment>
 			<Global styles={global} />
-			<Global styles={tags} />
 			<Global styles={hljs} />
 			<Head>
 				<meta charSet="utf-8" />
