@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ky from 'ky';
 import tw, { styled, css } from 'twin.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -88,13 +87,13 @@ const Contact = () => {
 		setIsSubmitting(true);
 
 		try {
-			const formData = new URLSearchParams();
-			formData.set('name', name);
-			formData.set('email', email);
-			formData.set('url', url);
-			formData.set('message', message);
-
-			const response = await ky.post('/api/contact', { body: formData });
+			const response = await fetch('/api/contact', {
+				method: 'post',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ name, email, url, message }),
+			});
 
 			if (!response.ok) {
 				setError(

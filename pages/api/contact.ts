@@ -12,6 +12,11 @@ type MessageBody = {
 	message: string;
 };
 
+type ApiResponse = {
+	message: string;
+	response?: {};
+};
+
 const contact = async (request: VercelRequest, response: VercelResponse) => {
 	if (request.method === 'POST') {
 		const { name, email, url, message }: MessageBody = request.body;
@@ -28,7 +33,7 @@ const contact = async (request: VercelRequest, response: VercelResponse) => {
 			});
 
 			try {
-				await mg.messages.create('mg.osiux.ws', {
+				const res = await mg.messages.create('mg.osiux.ws', {
 					from: 'Osiux.ws Contact Form <no-reply@mg.osiux.ws>',
 					to: ['me@osiux.ws'],
 					subject: 'Osiux.ws Contact Form',
@@ -36,7 +41,13 @@ const contact = async (request: VercelRequest, response: VercelResponse) => {
 					text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
 				});
 
-				response.status(200).json({ message: 'ok' });
+				let toReturn: ApiResponse = { message: 'ok' };
+
+				if (process.env.NODE_ENV === 'development') {
+					toReturn.response = res;
+				}
+
+				response.status(200).json(toReturn);
 				// @ts-ignore
 			} catch (e) {
 				response.status(400).json({

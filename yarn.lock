@@ -1581,17 +1581,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/open-sans@npm:^4.5.0":
-  version: 4.5.0
-  resolution: "@fontsource/open-sans@npm:4.5.0"
-  checksum: c0da0a2dd3fa27adecd1ab326ab2824eef7124f73a7387f7a2c2153eb46ed1b74f3143eca4fe325278eb16ccb41aef6320e3723add398905991be95d416d5065
+"@fontsource/open-sans@npm:^4.5.1":
+  version: 4.5.1
+  resolution: "@fontsource/open-sans@npm:4.5.1"
+  checksum: 9ef47cd26535ccbda954010eb1072726f5185f23ae1e29f8fb2695cb7f57a68d2af48f542353b3792b004cf662d902c48fd26a6b73e8bad149076e67890994a3
   languageName: node
   linkType: hard
 
-"@fontsource/roboto@npm:^4.5.0":
-  version: 4.5.0
-  resolution: "@fontsource/roboto@npm:4.5.0"
-  checksum: c045f5aaad68e4dcf4a293b764fefbf023298544ec453d72373104cf8d933f0e59e574d67fcf772b13ed511adfff2734d111c411e6fa6926e8379227d8460d8c
+"@fontsource/roboto@npm:^4.5.1":
+  version: 4.5.1
+  resolution: "@fontsource/roboto@npm:4.5.1"
+  checksum: dddc5b883e0355096ebb8944a6ad8ec5fec583482e96b22c2b2b7e83d3a538a85586c379b9471db117f934bfcea981c273c153bdf55a33f5c44a39837dc6fa97
   languageName: node
   linkType: hard
 
@@ -2179,10 +2179,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^16.9.6":
-  version: 16.9.6
-  resolution: "@types/node@npm:16.9.6"
-  checksum: 1c11ff4b58af87ddade05784e90bb5a2fe01f461ce489fdb1428d89e709695a26b0dcbac0520305911f5e4017561416747e544f1b9ec36649ccbfad6ffff4a0a
+"@types/node@npm:^16.10.3":
+  version: 16.10.3
+  resolution: "@types/node@npm:16.10.3"
+  checksum: 3fd429bce8a4acb497dcc62b536782a5e87ccf7cd91d64a78b263ae5d66cb72bf84be9eeeff6f84ae0567b065a40b267caa66d311f9e094990a5847bbd168a29
   languageName: node
   linkType: hard
 
@@ -2214,14 +2214,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17.0.24":
-  version: 17.0.24
-  resolution: "@types/react@npm:17.0.24"
+"@types/react@npm:^17.0.27":
+  version: 17.0.27
+  resolution: "@types/react@npm:17.0.27"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 99383e2cbaa85831984cc17ec4a5fe7fd091aa21ef023855570440d8d0b5038efb8159701e8e2a0f6ddff3efae655922ded690190e7d172653608cbde016cb66
+  checksum: 3a1147d963c16dc9bbea5afb20c4be94f2389cf4eca4c5fbe9b02f3406bd9957602c0459ea017c95f8c3d523221f572e8bd842f94654835776d4c2923357f9dc
   languageName: node
   linkType: hard
 
@@ -4259,10 +4259,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^2.24.0":
-  version: 2.24.0
-  resolution: "date-fns@npm:2.24.0"
-  checksum: f930419e356cf6a6a02c7ed6c6e438df61b4011861002a3dc94a4efc83bc96a7f30ea3cc2e7231c421604c3d5131f9ffb097bf8e7f81a59d68f556864490664f
+"date-fns@npm:^2.25.0":
+  version: 2.25.0
+  resolution: "date-fns@npm:2.25.0"
+  checksum: 8896dc1dde0ee5ef77616942423bfa11fa2017a5ac19457293b7aaedc8822ff94f0a14eaf93da573b09b601dc0149eb430988a046cc9f79a2eb15f8c66c9c50c
   languageName: node
   linkType: hard
 
@@ -6983,13 +6983,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ky@npm:^0.28.5":
-  version: 0.28.5
-  resolution: "ky@npm:0.28.5"
-  checksum: 0ae9050941191ee58e3858696e77cdae7272ac32152c0124894aed83c8e5676b3e6ee61e05f00ee396bcfd08c7ff6567b83adcab0f2367a6b7ea517fcec9ca2b
-  languageName: node
-  linkType: hard
-
 "language-subtag-registry@npm:~0.3.2":
   version: 0.3.21
   resolution: "language-subtag-registry@npm:0.3.21"
@@ -7764,9 +7757,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-mdx-remote@npm:^3.0.4":
-  version: 3.0.4
-  resolution: "next-mdx-remote@npm:3.0.4"
+"next-mdx-remote@npm:^3.0.5":
+  version: 3.0.5
+  resolution: "next-mdx-remote@npm:3.0.5"
   dependencies:
     "@mdx-js/mdx": ^1.6.22
     "@mdx-js/react": ^1.6.22
@@ -7775,7 +7768,7 @@ __metadata:
   peerDependencies:
     react: ">=16.x <=17.x"
     react-dom: ">=16.x <=17.x"
-  checksum: d62be3ff915caabd09e911a0d686317b810c077f6508afe939ce2e976a49281911d7775274d4f216dcb176e949b955790e48a9387d4aaebc9a50d6d0c26a780d
+  checksum: cae2c4c9aad52f9b3dfebfefc0e09951ac8c156781ac8a26a160de228109104fd14645b70e67071a54051e3ef8dca403bf5bbfebc1b2d1a844301edcf85f03a0
   languageName: node
   linkType: hard
 
@@ -7833,9 +7826,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:^1.6.168":
-  version: 1.6.168
-  resolution: "next-sitemap@npm:1.6.168"
+"next-sitemap@npm:^1.6.179":
+  version: 1.6.179
+  resolution: "next-sitemap@npm:1.6.179"
   dependencies:
     "@corex/deepmerge": ^2.6.34
     matcher: ^4.0.0
@@ -7844,7 +7837,7 @@ __metadata:
     next: "*"
   bin:
     next-sitemap: bin/next-sitemap
-  checksum: 2bdccf69a355915ed990c9235094cd395d90d1c80052ead8e3b0a16d0d6c4b7f10b7fa66efb3e82139de4bfefcf4b9d5388fa9e56a5db66bd8903accb4e67963
+  checksum: b9287548f13ddac4914c1f612e1cfe2b70f57c6ee376dffc952ff3a06ba6c53aa0790c9f6578cca6454a07f050c9f65ad80c91bdc4ccdf603e1e5cbdf120f350
   languageName: node
   linkType: hard
 
@@ -7954,10 +7947,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-abort-controller@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "node-abort-controller@npm:3.0.0"
-  checksum: a644c737f237e93fd826d534a9a345068debc1f4239d71c8d91c7e6c008e3eb921b2173ff417904787cae3c6e1aed7f6d784e4f0a2359d353f66cf1b4c84c618
+"node-abort-controller@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "node-abort-controller@npm:3.0.1"
+  checksum: 2b3d75c65249fea99e8ba22da3a8bc553f034f44dd12f5f4b38b520f718b01c88718c978f0c24c2a460fc01de9a80b567028f547b94440cb47adeacfeb82c2ee
   languageName: node
   linkType: hard
 
@@ -8343,8 +8336,8 @@ __metadata:
     "@emotion/react": ^11.4.1
     "@emotion/server": ^11.4.0
     "@emotion/styled": ^11.3.0
-    "@fontsource/open-sans": ^4.5.0
-    "@fontsource/roboto": ^4.5.0
+    "@fontsource/open-sans": ^4.5.1
+    "@fontsource/roboto": ^4.5.1
     "@fortawesome/fontawesome-svg-core": ^1.2.36
     "@fortawesome/free-brands-svg-icons": ^5.15.4
     "@fortawesome/free-solid-svg-icons": ^5.15.4
@@ -8353,14 +8346,14 @@ __metadata:
     "@types/cache-manager": ^3.4.2
     "@types/cache-manager-fs-hash": ^0.0.1
     "@types/fs-extra": ^9.0.13
-    "@types/node": ^16.9.6
-    "@types/react": ^17.0.24
+    "@types/node": ^16.10.3
+    "@types/react": ^17.0.27
     "@vercel/node": ^1.12.1
     babel-plugin-macros: ^3.1.0
     blurhash: ^1.1.4
     cache-manager: ^3.4.4
     cache-manager-fs-hash: ^1.0.0
-    date-fns: ^2.24.0
+    date-fns: ^2.25.0
     eslint: ^7.32.0
     eslint-config-next: ^11.1.2
     eslint-config-prettier: ^8.3.0
@@ -8374,19 +8367,18 @@ __metadata:
     hastscript: ^7.0.2
     highlight.js: ^11.2.0
     husky: ^7.0.2
-    ky: ^0.28.5
     lint-staged: ">=11"
     mailgun.js: ^3.5.9
     next: 11.1.2
     next-compose-plugins: ^2.2.1
-    next-mdx-remote: ^3.0.4
+    next-mdx-remote: ^3.0.5
     next-optimized-images: ^3.0.0-canary.10
     next-pwa: ^5.3.1
     next-remote-watch: ^1.0.0
     next-seo: ^4.28.1
-    next-sitemap: ^1.6.168
+    next-sitemap: ^1.6.179
     next-themes: ^0.0.15
-    node-abort-controller: ^3.0.0
+    node-abort-controller: ^3.0.1
     prettier: 2.4.1
     react: 17.0.2
     react-blurhash: ^0.1.3
@@ -8398,8 +8390,8 @@ __metadata:
     rehype-autolink-headings: ^6.1.0
     rehype-highlight: ^5.0.0
     rehype-slug: ^5.0.0
-    slugify: ^1.6.0
-    tailwindcss: ^2.2.15
+    slugify: ^1.6.1
+    tailwindcss: ^2.2.16
     twin.macro: ^2.7.0
     typescript: ^4.4.3
     unsplash-js: ^7.0.15
@@ -10107,10 +10099,10 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"slugify@npm:^1.6.0":
-  version: 1.6.0
-  resolution: "slugify@npm:1.6.0"
-  checksum: 87035aa1a4559d2c861e5807e030e0a5d933d0a77563511eb91a2502f87c395690da14b8b3757513d1d77a4a7eb74c86abb95c51b8deaf328394bccdf19debb8
+"slugify@npm:^1.6.1":
+  version: 1.6.1
+  resolution: "slugify@npm:1.6.1"
+  checksum: 224ead8e5dc346d9a657e1dac741a89ad83b5f707f3cb71484407b004d68e167b605a679d3e4066ee130677109f21027fed0673602cce663562aedca54d6deca
   languageName: node
   linkType: hard
 
@@ -10709,7 +10701,53 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^2.2.15, tailwindcss@npm:^2.2.7":
+"tailwindcss@npm:^2.2.16":
+  version: 2.2.16
+  resolution: "tailwindcss@npm:2.2.16"
+  dependencies:
+    arg: ^5.0.1
+    bytes: ^3.0.0
+    chalk: ^4.1.2
+    chokidar: ^3.5.2
+    color: ^4.0.1
+    cosmiconfig: ^7.0.1
+    detective: ^5.2.0
+    didyoumean: ^1.2.2
+    dlv: ^1.1.3
+    fast-glob: ^3.2.7
+    fs-extra: ^10.0.0
+    glob-parent: ^6.0.1
+    html-tags: ^3.1.0
+    is-color-stop: ^1.1.0
+    is-glob: ^4.0.1
+    lodash: ^4.17.21
+    lodash.topath: ^4.5.2
+    modern-normalize: ^1.1.0
+    node-emoji: ^1.11.0
+    normalize-path: ^3.0.0
+    object-hash: ^2.2.0
+    postcss-js: ^3.0.3
+    postcss-load-config: ^3.1.0
+    postcss-nested: 5.0.6
+    postcss-selector-parser: ^6.0.6
+    postcss-value-parser: ^4.1.0
+    pretty-hrtime: ^1.0.3
+    purgecss: ^4.0.3
+    quick-lru: ^5.1.1
+    reduce-css-calc: ^2.1.8
+    resolve: ^1.20.0
+    tmp: ^0.2.1
+  peerDependencies:
+    autoprefixer: ^10.0.2
+    postcss: ^8.0.9
+  bin:
+    tailwind: lib/cli.js
+    tailwindcss: lib/cli.js
+  checksum: 4c8ac0503ab5f3e868779a651cc0d605a435e8dd072f21fb1ed31cadc7d253b6b27109b8224e10aa4d846fee019ac839289b1f4740bc25df3c62170732650cc8
+  languageName: node
+  linkType: hard
+
+"tailwindcss@npm:^2.2.7":
   version: 2.2.15
   resolution: "tailwindcss@npm:2.2.15"
   dependencies:
