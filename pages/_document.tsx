@@ -10,22 +10,24 @@ import { extractCritical } from '@emotion/server';
 class MyDocument extends Document {
 	static async getInitialProps(ctx: DocumentContext) {
 		const initialProps = await Document.getInitialProps(ctx);
-		const page = await ctx.renderPage();
-		const styles = extractCritical(page.html);
-		return { ...initialProps, ...page, ...styles };
+		const critical = extractCritical(initialProps.html);
+		const html = critical.html;
+		const styles = (
+			<>
+				{initialProps.styles}
+				<style
+					data-emotion-css={critical.ids.join(' ')}
+					dangerouslySetInnerHTML={{ __html: critical.css }}
+				/>
+			</>
+		);
+		return { ...initialProps, html, styles };
 	}
 
 	render() {
 		return (
 			<Html lang="en">
-				<Head>
-					<style
-						// @ts-ignore
-						data-emotion-css={this.props.ids.join(' ')}
-						// @ts-ignore
-						dangerouslySetInnerHTML={{ __html: this.props.css }}
-					/>
-				</Head>
+				<Head />
 				<body>
 					<Main />
 					<NextScript />
