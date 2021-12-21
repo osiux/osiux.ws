@@ -37,6 +37,7 @@ module.exports = withPlugins(
 				},
 			},
 		],
+		withContentlayer(),
 	],
-	withContentlayer()(nextConfig),
+	nextConfig,
 );
