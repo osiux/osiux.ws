@@ -34,13 +34,13 @@ class Cache {
 		fs.ensureDirSync(this.directory);
 	}
 
-	get(key: string): Promise<string | undefined> {
+	get<T = string>(key: string): Promise<T | undefined> {
 		return new Promise((resolve) => {
 			this.cache.get(
 				key,
 				(
 					error: NodeJS.ErrnoException | undefined,
-					result: string | undefined,
+					result: T | undefined,
 				) => {
 					if (error?.code === 'ENOENT') {
 						this.ensureCacheDirExists();

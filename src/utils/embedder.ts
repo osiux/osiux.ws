@@ -14,14 +14,15 @@ const cache = {
 };
 
 const embedder = (options = {}) => {
-	return async (tree: any) =>
-		await GatsbyRemarkEmbedder(
+	return async (tree: any) => {
+		return await GatsbyRemarkEmbedder(
 			{
 				cache,
 				markdownAST: tree,
 			},
 			options,
 		);
+	};
 };
 
 export default embedder;
