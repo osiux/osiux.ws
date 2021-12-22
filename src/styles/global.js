@@ -18,7 +18,7 @@ const global = css`
 		${tw`relative`}
 
 		a {
-			${tw`absolute mt-0 border-none leading-none -left-10 -top-2`}
+			${tw`absolute mt-0 border-none leading-none -left-10 top-2`}
 		}
 	}
 
