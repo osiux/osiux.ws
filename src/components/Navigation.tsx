@@ -13,7 +13,7 @@ import {
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
 
-const Header = tw.header`w-full mb-3 font-heading bg-gray-50 fixed z-50 top-0 transition-colors duration-300 dark:bg-gray-800`;
+const Header = tw.header`w-full font-heading bg-gray-50 transition-colors duration-300 dark:bg-gray-800`;
 const Nav = tw.nav`max-w-3xl mx-auto w-full  flex items-center flex-wrap md:(max-w-4xl flex-nowrap) mt-8 mb-8 md:mt-8`;
 const BrandLink = tw.a`font-bold text-gray-800 text-3xl flex-1 transition-colors duration-300 dark:text-gray-100 ml-2 md:ml-0`;
 

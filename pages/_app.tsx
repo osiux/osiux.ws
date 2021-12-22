@@ -18,7 +18,7 @@ config.autoAddCss = false;
 import Navigation from '@app/components/Navigation';
 import Footer from '@app/components/Footer';
 
-const Container = tw.div`h-screen antialiased grid grid-rows-layout max-w-3xl mx-auto w-full py-6 px-3 mt-28 md:(max-w-4xl px-0 pt-0 pb-16)`;
+const Container = tw.div`h-screen antialiased grid grid-rows-layout max-w-3xl mx-auto w-full py-6 px-3 md:(max-w-4xl px-0 pt-0 pb-16)`;
 
 const App = ({ Component, pageProps }: AppProps) => (
 	<CacheProvider value={cache}>
