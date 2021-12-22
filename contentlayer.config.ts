@@ -8,6 +8,8 @@ import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 import { h, s } from 'hastscript';
 import highlight from 'rehype-highlight';
 import { toString } from 'mdast-util-to-string';
+import codeTitles from 'rehype-code-titles';
+import remarkGfm from 'remark-gfm';
 
 import embedder from './src/utils/embedder';
 import Cache from './src/utils/cache';
@@ -79,7 +81,7 @@ const contentLayerConfig = makeSource({
 	contentDirPath: 'content',
 	documentTypes: [Post],
 	mdx: {
-		// remarkPlugins: [embedder],
+		remarkPlugins: [remarkGfm],
 		rehypePlugins: [
 			slug,
 			[
@@ -123,6 +125,7 @@ const contentLayerConfig = makeSource({
 				},
 			],
 			rehypeAccessibleEmojis,
+			codeTitles,
 			highlight,
 		],
 	},

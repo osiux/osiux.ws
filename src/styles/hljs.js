@@ -20,7 +20,7 @@ const hljs = css`
 	}
 
 	pre {
-		${tw`whitespace-pre-wrap break-words transition-colors duration-300 (m-0 p-0 backgroundColor[#fafafa] dark:backgroundColor[#282c34])!`}
+		${tw`whitespace-pre-wrap break-words transition-colors duration-300 (m-0 p-0 backgroundColor[#f2f2f2] dark:backgroundColor[#282c34])!`}
 	}
 
 	pre code {
@@ -29,7 +29,7 @@ const hljs = css`
 
 	.hljs {
 		color: #383a42;
-		background: #fafafa;
+		background: #f2f2f2;
 	}
 
 	.hljs-comment,
@@ -100,6 +100,14 @@ const hljs = css`
 
 	.hljs-link {
 		text-decoration: underline;
+	}
+
+	.rehype-code-title {
+		${tw`px-2 py-2 text-sm font-bold text-gray-800 bg-gray-200 border border-b-0 border-gray-200 dark:(text-gray-200 border-gray-700 bg-gray-700)`}
+	}
+
+	.rehype-code-title + pre {
+		${tw`mt-0 rounded-t-none`};
 	}
 
 	.dark {
