@@ -2,12 +2,12 @@ import tw from 'twin.macro';
 import type { GetStaticProps, GetStaticPaths } from 'next';
 import { NextSeo } from 'next-seo';
 import slugify from 'slugify';
+import { allPosts } from '.contentlayer/data';
 
 import SimplePost from '@app/components/posts/SimplePost';
 import Pagination from '@app/components/Pagination';
 import Layout from '@app/components/Layout';
 
-import { getPosts } from '@app/utils/posts';
 import { comparePostDates } from '@app/utils/dates';
 
 import { POSTS_PER_PAGE, ArchivePageProps } from '../[[...page]]';
@@ -30,7 +30,7 @@ const TagPage = ({ posts, tag, totalPages, currentPage }: TagPageProps) => {
 				Archive - Tag: <Tag className={`tag tag-${tagSlug}`}>{tag}</Tag>
 			</h1>
 			{posts.map((post) => {
-				return <SimplePost key={post.meta.slug} {...post.meta} />;
+				return <SimplePost key={post.slug} {...post} />;
 			})}
 			<Pagination
 				totalPages={totalPages}
@@ -46,12 +46,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const [, page] = params?.tag?.[1]?.split('-') ?? [, 1];
 	const tag = params?.tag?.[0];
 
-	const allPosts = await getPosts();
-
 	const filteredPosts = allPosts.filter((post) => {
-		const tags = post.meta.tags;
+		const tags = post.tags;
 
-		return tags.includes(tag as string);
+		return tags?.includes(tag as string);
 	});
 
 	const sortedPosts = filteredPosts.sort(comparePostDates);
@@ -70,10 +68,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const posts = await getPosts();
-
-	const tags = posts.reduce<{ [key: string]: number }>((acc, item) => {
-		item.meta.tags.forEach((tag) => {
+	const tags = allPosts.reduce<{ [key: string]: number }>((acc, item) => {
+		item.tags?.forEach((tag) => {
 			if (acc[tag]) {
 				acc[tag]++;
 			} else {

@@ -1,7 +1,11 @@
 const withPlugins = require('next-compose-plugins');
 const optimizedImages = require('next-optimized-images');
 const pwa = require('next-pwa');
+const { withContentlayer } = require('next-contentlayer');
 
+/**
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = {
 	images: {
 		domains: ['osiux.ws', 'www.osiux.ws', 'images.unsplash.com'],
@@ -33,6 +37,7 @@ module.exports = withPlugins(
 				},
 			},
 		],
+		withContentlayer(),
 	],
 	nextConfig,
 );

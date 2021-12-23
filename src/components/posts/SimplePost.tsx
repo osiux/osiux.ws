@@ -2,9 +2,9 @@ import tw, { styled } from 'twin.macro';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BlurhashCanvas } from 'react-blurhash';
+import type { Post } from '.contentlayer/types'
 
 import { formatDate } from '@app/utils/dates';
-import type { PostMeta } from '@app/utils/posts';
 import TagList from '@app/components/TagList';
 
 const Article = tw.article`mb-16 flex flex-wrap w-full md:flex-nowrap`;
@@ -20,12 +20,14 @@ const Title = tw.h2`text-2xl font-bold mb-2 font-heading`;
 const ArticleLink = tw.a`transition-colors duration-300 text-gray-900 dark:text-gray-100 hover:underline`;
 const Excerpt = tw.p`leading-relaxed mt-2 prose max-w-full!`;
 
+type PostMeta = Pick<Post, 'title' | 'slug' | 'date' | 'tags' | 'unsplash' | 'excerpt' | 'readingTime'>;
+
 const SimplePost = ({
 	title,
 	slug,
 	date,
 	tags = [],
-	image,
+	unsplash,
 	excerpt,
 	readingTime,
 }: PostMeta) => {
@@ -33,12 +35,12 @@ const SimplePost = ({
 
 	return (
 		<Article>
-			{image && (
+			{unsplash && (
 				<div tw="mr-3">
 					<Link href={`/blog/${slug}`} passHref>
 						<a tw="relative block overflow-hidden">
 							<BlurhashCanvas
-								hash={image.blur_hash}
+								hash={unsplash.blur_hash}
 								width={500}
 								height={350}
 								punch={1}
@@ -48,17 +50,17 @@ const SimplePost = ({
 								tw="w-full md:max-w-full rounded-md"
 								width={500}
 								height={350}
-								src={`${image.url}&w=500&h=350&fit=clamp`}
-								alt={`${image.description} by ${image.user.name} @ unsplash`}
+								src={`${unsplash.url}&w=500&h=350&fit=clamp`}
+								alt={`${unsplash.description} by ${unsplash.user.name} @ unsplash`}
 							/>
 						</a>
 					</Link>
 					<ImageCaption>
 						Photo by{' '}
 						<a
-							href={`${image.user.link}?utm_source=osiux.ws&utm_medium=referral`}
+							href={`${unsplash.user.link}?utm_source=osiux.ws&utm_medium=referral`}
 						>
-							{image.user.name}
+							{unsplash.user.name}
 						</a>{' '}
 						on{' '}
 						<a href="https://unsplash.com/?utm_source=osiux.ws&utm_medium=referral">

@@ -14,35 +14,24 @@ const global = css`
 		${tw`font-heading font-bold transition-colors duration-300 text-gray-700 dark:text-gray-100`}
 	}
 
-	.anchor.before {
-		position: absolute;
-		top: 9px;
-		left: 0;
-		transform: translateX(-100%);
-		padding-right: 4px;
+	.heading-container {
+		${tw`relative`}
+
+		a {
+			${tw`absolute mt-0 border-none leading-none -left-10 top-2`}
+		}
 	}
 
-	h1 .anchor svg,
-	h2 .anchor svg,
-	h3 .anchor svg,
-	h4 .anchor svg,
-	h5 .anchor svg,
-	h6 .anchor svg {
-		${tw`hidden`}
-	}
-	h1:hover .anchor svg,
-	h2:hover .anchor svg,
-	h3:hover .anchor svg,
-	h4:hover .anchor svg,
-	h5:hover .anchor svg,
-	h6:hover .anchor svg,
-	h1 .anchor:focus svg,
-	h2 .anchor:focus svg,
-	h3 .anchor:focus svg,
-	h4 .anchor:focus svg,
-	h5 .anchor:focus svg,
-	h6 .anchor:focus svg {
-		visibility: visible;
+	.visually-hidden {
+		border: 0;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		white-space: nowrap;
+		width: 1px;
 	}
 
 	blockquote *:last-child,

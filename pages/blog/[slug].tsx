@@ -1,15 +1,15 @@
 import { Fragment } from 'react';
 import tw, { styled } from 'twin.macro';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
-
+import { useMDXComponent } from 'next-contentlayer/hooks';
 import { NextSeo } from 'next-seo';
 import type { GetStaticProps, GetStaticPaths } from 'next';
+import { allPosts } from '.contentlayer/data';
+import type { Post } from '.contentlayer/types';
 
-import { getPost, getPostsSlug } from '@app/utils/posts';
 import { formatDate } from '@app/utils/dates';
-import type { PostMeta } from '@app/utils/posts';
 import TagList from '@app/components/TagList';
 import Layout from '@app/components/Layout';
+import components from '@app/components/MDXComponents';
 
 const Title = tw.h1`break-words font-heading font-bold text-3xl mb-5 md:(text-5xl mb-10) text-gray-800`;
 const Meta = tw.p`mb-10 flex flex-col transition-colors duration-300 md:flex-row md:items-center`;
@@ -33,44 +33,44 @@ const Content = styled.div`
 const Article = tw.article`min-w-full mb-12`;
 
 type PostPage = {
-	source: MDXRemoteSerializeResult;
-	meta: PostMeta;
+	post: Post;
 };
 
-const Post = ({ source, meta }: PostPage) => {
-	const formattedDate = formatDate(meta.date);
+const PostPage = ({ post }: PostPage) => {
+	const formattedDate = formatDate(post.date);
+	const Component = useMDXComponent(post.body.code);
 
 	return (
 		<Layout>
 			<NextSeo
-				title={meta.title}
+				title={post.title}
 				openGraph={{
 					url: `${
 						process.env.NEXT_PUBLIC_VERCEL_URL ??
 						'http://localhost:4040'
-					}/blog/${meta.slug}`,
-					title: meta.title,
+					}/blog/${post.slug}`,
+					title: post.title,
 					type: 'article',
 					article: {
-						publishedTime: meta.date,
-						tags: meta.tags?.length > 0 ? meta.tags : [],
+						publishedTime: post.date,
+						tags: post.tags ?? [],
 					},
 				}}
 			/>
 			<Article>
-				<Title>{meta.title}</Title>
+				<Title>{post.title}</Title>
 				<Meta>
-					<Date title={meta.date}>{formattedDate}</Date>
-					{meta.tags?.length > 0 && (
+					<Date title={post.date}>{formattedDate}</Date>
+					{post.tags && (
 						<Fragment>
 							<Separator>&mdash;</Separator>
-							<TagList tags={meta.tags} />
+							<TagList tags={post.tags ?? []} />
 						</Fragment>
 					)}
 				</Meta>
 
 				<Content>
-					<MDXRemote {...source} />
+					<Component components={components} />
 				</Content>
 			</Article>
 		</Layout>
@@ -78,27 +78,22 @@ const Post = ({ source, meta }: PostPage) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	const { mdxSource, meta } = await getPost(params?.slug as string);
+	const post = allPosts.find(
+		(post) => post.slug === (params?.slug as string),
+	);
 
 	return {
 		props: {
-			source: mdxSource,
-			meta,
-		} as PostPage,
+			post,
+		},
 	};
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const paths = getPostsSlug().map((slug) => ({
-		params: {
-			slug: slug,
-		},
-	}));
-
 	return {
-		paths,
+		paths: allPosts.map((post) => ({ params: { slug: post.slug } })),
 		fallback: false,
 	};
 };
 
-export default Post;
+export default PostPage;

@@ -1,18 +1,18 @@
-import tw from 'twin.macro';
 import type { GetStaticProps, GetStaticPaths } from 'next';
 import { NextSeo } from 'next-seo';
+import { allPosts } from '.contentlayer/data';
+import type { Post } from '.contentlayer/types';
 
 import SimplePost from '@app/components/posts/SimplePost';
 import Pagination from '@app/components/Pagination';
 import Layout from '@app/components/Layout';
 
-import { getPostsSlug, getPosts, PostData } from '@app/utils/posts';
 import { comparePostDates } from '@app/utils/dates';
 
 export const POSTS_PER_PAGE = 10;
 
 export type ArchivePageProps = {
-	posts: PostData[];
+	posts: Post[];
 	totalPages: number;
 	currentPage: number;
 };
@@ -23,7 +23,7 @@ const ArchivePage = ({ posts, totalPages, currentPage }: ArchivePageProps) => {
 			<NextSeo title={`Archive - Page ${currentPage}`} />
 			<h1 tw="text-5xl mb-10">Archive</h1>
 			{posts.map((post) => (
-				<SimplePost key={post.meta.slug} {...post.meta} />
+				<SimplePost key={post.slug} {...post} />
 			))}
 			<Pagination totalPages={totalPages} currentPage={currentPage} />
 		</Layout>
@@ -32,8 +32,6 @@ const ArchivePage = ({ posts, totalPages, currentPage }: ArchivePageProps) => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const [, page] = params?.page?.[0]?.split('-') ?? [, 1];
-
-	const allPosts = await getPosts();
 
 	const sortedPosts = allPosts.sort(comparePostDates);
 
@@ -50,9 +48,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const posts = getPostsSlug();
 	const paths = Array.from(
-		{ length: Math.ceil(posts.length / POSTS_PER_PAGE) },
+		{ length: Math.ceil(allPosts.length / POSTS_PER_PAGE) },
 		(_, i) => ({
 			params: {
 				page: i === 0 ? undefined : [`page-${i + 1}`],

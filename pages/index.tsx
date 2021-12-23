@@ -1,30 +1,29 @@
 import type { GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
+import { allPosts } from '.contentlayer/data';
+import type { Post } from '.contentlayer/types'
 
 import SimplePost from '@app/components/posts/SimplePost';
 import Layout from '@app/components/Layout';
 
-import { getPosts, PostData } from '@app/utils/posts';
 import { comparePostDates } from '@app/utils/dates';
 
 const POSTS_ON_HOME = 6;
 
 type HomeProps = {
-	posts: PostData[];
+	posts: Post[];
 };
 
 const Home = ({ posts }: HomeProps) => (
 	<Layout>
 		<NextSeo title="Home" />
 		{posts.map((post) => (
-			<SimplePost key={post.meta.slug} {...post.meta} />
+			<SimplePost key={post.slug} {...post} />
 		))}
 	</Layout>
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-	const allPosts = await getPosts();
-
 	const sortedPosts = allPosts.sort(comparePostDates);
 
 	return {
