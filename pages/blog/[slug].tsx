@@ -25,10 +25,6 @@ const Content = styled.div`
 	a {
 		${tw`transition-colors duration-300 dark:text-gray-100`}
 	}
-
-	code {
-		${tw`transition-colors duration-300 dark:text-gray-100`}
-	}
 `;
 const Article = tw.article`min-w-full mb-12`;
 

@@ -9,7 +9,7 @@ tags:
 
 Me encanta programar, es algo que me divierte, pero ayer me di cuenta que me gusta mas cuando aprendo algo nuevo y cuando es una especie de reto lo que debo hacer. Ayer estaba como siempre en el mIRC, probando unas cosas en Scripting, tenia esto:
 
-```
+```js
 on 1:INPUT:#{
     if($1 == +a) { mode # +a $2 }
     if($1 == -a) { mode # -a $2 }
@@ -28,7 +28,7 @@ Después de un rato pensando e intentando cosas, deje mi función en aproximadam
 
 Al fin, me mostró como tenia su código, eran ya como 70-80 caracteres.. y de ahí, discutiendo sobre algunas cosas fuimos reduciendo el código hasta que quedo en esto:
 
-```
+```js
 on 1:INPUT:#:{if ($regex(,$1,^[-+][vhoa])){ mode # $1 $2- } }
 ```
 
@@ -38,6 +38,6 @@ En fin, solo quería escribir esto xD.. ya que fue algo que me pareció por dem�
 
 **Edito:** Mmh.. nueva linea.. 2 caracteres mas pero la expresión regular esta mejorada para corregir algunos problemas al escribir ciertas cosas =P
 
-```
+```js
 on 1:INPUT:#:{if ($regex(,$1,^([+-][aohv]+)+$)){ mode # $1- } }
 ```

@@ -6,11 +6,11 @@ import slug from 'rehype-slug';
 import headings from 'rehype-autolink-headings';
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 import { h, s } from 'hastscript';
-import highlight from 'rehype-highlight';
 import { toString } from 'mdast-util-to-string';
-import codeTitles from 'rehype-code-titles';
 import remarkGfm from 'remark-gfm';
+import { remarkCodeHike } from '@code-hike/mdx';
 
+import theme from './code-hike-theme';
 import Cache from './src/utils/cache';
 
 const cache = new Cache();
@@ -81,7 +81,7 @@ const contentLayerConfig = makeSource(async () => {
 		contentDirPath: 'content',
 		documentTypes: [Post],
 		mdx: {
-			remarkPlugins: [remarkGfm],
+			remarkPlugins: [remarkGfm, [remarkCodeHike, { theme }]],
 			rehypePlugins: [
 				slug,
 				[
@@ -127,8 +127,6 @@ const contentLayerConfig = makeSource(async () => {
 					},
 				],
 				rehypeAccessibleEmojis,
-				codeTitles,
-				highlight,
 			],
 		},
 	};

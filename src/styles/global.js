@@ -44,6 +44,10 @@ const global = css`
 		/* border-left: 0.28125rem solid var(--color-link); */
 		/* color: var(--color-secondary); */
 	}
+
+	.ch-editor-body pre code > div > div {
+		height: 100% !important;
+	}
 `;
 
 export default global;
