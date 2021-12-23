@@ -2,7 +2,7 @@ import tw, { styled } from 'twin.macro';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BlurhashCanvas } from 'react-blurhash';
-import type { Post } from '.contentlayer/types'
+import type { Post } from '.contentlayer/types';
 
 import { formatDate } from '@app/utils/dates';
 import TagList from '@app/components/TagList';
@@ -20,7 +20,10 @@ const Title = tw.h2`text-2xl font-bold mb-2 font-heading`;
 const ArticleLink = tw.a`transition-colors duration-300 text-gray-900 dark:text-gray-100 hover:underline`;
 const Excerpt = tw.p`leading-relaxed mt-2 prose max-w-full!`;
 
-type PostMeta = Pick<Post, 'title' | 'slug' | 'date' | 'tags' | 'unsplash' | 'excerpt' | 'readingTime'>;
+type PostMeta = Pick<
+	Post,
+	'title' | 'slug' | 'date' | 'tags' | 'unsplash' | 'excerpt' | 'readingTime'
+>;
 
 const SimplePost = ({
 	title,

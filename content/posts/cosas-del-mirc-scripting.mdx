@@ -9,7 +9,7 @@ tags:
 
 Mas que nada como recordatorio:
 
-```
+```js
 on 1:INPUT:*: {
     if ($regex(,$1,^([+-][qaohvmb]+)+$)) { mode # $1- | halt }
     if ($1 == .kr) { msg # Haciendo kick al azar~ | kick # $nick(#,$rand(1,$nick(#,0))) Kick no Jutsu~ | halt }

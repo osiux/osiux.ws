@@ -12,6 +12,7 @@ import 'react-hint/css/index.css';
 import '@fontsource/roboto';
 import '@fontsource/open-sans';
 import '@fontsource/open-sans/700.css';
+import '@code-hike/mdx/dist/index.css';
 
 config.autoAddCss = false;
 
