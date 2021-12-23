@@ -9,6 +9,7 @@ import type { Post } from '.contentlayer/types';
 import { formatDate } from '@app/utils/dates';
 import TagList from '@app/components/TagList';
 import Layout from '@app/components/Layout';
+import components from '@app/components/MDXComponents';
 
 const Title = tw.h1`break-words font-heading font-bold text-3xl mb-5 md:(text-5xl mb-10) text-gray-800`;
 const Meta = tw.p`mb-10 flex flex-col transition-colors duration-300 md:flex-row md:items-center`;
@@ -69,7 +70,7 @@ const PostPage = ({ post }: PostPage) => {
 				</Meta>
 
 				<Content>
-					<Component />
+					<Component components={components} />
 				</Content>
 			</Article>
 		</Layout>
