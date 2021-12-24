@@ -2,6 +2,7 @@ const withPlugins = require('next-compose-plugins');
 const optimizedImages = require('next-optimized-images');
 const pwa = require('next-pwa');
 const { withContentlayer } = require('next-contentlayer');
+const { withPlausibleProxy } = require('next-plausible')
 
 /**
  * @type {import('next').NextConfig}
@@ -38,6 +39,7 @@ module.exports = withPlugins(
 			},
 		],
 		withContentlayer(),
+		withPlausibleProxy(),
 	],
 	nextConfig,
 );
