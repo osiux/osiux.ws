@@ -37,6 +37,16 @@ const getGithubEditLink = (slug: string) => {
 	return `https://github.com/osiux/osiux.ws/edit/main/content/posts/${slug}.mdx`;
 };
 
+const getOgImageUrl = (title: string, description?: string) => {
+	let cardUrl = `https://cards.microlink.io/?preset=simple&headline=${title}`;
+
+	if (description) {
+		cardUrl += `&caption=${description}`;
+	}
+
+	return `https://i.microlink.io/${encodeURIComponent(cardUrl)}`;
+};
+
 const PostPage = ({ post }: PostPage) => {
 	const formattedDate = formatDate(post.date);
 	const Component = useMDXComponent(post.body.code);
@@ -52,6 +62,16 @@ const PostPage = ({ post }: PostPage) => {
 					}/blog/${post.slug}`,
 					title: post.title,
 					type: 'article',
+					description:
+						post.excerpt ?? 'Personal website for Eduardo Reveles',
+					images: [
+						{
+							url: getOgImageUrl(post.title, post.excerpt),
+							width: 1200,
+							height: 630,
+							alt: `${post.title} - Eduardo Reveles`,
+						},
+					],
 					article: {
 						publishedTime: post.date,
 						tags: post.tags ?? [],
