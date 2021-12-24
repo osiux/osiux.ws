@@ -1,0 +1,170 @@
+---
+title: Use Contentlayer with NextJS
+date: 2021-12-23
+tags:
+    - development
+    - nextjs
+image: MgtHZ4zlC1U
+excerpt: How to implement Contentlayer with NextJS for a better experience using MDX
+---
+
+I don't write a lot (though is something I want to change), but this site is some kind of playground to try new things. The other day stumbled upon a [list of personal websites of developers and designers](https://github.com/stars/brianlovin/lists/personal-websites) and going through them found some using [Contentlayer](https://www.contentlayer.dev/), it looked interesting, so let's try it!
+
+## What is Contentlayer?
+
+> Contentlayer turns your content into data - making it super easy to import MD(X) and CMS content in your app.
+
+
+
+## How to add it to your NextJS site?
+
+The first step is to install the needed libraries:
+
+```bash
+yarn add contentlayer next-contentlayer
+```
+
+Once the installation is complete, a `contentlayer.config.ts` file needs to be created in the root folder of your project. This is the file where all the content definition and project configuration are done.
+
+In my case I only have one type of content, blog posts coming from MDX files.
+
+<CH.Section>
+
+Use `defineDocumentType` for each type of content type you want Contentlayer to manage. Using the [fields](focus://7:13) property we map [frontmatter](https://mdxjs.com/guides/frontmatter/) fields from the document to object properties you can freely use (and to typescript types!).
+
+```js contentlayer.config.ts
+import { defineDocumentType } from 'contentlayer/source-files';
+
+const Post = defineDocumentType(() => ({
+	name: 'Post',
+	filePathPattern: 'posts/*.mdx',
+	bodyType: 'mdx',
+	fields: {
+		title: { type: 'string', required: true },
+		date: { type: 'date', required: true },
+		tags: { type: 'list', of: { type: 'string' } },
+		image: { type: 'string' },
+		excerpt: { type: 'string' },
+	},
+	computedFields,
+}));
+```
+
+You see that [computedFields](focus://14) property? 
+
+</CH.Section>
+
+<CH.Section>
+
+This are some kind of virtual fields that can go through and extra process, for example to [get the slug](focus://5:8) from the file name, or to get some extra metadata like [reading time](focus://2,9).
+
+```ts contentlayer.config.ts
+import type { ComputedFields } from 'contentlayer/source-files';
+import readingTime from 'reading-time';
+
+const computedFields: ComputedFields = {
+	slug: {
+		type: 'string',
+		resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
+	},
+	readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
+};
+```
+
+</CH.Section>
+
+<CH.Section>
+
+Finally we complete the configuration using `makeSource`. We need to [add the content types](focus://9) defined above and we have the option to set [extra configuration for MDX files, like using remark and rehype plugins](focus://2:4,10:16).
+
+```js contentlayer.config.ts
+import { makeSource } from 'contentlayer/source-files';
+import slug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
+import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
+
+const contentLayerConfig = makeSource(async () => {
+	return {
+		contentDirPath: 'content',
+		documentTypes: [Post],
+		mdx: {
+			remarkPlugins: [remarkGfm],
+			rehypePlugins: [
+				slug,
+				rehypeAccessibleEmojis,
+			],
+		},
+	};
+});
+
+export default contentLayerConfig;
+```
+
+</CH.Section>
+
+With this we are almost done with the configuration, but since we are using NextJS we can hook up to its build process to autogenerate the content and enable live-reload. To do this we need to add some changes on `next.config.js`. In my case I'm using [next-compose-plugins](https://github.com/cyrilwanner/next-compose-plugins) so it looks like this:
+
+```js next.config.js focus=2,9
+const withPlugins = require('next-compose-plugins');
+const { withContentlayer } = require('next-contentlayer');
+
+const nextConfig = {
+	// extra next config
+};
+
+module.exports = withPlugins([
+	withContentlayer(),
+], nextConfig);
+
+```
+
+## How to use it?
+
+With everything in place, running `yarn dev` (or `yarn build` for production) will trigger Contentlayer build process, which generates several files inside the `node_modules/.contentlayer`folder which then you can import wherever you want to use them.
+
+For my content I defined a content type called `Post`, so for example to look for the single post when a slug is accessed:
+
+```js pages/[slug].tsx focus=1,4:6
+import { allPosts } from '.contentlayer/data';
+
+export const getStaticProps = async ({ params }) => {
+	const post = allPosts.find(
+		(post) => post.slug === (params?.slug as string),
+	);
+
+	return {
+		props: {
+			post,
+		},
+	};
+};
+```
+
+And since I'm using MDX we need the `useMDXComponent` hook to render the content:
+
+```js pages/[slug].tsx focus=1,5,9
+import { useMDXComponent } from 'next-contentlayer/hooks';
+import type { Post } from '.contentlayer/types'; // Typescript type too!
+
+const SinglePost = ({ post }: { post: Post }) => {
+	const Component = useMDXComponent(post.body.code);
+
+	return (
+		<article>
+			<Component />
+		</article>
+	);
+};
+```
+
+That's it! Our `Post` object has access to all the properties we defined as `fields` and `computedFields` plus some extra (like the above `body.code` for MDX files).
+
+You can see the complete changeset for this here: https://github.com/osiux/osiux.ws/pull/5/files
+
+## Caveats
+
+Only major issue was that I was using a [remark plugin](https://github.com/MichaelDeBoey/gatsby-remark-embedder) (to embed media content) that is using an old [unified](https://github.com/unifiedjs/unified) version, while Contentlayer uses latest version and it was causing some kind of incompatibility.
+
+## Conclusion
+
+The process to implement Contentlayer was pretty straightforward, currently the library lacks some documentation, but given its alpha state it's understandable, and looking at websites already using it made it easier to use.

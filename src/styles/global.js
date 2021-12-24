@@ -20,6 +20,10 @@ const global = css`
 		a {
 			${tw`absolute mt-0 border-none leading-none -left-10 top-2`}
 		}
+
+		.icon-link svg {
+			${tw`dark:(fill-current text-gray-100)`}
+		}
 	}
 
 	.visually-hidden {
@@ -41,12 +45,23 @@ const global = css`
 	}
 
 	blockquote {
-		/* border-left: 0.28125rem solid var(--color-link); */
-		/* color: var(--color-secondary); */
+		${tw`dark:text-gray-100!`}
 	}
 
 	.ch-editor-body pre code > div > div {
 		height: 100% !important;
+	}
+
+	/* Code in text */
+	p > code,
+	li > code,
+	dd > code,
+	td > code {
+		${tw`bg-yellow-100 dark:(text-gray-800! bg-gray-300)`}
+		word-wrap: break-word;
+		box-decoration-break: clone;
+		padding: 0.1rem 0.3rem 0.2rem;
+		border-radius: 0.2rem;
 	}
 `;
 

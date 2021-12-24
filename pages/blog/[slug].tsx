@@ -27,9 +27,14 @@ const Content = styled.div`
 	}
 `;
 const Article = tw.article`min-w-full mb-12`;
+const GithubLink = tw.a`underline`;
 
 type PostPage = {
 	post: Post;
+};
+
+const getGithubEditLink = (slug: string) => {
+	return `https://github.com/osiux/osiux.ws/edit/main/content/posts/${slug}.mdx`;
 };
 
 const PostPage = ({ post }: PostPage) => {
@@ -63,6 +68,14 @@ const PostPage = ({ post }: PostPage) => {
 							<TagList tags={post.tags ?? []} />
 						</Fragment>
 					)}
+					<Separator>&mdash;</Separator>
+					<GithubLink
+						target="_blank"
+						rel="noopener noreferrer"
+						href={getGithubEditLink(post.slug)}
+					>
+						Edit in Github
+					</GithubLink>
 				</Meta>
 
 				<Content>
