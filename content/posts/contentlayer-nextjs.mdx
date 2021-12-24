@@ -56,7 +56,7 @@ You see that [computedFields](focus://14) property?
 
 <CH.Section>
 
-This fields can go through some extra process, for example to [get the slug](focus://5:8) from the file name, or to get some extra metadata like [reading time](focus://2,9).
+This are some kind of virtual fields that can go through and extra process, for example to [get the slug](focus://5:8) from the file name, or to get some extra metadata like [reading time](focus://2,9).
 
 ```ts contentlayer.config.ts
 import type { ComputedFields } from 'contentlayer/source-files';
@@ -120,4 +120,51 @@ module.exports = withPlugins([
 
 ## How to use it?
 
-With everything in place, running `yarn dev` (or `yarn build` for production) will trigger Contentlayer build process, which generates several files inside the `node_modules/.contentlayer`folder
+With everything in place, running `yarn dev` (or `yarn build` for production) will trigger Contentlayer build process, which generates several files inside the `node_modules/.contentlayer`folder which then you can import wherever you want to use them.
+
+For my content I defined a content type called `Post`, so for example to look for the single post when a slug is accessed:
+
+```js pages/[slug].tsx focus=1,4:6
+import { allPosts } from '.contentlayer/data';
+
+export const getStaticProps = async ({ params }) => {
+	const post = allPosts.find(
+		(post) => post.slug === (params?.slug as string),
+	);
+
+	return {
+		props: {
+			post,
+		},
+	};
+};
+```
+
+And since I'm using MDX we need the `useMDXComponent` hook to render the content:
+
+```js pages/[slug].tsx focus=1,5,9
+import { useMDXComponent } from 'next-contentlayer/hooks';
+import type { Post } from '.contentlayer/types'; // Typescript type too!
+
+const SinglePost = ({ post }: { post: Post }) => {
+	const Component = useMDXComponent(post.body.code);
+
+	return (
+		<article>
+			<Component />
+		</article>
+	);
+};
+```
+
+That's it! Our `Post` object has access to all the properties we defined as `fields` and `computedFields` plus some extra (like the above `body.code` for MDX files).
+
+You can see the complete changeset for this here: https://github.com/osiux/osiux.ws/pull/5/files
+
+## Caveats
+
+Only major issue was that I was using a [remark plugin](https://github.com/MichaelDeBoey/gatsby-remark-embedder) (to embed media content) that is using an old [unified](https://github.com/unifiedjs/unified) version, while Contentlayer uses latest version and it was causing some kind of incompatibility.
+
+## Conclusion
+
+The process to implement Contentlayer was pretty straightforward, currently the library lacks some documentation, but given its alpha state it's understandable, and looking at websites already using it made it easier to use.
