@@ -9509,6 +9509,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"next-plausible@npm:^3.1.4":
+  version: 3.1.4
+  resolution: "next-plausible@npm:3.1.4"
+  peerDependencies:
+    next: ^11.1.0 || ^12.0.0
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  checksum: 21fa9515782a550f8a1174fc7ff499302cdef4003c519422fd3b761c4a238ab5189687328dea0a9b4eb8bdd92c511a3cf5b4d03d5b2634c1941eaf1a9e61b3d6
+  languageName: node
+  linkType: hard
+
 "next-pwa@npm:^5.4.4":
   version: 5.4.4
   resolution: "next-pwa@npm:5.4.4"
@@ -10118,6 +10129,7 @@ __metadata:
     next-compose-plugins: ^2.2.1
     next-contentlayer: ^0.0.33
     next-optimized-images: ^3.0.0-canary.10
+    next-plausible: ^3.1.4
     next-pwa: ^5.4.4
     next-remote-watch: ^1.0.0
     next-seo: ^4.28.1
