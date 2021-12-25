@@ -20,7 +20,7 @@ const Footer = () => (
 				href="https://github.com/osiux/osiux.ws"
 				title="Github Repository"
 			>
-				<FontAwesomeIcon icon={faGithub} fixedWidth />
+				Source code in <FontAwesomeIcon icon={faGithub} fixedWidth />
 			</a>
 		</p>
 	</footer>
