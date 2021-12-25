@@ -88,6 +88,8 @@ const Layout = ({ children }: LayoutProps) => {
 				/>
 				<link rel="manifest" href="/site.webmanifest" />
 				<meta name="theme-color" content="#111827" />
+				<link href="https://github.com/osiux" rel="me" />
+				<link href="https://twitter.com/osiux" rel="me" />
 			</Head>
 
 			<Main

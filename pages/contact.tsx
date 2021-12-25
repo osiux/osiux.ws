@@ -39,12 +39,12 @@ const Contact = () => (
 			<div tw="flex items-center flex-col">
 				<p>
 					If you want to get in touch with me feel free to email me at{' '}
-					<a href="me@osiux.ws?subject=Hello!">me@osiux.ws</a> or send
+					<a href="me@osiux.ws?subject=Hello!" rel="me">me@osiux.ws</a> or send
 					me a message in any of my social networks.
 				</p>
 				<SocialNetworksList>
 					<SocialNetworkItem>
-						<a href="https://github.com/osiux" title="Github">
+						<a href="https://github.com/osiux" title="Github" rel="me">
 							<FontAwesomeIcon icon={faGithub} fixedWidth />
 						</a>
 					</SocialNetworkItem>
@@ -68,7 +68,7 @@ const Contact = () => (
 						</a>
 					</SocialNetworkItem>
 					<SocialNetworkItem>
-						<a href="https://twitter.com/osiux" title="Twitter">
+						<a href="https://twitter.com/osiux" title="Twitter" rel="me">
 							<FontAwesomeIcon icon={faTwitter} fixedWidth />
 						</a>
 					</SocialNetworkItem>
