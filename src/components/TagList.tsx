@@ -9,6 +9,7 @@ const tagStyles = {
 	travel: tw`bg-yellow-500 hover:(bg-yellow-600 text-white)`,
 	fontawesome: tw`bg-blue-900 text-white hover:bg-blue-700`,
 	video: tw`bg-red-500 text-white hover:bg-red-600`,
+	nextjs: tw`bg-gray-900 text-white hover:bg-gray-700`,
 };
 
 type TagType = keyof typeof tagStyles;
