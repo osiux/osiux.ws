@@ -10,11 +10,7 @@ import { formatDate } from '@app/utils/dates';
 import TagList from '@app/components/TagList';
 import Layout from '@app/components/Layout';
 import components from '@app/components/MDXComponents';
-import {
-	useWebMentionsCount,
-	useWebmentions,
-	PER_PAGE,
-} from '@app/hooks/webmentions';
+import Webmentions from '@app/components/Webmentions';
 
 const Title = tw.h1`break-words font-heading font-bold text-3xl mb-5 md:(text-5xl mb-10) text-gray-800`;
 const Meta = tw.p`mb-10 flex flex-col transition-colors duration-300 md:flex-row md:items-center`;
@@ -55,11 +51,6 @@ const getOgImageUrl = (title: string, description?: string) => {
 const PostPage = ({ post }: PostPage) => {
 	const formattedDate = formatDate(post.date);
 	const Component = useMDXComponent(post.body.code);
-
-	const { data: mentions } = useWebmentions(post.slug, 0);
-	const { data: count } = useWebMentionsCount(post.slug);
-
-	console.log(mentions, count);
 
 	return (
 		<Layout>
@@ -112,6 +103,8 @@ const PostPage = ({ post }: PostPage) => {
 					<Component components={components} />
 				</Content>
 			</Article>
+
+			<Webmentions slug={post.slug} />
 		</Layout>
 	);
 };

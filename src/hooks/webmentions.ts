@@ -1,11 +1,9 @@
 import { useQuery } from 'react-query';
 
-export const PER_PAGE = 10;
+export const PER_PAGE = 5;
 
 type Webmention = {
-	type: 'entry';
 	author: {
-		type: 'card';
 		name: string;
 		url: string;
 		photo: string;
@@ -33,12 +31,13 @@ type WebmentionCount = {
 	};
 };
 
-const useWebmentions = (slug: string, page: number) =>
-	useQuery<Webmention, Error>(
+const useWebmentions = (slug: string, page: number, inView: boolean) =>
+	useQuery<Webmention[], Error>(
 		['webmentions', slug, page],
 		async () => {
 			const response = await fetch(
-				`https://webmention.io/api/mentions.jf2?sort-by=published&wm-property[]=in-reply-to&wm-property[]=mention-of&page=${page}&per-page=${PER_PAGE}&target=https://www.osiux.ws/blog/${slug}/`,
+				// TODO: change when https://github.com/aaronpk/webmention.io/issues/100 is fixed
+				`https://webmention.io/api/mentions.jf2?sort-by=published&wm-property[]=mention-of&page=${page}&per-page=${PER_PAGE}&target=https://www.osiux.ws/blog/${slug}`,
 			);
 			const json = await response.json();
 
@@ -46,23 +45,23 @@ const useWebmentions = (slug: string, page: number) =>
 		},
 		{
 			keepPreviousData: true,
-			enabled: !!slug,
+			enabled: inView,
 		},
 	);
 
-const useWebMentionsCount = (slug: string) =>
+const useWebMentionsCount = (slug: string, inView: boolean) =>
 	useQuery<WebmentionCount, Error>(
 		['webmentions', 'count', slug],
 		async () => {
 			const response = await fetch(
-				`https://webmention.io/api/count.json?target=https://www.osiux.ws/blog/${slug}/`,
+				`https://webmention.io/api/count.json?target=https://www.osiux.ws/blog/${slug}`,
 			);
 			const json = await response.json();
 
 			return json;
 		},
 		{
-			enabled: !!slug,
+			enabled: inView,
 		},
 	);
 
