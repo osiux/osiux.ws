@@ -9,6 +9,7 @@ import { h, s } from 'hastscript';
 import { toString } from 'mdast-util-to-string';
 import remarkGfm from 'remark-gfm';
 import { remarkCodeHike } from '@code-hike/mdx';
+import ImgixClient from '@imgix/js-core';
 
 import theme from './code-hike-theme';
 import Cache from './src/utils/cache';
@@ -18,6 +19,19 @@ const cache = new Cache();
 const unsplash = createApi({
 	accessKey: process.env.UNSPLASH_ACCESS_KEY as string,
 });
+
+const imgix = new ImgixClient({
+	domain: 'osiuxws.imgix.net',
+	secureURLToken: process.env.IMGIX_SECURE_TOKEN as string,
+	useHTTPS: true,
+});
+
+const defaultImgixParams = {
+	w: 500,
+	h: 350,
+	fit: 'crop',
+	crop: 'faces,focalpoint,entropy',
+};
 
 const computedFields: ComputedFields = {
 	slug: {
@@ -29,7 +43,7 @@ const computedFields: ComputedFields = {
 		type: 'json',
 		resolve: async (doc) => {
 			let image = null;
-			if (doc.image) {
+			if (doc.image && !doc.image.startsWith('imgix:')) {
 				image = await cache.get(doc.image);
 
 				if (!image) {
@@ -49,6 +63,42 @@ const computedFields: ComputedFields = {
 							name: response?.user.name,
 							link: response?.user.links.html,
 						},
+					};
+
+					await cache.set(doc.image, image);
+				}
+
+				return image;
+			}
+
+			return null;
+		},
+	},
+	imgix: {
+		type: 'json',
+		resolve: async (doc) => {
+			let image = null;
+			if (doc.image && doc.image.startsWith('imgix:')) {
+				image = await cache.get(doc.image);
+
+				if (!image) {
+					const [imagePath, params] = doc.image
+						.replace('imgix:', '')
+						.split('?');
+
+					let imgParams = defaultImgixParams;
+					if (params) {
+						const searchParams = new URLSearchParams(params);
+						const tmpParams: Record<string, string> = {};
+						searchParams.forEach((v, k) => (tmpParams[k] = v));
+
+						imgParams = { ...defaultImgixParams, ...tmpParams };
+					}
+
+					const url = imgix.buildURL(imagePath, imgParams);
+
+					image = {
+						url,
 					};
 
 					await cache.set(doc.image, image);

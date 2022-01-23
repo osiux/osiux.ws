@@ -22,7 +22,14 @@ const Excerpt = tw.p`leading-relaxed mt-2 prose max-w-full!`;
 
 type PostMeta = Pick<
 	Post,
-	'title' | 'slug' | 'date' | 'tags' | 'unsplash' | 'excerpt' | 'readingTime'
+	| 'title'
+	| 'slug'
+	| 'date'
+	| 'tags'
+	| 'unsplash'
+	| 'imgix'
+	| 'excerpt'
+	| 'readingTime'
 >;
 
 const SimplePost = ({
@@ -31,6 +38,7 @@ const SimplePost = ({
 	date,
 	tags = [],
 	unsplash,
+	imgix,
 	excerpt,
 	readingTime,
 }: PostMeta) => {
@@ -70,6 +78,20 @@ const SimplePost = ({
 							Unsplash
 						</a>
 					</ImageCaption>
+				</div>
+			)}
+			{imgix && (
+				<div tw="mr-3">
+					<Link href={`/blog/${slug}`} passHref>
+						<a tw="relative block overflow-hidden">
+							<img
+								src={imgix.url}
+								alt={title}
+								width={500}
+								height={350}
+							/>
+						</a>
+					</Link>
 				</div>
 			)}
 			<div tw="w-full md:flex-grow">

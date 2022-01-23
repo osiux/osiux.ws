@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Flickr, YouTube } from 'mdx-embed';
 
 // https://github.com/leerob/leerob.io/blob/4207a37f0bb82cdbc17fcc778112ccb30bc0aaf2/components/MDXComponents.tsx#L13-L26
@@ -20,6 +21,7 @@ const CustomLink = (props) => {
 };
 
 const MDXComponents = {
+	Image,
 	a: CustomLink,
 	Flickr,
 	YouTube,
