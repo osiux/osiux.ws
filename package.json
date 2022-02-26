@@ -39,7 +39,7 @@
         "hast-util-parse-selector": "^3.1.0",
         "hastscript": "^7.0.2",
         "highlight.js": "^11.4.0",
-        "mdx-embed": "^0.0.22",
+        "mdx-embed": "^1.0.0",
         "next": "12.1.0",
         "next-compose-plugins": "^2.2.1",
         "next-contentlayer": "^0.1.1",
