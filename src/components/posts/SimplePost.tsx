@@ -2,7 +2,7 @@ import tw, { styled } from 'twin.macro';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BlurhashCanvas } from 'react-blurhash';
-import type { Post } from '.contentlayer/types';
+import type { Post } from 'contentlayer/generated';
 
 import { formatDate } from '@app/utils/dates';
 import TagList from '@app/components/TagList';

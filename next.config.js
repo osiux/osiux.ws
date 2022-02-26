@@ -17,6 +17,7 @@ const nextConfig = {
 			config.resolve.fallback = {
 				fs: false,
 				module: false,
+				process: require.resolve("process/browser"),
 			};
 		}
 		return config;

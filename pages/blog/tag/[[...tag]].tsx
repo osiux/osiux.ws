@@ -2,7 +2,7 @@ import tw from 'twin.macro';
 import type { GetStaticProps, GetStaticPaths } from 'next';
 import { NextSeo } from 'next-seo';
 import slugify from 'slugify';
-import { allPosts } from '.contentlayer/data';
+import { allPosts } from 'contentlayer/generated';
 
 import SimplePost from '@app/components/posts/SimplePost';
 import Pagination from '@app/components/Pagination';
