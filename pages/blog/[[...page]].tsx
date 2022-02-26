@@ -1,7 +1,7 @@
 import type { GetStaticProps, GetStaticPaths } from 'next';
 import { NextSeo } from 'next-seo';
-import { allPosts } from '.contentlayer/data';
-import type { Post } from '.contentlayer/types';
+import { allPosts } from 'contentlayer/generated';
+import type { Post } from 'contentlayer/generated';
 
 import SimplePost from '@app/components/posts/SimplePost';
 import Pagination from '@app/components/Pagination';

@@ -16,7 +16,8 @@
 		"baseUrl": ".",
 		"paths": {
 			"@app/*": ["src/*"],
-			"@images/*": ["images/*"]
+			"@images/*": ["images/*"],
+			"contentlayer/generated": ["./.contentlayer/generated"]
 		},
 		"jsxImportSource": "@emotion/react",
 		"incremental": true
@@ -26,7 +27,8 @@
 		"additional.d.ts",
 		"twin.d.ts",
 		"**/*.ts",
-		"**/*.tsx"
+		"**/*.tsx",
+		".contentlayer/generated"
 	],
 	"exclude": ["node_modules"]
 }
