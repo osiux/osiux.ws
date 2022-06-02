@@ -4039,14 +4039,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001271":
-  version: 1.0.30001271
-  resolution: "caniuse-lite@npm:1.0.30001271"
-  checksum: 0271e234e17c588fa203a34523f90c5a21ab62f41a2c3acabe96f0251593ac92f192cadd7a3dcbcf49bb28de4f57ca274d775c75700c3f38e9c42028d3becb0f
-  languageName: node
-  linkType: hard
-
-"caniuse-lite@npm:^1.0.30001332":
+"caniuse-lite@npm:^1.0.30001271, caniuse-lite@npm:^1.0.30001332":
   version: 1.0.30001346
   resolution: "caniuse-lite@npm:1.0.30001346"
   checksum: 951590454ffa4e2e7b772558dc593cd08604b44c83741e1188166298f54c34387f4bf34f5141a35de4a43028c012484240ad15c896e48bf4eac70dd7076a4449
@@ -4682,13 +4675,6 @@ __metadata:
   version: 2.27.0
   resolution: "date-fns@npm:2.27.0"
   checksum: db62036b3816eb0322c9532b353beac7f660a91e1a55dbd21c14893c621ebb8509f21c66ba287844dabd34dee0207edd54a9537bce6bb7cab9383dedc6b8bc90
-  languageName: node
-  linkType: hard
-
-"debounce@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "debounce@npm:1.2.1"
-  checksum: 682a89506d9e54fb109526f4da255c5546102fbb8e3ae75eef3b04effaf5d4853756aee97475cd4650641869794e44f410eeb20ace2b18ea592287ab2038519e
   languageName: node
   linkType: hard
 
@@ -6120,32 +6106,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:5.5.5":
-  version: 5.5.5
-  resolution: "framer-motion@npm:5.5.5"
+"framer-motion@npm:6.3.6":
+  version: 6.3.6
+  resolution: "framer-motion@npm:6.3.6"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     framesync: 6.0.1
     hey-listen: ^1.0.8
     popmotion: 11.0.3
-    react-merge-refs: ^1.1.0
-    react-use-measure: ^2.1.1
     style-value-types: 5.0.0
     tslib: ^2.1.0
   peerDependencies:
-    "@react-three/fiber": "*"
-    react: ">=16.8 || ^17.0.0"
-    react-dom: ">=16.8 || ^17.0.0"
-    three: ^0.135.0
+    react: ">=16.8 || ^17.0.0 || ^18.0.0"
+    react-dom: ">=16.8 || ^17.0.0 || ^18.0.0"
   dependenciesMeta:
     "@emotion/is-prop-valid":
       optional: true
-  peerDependenciesMeta:
-    "@react-three/fiber":
-      optional: true
-    three:
-      optional: true
-  checksum: 95329fd69c721768bd6e5ecb72a7a822f389e73121981b1344b67af60c63cff29baca4235537ee558d54c415438702e40b153be4449d7fa970ddb118dddb783c
+  checksum: 2d82ff7ce3fdac97a2e52aa6d92907f3ff4ba37389202e0b5efd2b0e9842ca5b3913ed325783e29edea8ccf7ba16077a0b48ec5ae548283f96b6e81ac6ae6cc5
   languageName: node
   linkType: hard
 
@@ -9630,7 +9607,7 @@ fsevents@~2.3.2:
     eslint-config-next: 12.1.6
     eslint-config-prettier: 8.5.0
     form-data: 4.0.0
-    framer-motion: 5.5.5
+    framer-motion: 6.3.6
     fs-extra: 10.1.0
     hast-util-is-element: 2.1.2
     hast-util-parse-selector: 3.1.0
@@ -10326,13 +10303,6 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"react-merge-refs@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "react-merge-refs@npm:1.1.0"
-  checksum: 90884352999002d868ab9f1bcfe3222fb0f2178ed629f1da7e98e5a9b02a2c96b4aa72800db92aabd69d2483211b4be57a2088e89a11a0b660e7ada744d4ddf7
-  languageName: node
-  linkType: hard
-
 "react-optimized-image@npm:0.4.1, react-optimized-image@npm:^0.4.1":
   version: 0.4.1
   resolution: "react-optimized-image@npm:0.4.1"
@@ -10361,18 +10331,6 @@ fsevents@~2.3.2:
     react-native:
       optional: true
   checksum: 9273b7c2adf4a78152d3c0b0ac44cfabacc867d5e8e4ad66e6aaccd8a2bd10c5a836c4d3b462e5f083f273998e1c3dd01ed5d126b7508bcfd615eb5aba419b3b
-  languageName: node
-  linkType: hard
-
-"react-use-measure@npm:^2.1.1":
-  version: 2.1.1
-  resolution: "react-use-measure@npm:2.1.1"
-  dependencies:
-    debounce: ^1.2.1
-  peerDependencies:
-    react: ">=16.13"
-    react-dom: ">=16.13"
-  checksum: b8e8939229d463c3c505f7b617925c0228efae0cd6f651371f463846417b06c9170be57df51293a61027c41770f8a090fdb8a08717c4e36290ccb496e0318f1f
   languageName: node
   linkType: hard
 
