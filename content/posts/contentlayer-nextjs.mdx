@@ -104,7 +104,7 @@ export default contentLayerConfig;
 
 With this we are almost done with the configuration, but since we are using NextJS we can hook up to its build process to autogenerate the content and enable live-reload. To do this we need to add some changes on `next.config.js`. In my case I'm using [next-compose-plugins](https://github.com/cyrilwanner/next-compose-plugins) so it looks like this:
 
-```js next.config.js focus=2,9
+```js next.config.js focus=2,4:6,12
 const withPlugins = require('next-compose-plugins');
 const { createContentlayerPlugin } = require('next-contentlayer');
 
