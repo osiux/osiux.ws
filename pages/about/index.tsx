@@ -103,7 +103,7 @@ const About = () => (
 			</p>
 			<p>
 				<Link href="/about/uses">
-					<a>My Uses page.</a>
+					<a tw="underline">My Uses page.</a>
 				</Link>
 			</p>
 		</Section>

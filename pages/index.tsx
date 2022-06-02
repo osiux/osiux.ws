@@ -8,7 +8,7 @@ import Layout from '@app/components/Layout';
 
 import { comparePostDates } from '@app/utils/dates';
 
-const POSTS_ON_HOME = 6;
+const POSTS_ON_HOME = 3;
 
 type HomeProps = {
 	posts: Post[];

@@ -4,7 +4,7 @@ import slugify from 'slugify';
 import { styled } from 'twin.macro';
 
 const tagStyles = {
-	gatsbyjs: tw`bg-purple-700 text-white hover:bg-purple-900`,
+	gatsbyjs: tw`bg-violet-700 text-white hover:bg-violet-900`,
 	development: tw`bg-green-600 text-white hover:bg-green-800`,
 	travel: tw`bg-yellow-500 hover:(bg-yellow-600 text-white)`,
 	fontawesome: tw`bg-blue-900 text-white hover:bg-blue-700`,
