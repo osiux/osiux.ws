@@ -104,28 +104,32 @@ export default contentLayerConfig;
 
 With this we are almost done with the configuration, but since we are using NextJS we can hook up to its build process to autogenerate the content and enable live-reload. To do this we need to add some changes on `next.config.js`. In my case I'm using [next-compose-plugins](https://github.com/cyrilwanner/next-compose-plugins) so it looks like this:
 
-```js next.config.js focus=2,9
+```js next.config.js focus=2,4:6,12
 const withPlugins = require('next-compose-plugins');
-const { withContentlayer } = require('next-contentlayer');
+const { createContentlayerPlugin } = require('next-contentlayer');
+
+const withContentlayer = createContentlayerPlugin({
+	// Additional Contentlayer config options
+});
 
 const nextConfig = {
 	// extra next config
 };
 
 module.exports = withPlugins([
-	withContentlayer(),
+	withContentlayer,
 ], nextConfig);
 
 ```
 
 ## How to use it?
 
-With everything in place, running `yarn dev` (or `yarn build` for production) will trigger Contentlayer build process, which generates several files inside the `node_modules/.contentlayer`folder which then you can import wherever you want to use them.
+With everything in place, running `yarn dev` (or `yarn build` for production) will trigger Contentlayer build process, which generates several files inside the `node_modules/contentlayer/generated`folder which then you can import wherever you want to use them.
 
 For my content I defined a content type called `Post`, so for example to look for the single post when a slug is accessed:
 
 ```js pages/[slug].tsx focus=1,4:6
-import { allPosts } from '.contentlayer/data';
+import { allPosts } from 'contentlayer/generated';
 
 export const getStaticProps = async ({ params }) => {
 	const post = allPosts.find(
@@ -144,7 +148,7 @@ And since I'm using MDX we need the `useMDXComponent` hook to render the content
 
 ```js pages/[slug].tsx focus=1,5,9
 import { useMDXComponent } from 'next-contentlayer/hooks';
-import type { Post } from '.contentlayer/types'; // Typescript type too!
+import type { Post } from 'contentlayer/generated'; // Typescript type too!
 
 const SinglePost = ({ post }: { post: Post }) => {
 	const Component = useMDXComponent(post.body.code);
