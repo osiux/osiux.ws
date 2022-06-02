@@ -1,8 +1,12 @@
 const withPlugins = require('next-compose-plugins');
 const optimizedImages = require('next-optimized-images');
 const pwa = require('next-pwa');
-const { withContentlayer } = require('next-contentlayer');
-const { withPlausibleProxy } = require('next-plausible')
+const { createContentlayerPlugin } = require('next-contentlayer');
+const { withPlausibleProxy } = require('next-plausible');
+
+const withContentlayer = createContentlayerPlugin({
+	// Additional Contentlayer config options
+});
 
 /**
  * @type {import('next').NextConfig}
@@ -17,7 +21,7 @@ const nextConfig = {
 			config.resolve.fallback = {
 				fs: false,
 				module: false,
-				process: require.resolve("process/browser"),
+				process: require.resolve('process/browser'),
 			};
 		}
 		return config;
@@ -39,7 +43,7 @@ module.exports = withPlugins(
 				},
 			},
 		],
-		withContentlayer(),
+		withContentlayer,
 		withPlausibleProxy(),
 	],
 	nextConfig,

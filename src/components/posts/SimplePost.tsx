@@ -8,7 +8,7 @@ import { formatDate } from '@app/utils/dates';
 import TagList from '@app/components/TagList';
 
 const Article = tw.article`mb-16 flex flex-wrap w-full md:flex-nowrap`;
-const ImageCaption = styled.caption`
+const ImageCaption = styled.div`
 	${tw`inline-block w-full text-sm`}
 
 	a {
