@@ -1,5 +1,6 @@
-		module.exports = {
-	purge: [],
+module.exports = {
+	darkMode: 'class',
+	content: [],
 	theme: {
 		extend: {
 			gridTemplateRows: {
@@ -9,18 +10,16 @@
 				DEFAULT: {
 					css: {
 						pre: null,
-					}
-				}
-			}
+					},
+				},
+			},
 		},
 		fontFamily: {
 			heading: ['Open\\ Sans', 'sans-serif'],
 			text: ['Roboto', 'serif'],
 		},
 	},
-	variants: {},
 	plugins: [require('@tailwindcss/typography')],
-	darkMode: 'class',
 	experimental: {
 		uniformColorPalette: true,
 		defaultLineHeights: true,

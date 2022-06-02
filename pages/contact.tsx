@@ -15,7 +15,7 @@ import Layout from '@app/components/Layout';
 
 import GetInTouch from '@images/get-in-touch.svg'
 
-const SocialNetworksList = tw.ul`list-none flex justify-center m-0 text-3xl`;
+const SocialNetworksList = tw.ul`list-none flex justify-center m-0 text-3xl p-0`;
 
 const SocialNetworkItem = styled.li`
 	${tw`pl-3!`}
@@ -39,7 +39,7 @@ const Contact = () => (
 			<div tw="flex items-center flex-col">
 				<p>
 					If you want to get in touch with me feel free to email me at{' '}
-					<a href="me@osiux.ws?subject=Hello!" rel="me">me@osiux.ws</a> or send
+					<a tw="underline" href="me@osiux.ws?subject=Hello!" rel="me">me@osiux.ws</a> or send
 					me a message in any of my social networks.
 				</p>
 				<SocialNetworksList>
