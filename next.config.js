@@ -1,11 +1,7 @@
 const withPlugins = require('next-compose-plugins');
 const optimizedImages = require('next-optimized-images');
 const pwa = require('next-pwa');
-const { createContentlayerPlugin } = require('next-contentlayer');
-
-const withContentlayer = createContentlayerPlugin({
-	// Additional Contentlayer config options
-});
+const { withContentlayer  } = require('next-contentlayer');
 
 /**
  * @type {import('next').NextConfig}
