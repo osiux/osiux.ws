@@ -2,7 +2,7 @@
 # Manual changes might be lost - proceed with caution!
 
 __metadata:
-  version: 4
+  version: 6
   cacheKey: 8
 
 "@apideck/better-ajv-errors@npm:^0.3.1":
@@ -43,7 +43,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:7.15.8, @babel/core@npm:^7.0.0-beta.56, @babel/core@npm:^7.11.1, @babel/core@npm:^7.12.3":
+"@babel/core@npm:^7.0.0-beta.56, @babel/core@npm:^7.11.1, @babel/core@npm:^7.12.3":
   version: 7.15.8
   resolution: "@babel/core@npm:7.15.8"
   dependencies:
@@ -2168,84 +2168,84 @@ __metadata:
 "@next/swc-android-arm-eabi@npm:12.1.6":
   version: 12.1.6
   resolution: "@next/swc-android-arm-eabi@npm:12.1.6"
-  checksum: 71d481065f5087b9bf6b3c8c1698e1082fcf96507b05fc46e0d0f8af3f2b893f0fa06dd281f169e0554bdb2a8e609bc1a488c5141e7b9bf46d785d3ba98f8f38
+  conditions: os=android & cpu=arm
   languageName: node
   linkType: hard
 
 "@next/swc-android-arm64@npm:12.1.6":
   version: 12.1.6
   resolution: "@next/swc-android-arm64@npm:12.1.6"
-  checksum: 1c336ecd24bc5677e092db856dd88286ed8815ae3fa5dfe6aaa21710762933853251869e42f4bb10fddb798199d45493d7b451dcadbd8e2ce90f7363ffd4798b
+  conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
 
 "@next/swc-darwin-arm64@npm:12.1.6":
   version: 12.1.6
   resolution: "@next/swc-darwin-arm64@npm:12.1.6"
-  checksum: 3c932ae9047cf1ba13530b95861793aa6a2b7ff81f53c841d1c41df4b0885816983b8cd3b82871a3a58e96530b5469ffb6f4c6125ed989f6d965743863671b99
+  conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
 "@next/swc-darwin-x64@npm:12.1.6":
   version: 12.1.6
   resolution: "@next/swc-darwin-x64@npm:12.1.6"
-  checksum: 5fb2c26e2541a304b997e5dce7626d8f22965c264f4ba3ec03f7831961516521796e513c7a0a5716217bbce4383931674eae841c15d08f681f045b7c6556cdf6
+  conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
 "@next/swc-linux-arm-gnueabihf@npm:12.1.6":
   version: 12.1.6
   resolution: "@next/swc-linux-arm-gnueabihf@npm:12.1.6"
-  checksum: 5a15b79cb78fe5a75f657487392faae881f245f4a346b59ce126cb81802b57dd63817486ebd005d11659655c13e4cbbc5dc6c5d5f7edf3dfc4a3c6139da31d4e
+  conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
 "@next/swc-linux-arm64-gnu@npm:12.1.6":
   version: 12.1.6
   resolution: "@next/swc-linux-arm64-gnu@npm:12.1.6"
-  checksum: 5d6898cfbb017236329d3c552a9f1c195e8e1ccbb357449a0f471473252969060fa443fa5196b5d5cdef9e91c32d06f9e0530203a939365fd31804a28362f4c7
+  conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
 "@next/swc-linux-arm64-musl@npm:12.1.6":
   version: 12.1.6
   resolution: "@next/swc-linux-arm64-musl@npm:12.1.6"
-  checksum: ff50df585f7028e3e4c7f0057cbef3924627c0d4bc418b0c51dc90104165226f68f1a5e52472a76750df0709d9725d3dba90221898e3d1e247dffba4304034fc
+  conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
 "@next/swc-linux-x64-gnu@npm:12.1.6":
   version: 12.1.6
   resolution: "@next/swc-linux-x64-gnu@npm:12.1.6"
-  checksum: 84d2b7c80e12c7699432c4a50feba86bb644fef7c2701efae4e6027c7451ff59040c72e2d02f4ca1ff546a2d6f676b33501c5fcce352a80d4088ab88632e2f20
+  conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
 "@next/swc-linux-x64-musl@npm:12.1.6":
   version: 12.1.6
   resolution: "@next/swc-linux-x64-musl@npm:12.1.6"
-  checksum: 202153f23543afb02505d14bb0a618f979c643baa9aee15f16ac468321f3bbfaa8d0aaa79b3bd3a2fb8a7a373c8bc1a1ac32f89708ec0c0cb16eff5515850aaa
+  conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
 "@next/swc-win32-arm64-msvc@npm:12.1.6":
   version: 12.1.6
   resolution: "@next/swc-win32-arm64-msvc@npm:12.1.6"
-  checksum: f8c98c069629beb0d0f0cd1d2903ac46019d64a4c2d0b1d1b896e341f3068f309ae3a068d8131141dbc059d3a2c1e02c8284e21d9493b54d744e79f77ee13b22
+  conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
 "@next/swc-win32-ia32-msvc@npm:12.1.6":
   version: 12.1.6
   resolution: "@next/swc-win32-ia32-msvc@npm:12.1.6"
-  checksum: f442e2c489b50c2b79130a289526a6b3959051a38379e129611b40ba509cb2fa38007bd3558940c386216e068cf7d5b86139537ea1b0c4fd49f2b27101f8811e
+  conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
 "@next/swc-win32-x64-msvc@npm:12.1.6":
   version: 12.1.6
   resolution: "@next/swc-win32-x64-msvc@npm:12.1.6"
-  checksum: 5eefdde98c41f5703ec8a63db97b996a59a4cb7eb66f4107b7f10e6fe3d0cfd0db81c127db5500a75157b8630bb633d9a70e97b6b499dd10df7798e3b17021cf
+  conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
@@ -3111,6 +3111,15 @@ __metadata:
   bin:
     acorn: bin/acorn
   checksum: 9d0de73b73cb6ea8ccd8263a8144d9e2c4b6af90ea0c429997538af0ebbe83c5addecee814b2a7f91f7f615d0bd1547cc7137b3fa236ce058adc64feccee850b
+  languageName: node
+  linkType: hard
+
+"acorn@npm:^8.5.0":
+  version: 8.10.0
+  resolution: "acorn@npm:8.10.0"
+  bin:
+    acorn: bin/acorn
+  checksum: 538ba38af0cc9e5ef983aee196c4b8b4d87c0c94532334fa7e065b2c8a1f85863467bb774231aae91613fcda5e68740c15d97b1967ae3394d20faddddd8af61d
   languageName: node
   linkType: hard
 
@@ -5198,140 +5207,140 @@ __metadata:
 "esbuild-android-64@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-android-64@npm:0.14.42"
-  checksum: 45d18c0ab88c62a8954cd833573ec385b4a95e8b6cabc4b80be91d3013285b9aad3728e8bb0050570efad3db0280eb72b833a557a4cb59b44fd81a98e6e80281
+  conditions: os=android & cpu=x64
   languageName: node
   linkType: hard
 
 "esbuild-android-arm64@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-android-arm64@npm:0.14.42"
-  checksum: ad81e53efb2209e9c96dc0a60b939ff90d0f32a3b13662f375eb3aa268f003c2ded2da8932ce2f6767b9547f4ffe987f176b8740428b12dd13ea87468b3fa5a1
+  conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
 
 "esbuild-darwin-64@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-darwin-64@npm:0.14.42"
-  checksum: 85ab606c8c56c18c2113be256a341156b2a8c9565e0b33cea0620ce10ed755430481ea4d9f786acbc9e8b007a1266817f783048877c44d96edd08042de42fc7e
+  conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
 "esbuild-darwin-arm64@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-darwin-arm64@npm:0.14.42"
-  checksum: e0fc783d4489be284dffba6e18b41db6e3053f64535363cd09fce9c25622fb7d9fc080522310b8e1b24ca23356f0ab121d05c283d368e7e46e0681e3da6e0664
+  conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
 "esbuild-freebsd-64@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-freebsd-64@npm:0.14.42"
-  checksum: 5abb052938d54f7a4c1a92f42ad5ebc1a3c01a6f54bd5bd28189b2af2a77943bae0d87e17da4f94c33e1f6ed55cde7a19cb537688df1690b44fc52f808efd213
+  conditions: os=freebsd & cpu=x64
   languageName: node
   linkType: hard
 
 "esbuild-freebsd-arm64@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-freebsd-arm64@npm:0.14.42"
-  checksum: 06e5baf299851c7529f86d3aad0261ee135d7cb94bc0a0ca6766c24390189c00f1b8c144f4e6ba8cfe81ea624da6825e630f83b3374b937e2182cf7b902f7b5d
+  conditions: os=freebsd & cpu=arm64
   languageName: node
   linkType: hard
 
 "esbuild-linux-32@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-linux-32@npm:0.14.42"
-  checksum: 840f46143acb503c7db4cfe05e2400cfb4f2727a28aa3cd90db67a31a881b4006a935076763a89b48869a2c3508169420cb4cc41e3ec390aad86e143c8299bd3
+  conditions: os=linux & cpu=ia32
   languageName: node
   linkType: hard
 
 "esbuild-linux-64@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-linux-64@npm:0.14.42"
-  checksum: cc1cf1e3675099372f0d34755d4a5a159c0847c7e387556523c2285a27de00f8b29be0dff049984a17681d411bf2173458c914dde84a8a4d8c8e3213810d53da
+  conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
 "esbuild-linux-arm64@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-linux-arm64@npm:0.14.42"
-  checksum: ebe3580459c726b1d7e4902a97ee905a212ba7ec830fd3b1a11ea2f680e615ecc82414c3392aa088f2f4f99dd35b5f5f48c0ab23fa5f992f9b5e76f313987b7e
+  conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
 "esbuild-linux-arm@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-linux-arm@npm:0.14.42"
-  checksum: 9b122d9356d30d1942e55c8ccbc84261be0470d0f5b7e201645dcdd1a6341cb8cb31b05546900b36eabe4a44cb81cc93345a7b8b0ba4fb6cdf178eb51d42f4a1
+  conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
 "esbuild-linux-mips64le@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-linux-mips64le@npm:0.14.42"
-  checksum: b43849ea8032904735bca47c215dd490233f3fe5b5e9365e72e8c85b126b2e150de0501686a0026ce081a3dbdeaed40c027da181057ea69d1a42dc7cda67aa43
+  conditions: os=linux & cpu=mips64el
   languageName: node
   linkType: hard
 
 "esbuild-linux-ppc64le@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-linux-ppc64le@npm:0.14.42"
-  checksum: 631cd9af73fbe71846a2def88f397e5863c8934e13eb60862506313abd1a299f174cef95af5a2eadb1c969aadd4720bd98d5f2a8e55e8bdfda342ff0a689b35c
+  conditions: os=linux & cpu=ppc64
   languageName: node
   linkType: hard
 
 "esbuild-linux-riscv64@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-linux-riscv64@npm:0.14.42"
-  checksum: 4a8a23ab11caa8c3653dd080c1aa3bcb9a75145b5fc3acf2a173f833468d14e8b032e8489d3bf0ab68aac88d9ccc6c1c5f5395c072e9bf243dc71f55f9865d9c
+  conditions: os=linux & cpu=riscv64
   languageName: node
   linkType: hard
 
 "esbuild-linux-s390x@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-linux-s390x@npm:0.14.42"
-  checksum: fac4db9e907bc9a4f99e38fcd661392b826bded4996255ab6754617eeb42c8e73adadd44adda5eb4889d16d0580204a94e58a5bea80cd02e4e234faa2c171d5c
+  conditions: os=linux & cpu=s390x
   languageName: node
   linkType: hard
 
 "esbuild-netbsd-64@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-netbsd-64@npm:0.14.42"
-  checksum: 3304ecbd2704e38a6d673703701b9056fccdad5e4fabcf30e50e1f9d68f79169d1be2f7e27726fc0d48175a37a062750346a72d0b94492d86aa6290edec3cc4e
+  conditions: os=netbsd & cpu=x64
   languageName: node
   linkType: hard
 
 "esbuild-openbsd-64@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-openbsd-64@npm:0.14.42"
-  checksum: a2f2a956db9bc2f65d0d3b4c43d7b2afda2e6011ef947e3ef14ffe521b05e6b4e89a993847ac295deab7a0abd77ce52c9b17643b2020733a0a2d14283455c3b0
+  conditions: os=openbsd & cpu=x64
   languageName: node
   linkType: hard
 
 "esbuild-sunos-64@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-sunos-64@npm:0.14.42"
-  checksum: a5494a27864490e206ced0fc76cf3dedb0c58d376457f887ca1b9cfe1e3899e1574b1526ad305ae0dd70528bedc3826e4900745b854d04b01389fa1bfc4db627
+  conditions: os=sunos & cpu=x64
   languageName: node
   linkType: hard
 
 "esbuild-windows-32@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-windows-32@npm:0.14.42"
-  checksum: 5b4cfca6cc82518a72b51bc0d0107eac4fa8d895677c04195ef67246d83b45f13b7ccc1c451277c2139015d8a7b1237b37592dd3819b1d64b9e9f60172dbc664
+  conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
 "esbuild-windows-64@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-windows-64@npm:0.14.42"
-  checksum: c533e9666570c7ba9014528dff099b21863e4b780256d405c32ee09d51022ea4f323b6f9fb3f510b3f7ac56cca4453e5a4484830161e149ed88c1177573a57db
+  conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
 "esbuild-windows-arm64@npm:0.14.42":
   version: 0.14.42
   resolution: "esbuild-windows-arm64@npm:0.14.42"
-  checksum: 7f03eceef7fd05847d5fea9a98fdcff21aa71d1cc87f572ea3b7ca0bc1d6a638504c5ae0c8866c24749f27b571bd4200616476661119e15804a9ecc4555cec07
+  conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
@@ -6190,10 +6199,10 @@ __metadata:
 
 "fsevents@patch:fsevents@~2.3.2#~builtin<compat/fsevents>":
   version: 2.3.2
-  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=1cc4b2"
+  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"
   dependencies:
     node-gyp: latest
-  checksum: 78db9daf1f6526a49cefee3917cc988f62dc7f25b5dd80ad6de4ffc4af7f0cab7491ac737626ff53e482a111bc53aac9e411fe3602458eca36f6a003ecf69c16
+  conditions: os=darwin
   languageName: node
   linkType: hard
 
@@ -6203,6 +6212,7 @@ fsevents@~2.3.2:
   dependencies:
     node-gyp: latest
   checksum: 97ade64e75091afee5265e6956cb72ba34db7819b4c3e94c431d4be2b19b8bb7a2d4116da417950c3425f17c8fe693d25e20212cac583ac1521ad066b77ae31f
+  conditions: os=darwin
   languageName: node
   linkType: hard
 
@@ -9083,17 +9093,6 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"next-plausible@npm:3.1.9":
-  version: 3.1.9
-  resolution: "next-plausible@npm:3.1.9"
-  peerDependencies:
-    next: ^11.1.0 || ^12.0.0
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: b13890831173f82e02a21ff593f43f76e2139eb18aab2cc09c037aee24fc3893fa7eaf6e1181fb4152de78a6e32fcd1f7b3ccd84985b262b1a918ae0a8f85aad
-  languageName: node
-  linkType: hard
-
 "next-pwa@npm:5.5.2":
   version: 5.5.2
   resolution: "next-pwa@npm:5.5.2"
@@ -9621,7 +9620,6 @@ fsevents@~2.3.2:
     next-compose-plugins: 2.2.1
     next-contentlayer: 0.2.5
     next-optimized-images: 3.0.0-canary.10
-    next-plausible: 3.1.9
     next-pwa: 5.5.2
     next-remote-watch: 1.0.0
     next-seo: 5.4.0
@@ -10726,34 +10724,34 @@ resolve@^2.0.0-next.3:
 
 "resolve@patch:resolve@^1.12.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.14.2#~builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.3.3#~builtin<compat/resolve>":
   version: 1.20.0
-  resolution: "resolve@patch:resolve@npm%3A1.20.0#~builtin<compat/resolve>::version=1.20.0&hash=00b1ff"
+  resolution: "resolve@patch:resolve@npm%3A1.20.0#~builtin<compat/resolve>::version=1.20.0&hash=c3c19d"
   dependencies:
     is-core-module: ^2.2.0
     path-parse: ^1.0.6
-  checksum: bed00be983cd20a8af0e7840664f655c4b269786dbd9595c5f156cd9d8a0050e65cdbbbdafc30ee9b6245b230c78a2c8ab6447a52545b582f476c29adb188cc5
+  checksum: a0dd7d16a8e47af23afa9386df2dff10e3e0debb2c7299a42e581d9d9b04d7ad5d2c53f24f1e043f7b3c250cbdc71150063e53d0b6559683d37f790b7c8c3cd5
   languageName: node
   linkType: hard
 
 "resolve@patch:resolve@^1.22.0#~builtin<compat/resolve>":
   version: 1.22.0
-  resolution: "resolve@patch:resolve@npm%3A1.22.0#~builtin<compat/resolve>::version=1.22.0&hash=00b1ff"
+  resolution: "resolve@patch:resolve@npm%3A1.22.0#~builtin<compat/resolve>::version=1.22.0&hash=c3c19d"
   dependencies:
     is-core-module: ^2.8.1
     path-parse: ^1.0.7
     supports-preserve-symlinks-flag: ^1.0.0
   bin:
     resolve: bin/resolve
-  checksum: b63b73ecbb7928e71c30e231f6adc380fca66bd5819a1b1324d3dcae573c726d9923df06eef3ac50be52b1dcea67272f3b6f12ba2e87ec8a9d3ebdf8454103bb
+  checksum: c79ecaea36c872ee4a79e3db0d3d4160b593f2ca16e031d8283735acd01715a203607e9ded3f91f68899c2937fa0d49390cddbe0fb2852629212f3cda283f4a7
   languageName: node
   linkType: hard
 
 "resolve@patch:resolve@^2.0.0-next.3#~builtin<compat/resolve>":
   version: 2.0.0-next.3
-  resolution: "resolve@patch:resolve@npm%3A2.0.0-next.3#~builtin<compat/resolve>::version=2.0.0-next.3&hash=00b1ff"
+  resolution: "resolve@patch:resolve@npm%3A2.0.0-next.3#~builtin<compat/resolve>::version=2.0.0-next.3&hash=c3c19d"
   dependencies:
     is-core-module: ^2.2.0
     path-parse: ^1.0.6
-  checksum: eb88c5e53843bc022215744307a5f5664446c0fdb8f43c33456dce98d5ee6b3162d0cd0a177bb6f1c3d5c8bf01391ac7ab2de0e936e35318725fb40ba7efdaf6
+  checksum: 21684b4d99a4877337cdbd5484311c811b3e8910edb5d868eec85c6e6550b0f570d911f9a384f9e176172d6713f2715bd0b0887fa512cb8c6aeece018de6a9f8
   languageName: node
   linkType: hard
 
@@ -12126,21 +12124,21 @@ typescript@4.7.2:
 
 "typescript@patch:typescript@4.3.4#~builtin<compat/typescript>":
   version: 4.3.4
-  resolution: "typescript@patch:typescript@npm%3A4.3.4#~builtin<compat/typescript>::version=4.3.4&hash=32657b"
+  resolution: "typescript@patch:typescript@npm%3A4.3.4#~builtin<compat/typescript>::version=4.3.4&hash=dba6d9"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 6013dd3cb5e67d17e7813361e0ef6f856cf4a0c54b5f4cbc13c3fa9dc5fcfce4b53e8f5db1cb513ecfc655583e8c3321116149a0865bf07bd0f1906fef59f6a3
+  checksum: 6ccc2e1148e172da119ea4b72c66395a0c18a53884d21fb82bb4503a948a7169e9961defe24a359040a3d77bf5ff338945804296e0e27c87b5bd22ea1d25781b
   languageName: node
   linkType: hard
 
 "typescript@patch:typescript@4.7.2#~builtin<compat/typescript>":
   version: 4.7.2
-  resolution: "typescript@patch:typescript@npm%3A4.7.2#~builtin<compat/typescript>::version=4.7.2&hash=32657b"
+  resolution: "typescript@patch:typescript@npm%3A4.7.2#~builtin<compat/typescript>::version=4.7.2&hash=65a307"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: aadd2fac191480ec2ce6fc9b5a7d27f3595bd4575ab037cfd25d292f75197c7135a4663c266047b2669261436dd7f43455eda5d778218baf9940043e6c02f7d9
+  checksum: 7e2b9a9f4a70fb7616f1b0d986977f8e34a74f046202fa7f24fdee79589598277810fa216b3776c20c0683a9235872c73be34fdb93f67f98c1efaca40999422f
   languageName: node
   linkType: hard
 

@@ -6,7 +6,6 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
 import { AnimatePresence } from 'framer-motion';
-import PlausibleProvider from 'next-plausible';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
@@ -33,42 +32,40 @@ const queryClient = new QueryClient({
 });
 
 const App = ({ Component, pageProps }: AppProps) => (
-	<PlausibleProvider domain="osiux.ws">
-		<QueryClientProvider client={queryClient}>
-			<CacheProvider value={cache}>
-				<DefaultSeo
-					titleTemplate="%s - Eduardo Reveles"
-					title="Home"
-					description="Personal website for Eduardo Reveles"
-					openGraph={{
-						type: 'website',
-						locale: 'en_US',
-						url: 'https://www.osiux.ws/',
-						site_name: 'Eduardo Reveles',
-					}}
-					twitter={{
-						handle: '@osiux',
-						cardType: 'summary_large_image',
-					}}
-				/>
-				<GlobalStyles />
-				<ThemeProvider attribute="class">
-					<Navigation />
-					<Container>
-						<AnimatePresence
-							exitBeforeEnter
-							initial={false}
-							onExitComplete={() => window.scrollTo(0, 0)}
-						>
-							<Component {...pageProps} />
-						</AnimatePresence>
-						<Footer />
-					</Container>
-				</ThemeProvider>
-			</CacheProvider>
-			<ReactQueryDevtools initialIsOpen={false} />
-		</QueryClientProvider>
-	</PlausibleProvider>
+	<QueryClientProvider client={queryClient}>
+		<CacheProvider value={cache}>
+			<DefaultSeo
+				titleTemplate="%s - Eduardo Reveles"
+				title="Home"
+				description="Personal website for Eduardo Reveles"
+				openGraph={{
+					type: 'website',
+					locale: 'en_US',
+					url: 'https://www.osiux.ws/',
+					site_name: 'Eduardo Reveles',
+				}}
+				twitter={{
+					handle: '@osiux',
+					cardType: 'summary_large_image',
+				}}
+			/>
+			<GlobalStyles />
+			<ThemeProvider attribute="class">
+				<Navigation />
+				<Container>
+					<AnimatePresence
+						exitBeforeEnter
+						initial={false}
+						onExitComplete={() => window.scrollTo(0, 0)}
+					>
+						<Component {...pageProps} />
+					</AnimatePresence>
+					<Footer />
+				</Container>
+			</ThemeProvider>
+		</CacheProvider>
+		<ReactQueryDevtools initialIsOpen={false} />
+	</QueryClientProvider>
 );
 
 export default App;

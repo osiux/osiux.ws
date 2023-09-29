@@ -2,7 +2,6 @@ const withPlugins = require('next-compose-plugins');
 const optimizedImages = require('next-optimized-images');
 const pwa = require('next-pwa');
 const { createContentlayerPlugin } = require('next-contentlayer');
-const { withPlausibleProxy } = require('next-plausible');
 
 const withContentlayer = createContentlayerPlugin({
 	// Additional Contentlayer config options
@@ -44,7 +43,6 @@ module.exports = withPlugins(
 			},
 		],
 		withContentlayer,
-		withPlausibleProxy(),
 	],
 	nextConfig,
 );
