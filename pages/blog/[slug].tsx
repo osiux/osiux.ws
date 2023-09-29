@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import tw, { styled } from 'twin.macro';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import { getMDXComponent } from 'next-contentlayer/hooks';
 import { NextSeo } from 'next-seo';
 import type { GetStaticProps, GetStaticPaths } from 'next';
 import { allPosts } from 'contentlayer/generated';
@@ -50,7 +50,7 @@ const getOgImageUrl = (title: string, description?: string) => {
 
 const PostPage = ({ post }: PostPage) => {
 	const formattedDate = formatDate(post.date);
-	const Component = useMDXComponent(post.body.code);
+	const PostContent = getMDXComponent(post.body.code);
 
 	return (
 		<Layout>
@@ -100,7 +100,7 @@ const PostPage = ({ post }: PostPage) => {
 				</Meta>
 
 				<Content>
-					<Component components={components} />
+					<PostContent components={components} />
 				</Content>
 			</Article>
 

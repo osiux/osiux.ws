@@ -12,9 +12,6 @@ import { remarkCodeHike } from '@code-hike/mdx';
 import ImgixClient from '@imgix/js-core';
 
 import theme from './code-hike-theme';
-import Cache from './src/utils/cache';
-
-const cache = new Cache();
 
 const unsplash = createApi({
 	accessKey: process.env.UNSPLASH_ACCESS_KEY as string,
@@ -44,29 +41,23 @@ const computedFields: ComputedFields = {
 		resolve: async (doc) => {
 			let image = null;
 			if (doc.image && !doc.image.startsWith('imgix:')) {
-				image = await cache.get(doc.image);
+				const response = (
+					await unsplash.photos.get({ photoId: doc.image })
+				)?.response;
 
-				if (!image) {
-					const response = (
-						await unsplash.photos.get({ photoId: doc.image })
-					)?.response;
-
-					image = {
-						description:
-							response?.description || response?.alt_description,
-						url: response?.urls.raw,
-						blur_hash: response?.blur_hash,
-						attributionLink: response?.links.html,
-						width: response?.width,
-						height: response?.height,
-						user: {
-							name: response?.user.name,
-							link: response?.user.links.html,
-						},
-					};
-
-					await cache.set(doc.image, image);
-				}
+				image = {
+					description:
+						response?.description || response?.alt_description,
+					url: response?.urls.raw,
+					blur_hash: response?.blur_hash,
+					attributionLink: response?.links.html,
+					width: response?.width,
+					height: response?.height,
+					user: {
+						name: response?.user.name,
+						link: response?.user.links.html,
+					},
+				};
 
 				return image;
 			}
@@ -79,30 +70,24 @@ const computedFields: ComputedFields = {
 		resolve: async (doc) => {
 			let image = null;
 			if (doc.image && doc.image.startsWith('imgix:')) {
-				image = await cache.get(doc.image);
+				const [imagePath, params] = doc.image
+					.replace('imgix:', '')
+					.split('?');
 
-				if (!image) {
-					const [imagePath, params] = doc.image
-						.replace('imgix:', '')
-						.split('?');
+				let imgParams = defaultImgixParams;
+				if (params) {
+					const searchParams = new URLSearchParams(params);
+					const tmpParams: Record<string, string> = {};
+					searchParams.forEach((v, k) => (tmpParams[k] = v));
 
-					let imgParams = defaultImgixParams;
-					if (params) {
-						const searchParams = new URLSearchParams(params);
-						const tmpParams: Record<string, string> = {};
-						searchParams.forEach((v, k) => (tmpParams[k] = v));
-
-						imgParams = { ...defaultImgixParams, ...tmpParams };
-					}
-
-					const url = imgix.buildURL(imagePath, imgParams);
-
-					image = {
-						url,
-					};
-
-					await cache.set(doc.image, image);
+					imgParams = { ...defaultImgixParams, ...tmpParams };
 				}
+
+				const url = imgix.buildURL(imagePath, imgParams);
+
+				image = {
+					url,
+				};
 
 				return image;
 			}
