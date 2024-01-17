@@ -64,7 +64,7 @@ const Uses = () => (
 			</ul>
 			<p>
 				<Link href="/about">
-					<a>← Back to About</a>
+					← Back to About
 				</Link>
 			</p>
 		</Section>

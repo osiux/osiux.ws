@@ -1,1 +1,1 @@
-/// <reference types="optimized-images-loader" />
+declare module '*.jpg';

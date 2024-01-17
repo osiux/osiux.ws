@@ -13,8 +13,6 @@ import Image from 'next/image';
 
 import Layout from '@app/components/Layout';
 
-import GetInTouch from '@images/get-in-touch.svg'
-
 const SocialNetworksList = tw.ul`list-none flex justify-center m-0 text-3xl p-0`;
 
 const SocialNetworkItem = styled.li`
@@ -91,7 +89,7 @@ const Contact = () => (
 				</SocialNetworksList>
 			</div>
 			<div tw="text-center">
-				<Image src={GetInTouch} alt="Get in touch" />
+				<Image src="/images/get-in-touch.svg" alt="Get in touch" width="300" height="300" />
 				<a tw="text-xs" href="https://storyset.com/online">Online illustrations by Storyset</a>
 			</div>
 		</Section>

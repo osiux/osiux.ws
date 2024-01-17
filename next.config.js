@@ -1,5 +1,4 @@
 const withPlugins = require('next-compose-plugins');
-const optimizedImages = require('next-optimized-images');
 const pwa = require('next-pwa');
 const { withContentlayer  } = require('next-contentlayer');
 
@@ -26,7 +25,6 @@ const nextConfig = {
 
 module.exports = withPlugins(
 	[
-		optimizedImages,
 		[
 			pwa,
 			{

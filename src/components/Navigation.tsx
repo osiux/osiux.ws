@@ -110,17 +110,17 @@ const Navigation = () => {
 					open={menuOpen}
 				>
 					<NavListItem>
-						<Link href="/blog" passHref>
+						<Link href="/blog" passHref legacyBehavior>
 							<NavLink>Blog</NavLink>
 						</Link>
 					</NavListItem>
 					<NavListItem>
-						<Link href="/about" passHref>
+						<Link href="/about" passHref legacyBehavior>
 							<NavLink>About</NavLink>
 						</Link>
 					</NavListItem>
 					<NavListItem>
-						<Link href="/contact" passHref>
+						<Link href="/contact" passHref legacyBehavior>
 							<NavLink>Contact</NavLink>
 						</Link>
 					</NavListItem>

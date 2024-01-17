@@ -1,10 +1,8 @@
 import tw from 'twin.macro';
-import Img from 'react-optimized-image';
+import Image from 'next/image';
 import { NextSeo } from 'next-seo';
 
 import Layout from '@app/components/Layout';
-
-import Salem from '@images/salem.png';
 
 const Section = tw.section`flex flex-col content-center text-center pt-3`;
 
@@ -12,11 +10,12 @@ const NotFoundPage = () => (
 	<Layout>
 		<NextSeo title="404: Not found" />
 		<Section>
-			<Img
+			<Image
 				style={{ margin: '0 auto', clipPath: 'circle(50% at 50% 50%)' }}
-				src={Salem}
-				webp
-				sizes={[300]}
+				src="/images/salem.png"
+				alt="Salem"
+				width="300"
+				height="300"
 			/>
 			<h1 tw="mt-10">NOT FOUND</h1>
 			<p>You just hit a route that doesn&#39;t exist... the sadness.</p>

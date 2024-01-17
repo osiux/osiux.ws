@@ -1,14 +1,11 @@
 import React from 'react';
 import tw, { styled } from 'twin.macro';
 import Link from 'next/link';
-import Img from 'react-optimized-image';
+import Image from 'next/image';
 // @ts-ignore
 import ReactHintFactory from 'react-hint';
 import { NextSeo } from 'next-seo';
 
-import Me from '@images/eduardo-reveles.jpg';
-import Amelia from '@images/amelia.jpg';
-import Cats from '@images/cats.jpg';
 import Layout from '@app/components/Layout';
 
 const UnderlineSpan = tw.span`cursor-pointer border-b-2 border-dotted border-gray-900 transition-colors duration-300 ease-linear dark:border-gray-100`;
@@ -35,18 +32,20 @@ const onRenderContent = (target: any) => {
 	return (
 		<HintContainer className="react-hint__image">
 			{rhImage === 'cats' ? (
-				<Img
-					src={Cats}
+				<Image
+					src="/images/cats.jpg"
+					alt="Cats"
 					tw="rounded-tl-3xl rounded-tr-3xl"
-					webp
-					sizes={[300]}
+					width="300"
+					height="300"
 				/>
 			) : (
-				<Img
-					src={Amelia}
+				<Image
+					src="/images/amelia.jpg"
+					alt="Amelia"
 					tw="rounded-tl-3xl rounded-tr-3xl"
-					webp
-					sizes={[300]}
+					width="300"
+					height="300"
 				/>
 			)}
 			<ImageCaption>
@@ -67,7 +66,7 @@ const About = () => (
 			onRenderContent={onRenderContent}
 		/>
 		<Section>
-			<Img css={tw`mx-auto`} src={Me} webp sizes={[500]} />
+			<Image css={tw`mx-auto`} src="/images/eduardo-reveles.jpg" alt="Eduardo Reveles" width="300" height="300" />
 			<PhotoCredit>
 				Photo by{' '}
 				<a href="https://unsplash.com/@melspadawan?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
@@ -102,7 +101,7 @@ const About = () => (
 				invested in the Javascript ecosystem.
 			</p>
 			<p>
-				<Link href="/about/uses">
+				<Link href="/about/uses" legacyBehavior>
 					<a tw="underline">My Uses page.</a>
 				</Link>
 			</p>

@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Flickr, YouTube } from 'mdx-embed';
+// @ts-ignore
+import Flickr from 'mdx-embed/dist/components/flickr';
+// @ts-ignore
+import YouTube from 'mdx-embed/dist/components/youtube';
 import type { MDXComponents } from 'mdx/types'
 
 // https://github.com/leerob/leerob.io/blob/4207a37f0bb82cdbc17fcc778112ccb30bc0aaf2/components/MDXComponents.tsx#L13-L26
@@ -21,7 +24,7 @@ const CustomLink = (props) => {
 	return <a target="_blank" rel="noopener noreferrer" {...props} />;
 };
 
-const MDXComponents: MDXComponents = {
+const Components: MDXComponents = {
 	/* eslint-disable-next-line jsx-a11y/alt-text */
 	Image: props => <Image {...props} />,
 	a: CustomLink,
@@ -29,4 +32,4 @@ const MDXComponents: MDXComponents = {
 	YouTube: props => <YouTube {...props} />,
 };
 
-export default MDXComponents;
+export default Components;
