@@ -1,7 +1,6 @@
-import compareDesc from 'date-fns/compareDesc';
-import format from 'date-fns/format';
-import parseISO from 'date-fns/parseISO';
-import type { Post } from 'contentlayer/generated'
+import { compareDesc, format, parseISO } from 'date-fns';
+
+import { Post } from '@app/utils/blog';
 
 export const formatDate = (date: string, dateFormat = 'MMM d, yyyy') =>
 	format(parseISO(date), dateFormat);

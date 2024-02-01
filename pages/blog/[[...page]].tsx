@@ -1,15 +1,16 @@
 import type { GetStaticProps, GetStaticPaths } from 'next';
 import { NextSeo } from 'next-seo';
-import { allPosts } from 'contentlayer/generated';
-import type { Post } from 'contentlayer/generated';
 
 import SimplePost from '@app/components/posts/SimplePost';
 import Pagination from '@app/components/Pagination';
 import Layout from '@app/components/Layout';
 
 import { comparePostDates } from '@app/utils/dates';
+import { Post, getBlogPosts } from '@app/utils/blog';
 
 export const POSTS_PER_PAGE = 10;
+
+const allPosts = getBlogPosts();
 
 export type ArchivePageProps = {
 	posts: Post[];

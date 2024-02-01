@@ -1,12 +1,10 @@
 import { Fragment } from 'react';
 import tw, { styled } from 'twin.macro';
-import { getMDXComponent } from 'next-contentlayer/hooks';
 import { NextSeo } from 'next-seo';
 import type { GetStaticProps, GetStaticPaths } from 'next';
-import { allPosts } from 'contentlayer/generated';
-import type { Post } from 'contentlayer/generated';
 
 import { formatDate } from '@app/utils/dates';
+import { getBlogPosts, Post } from '@app/utils/blog';
 import TagList from '@app/components/TagList';
 import Layout from '@app/components/Layout';
 import components from '@app/components/MDXComponents';

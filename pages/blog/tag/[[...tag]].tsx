@@ -2,13 +2,13 @@ import tw from 'twin.macro';
 import type { GetStaticProps, GetStaticPaths } from 'next';
 import { NextSeo } from 'next-seo';
 import slugify from 'slugify';
-import { allPosts } from 'contentlayer/generated';
 
 import SimplePost from '@app/components/posts/SimplePost';
 import Pagination from '@app/components/Pagination';
 import Layout from '@app/components/Layout';
 
 import { comparePostDates } from '@app/utils/dates';
+import { Post, getBlogPosts } from '@app/utils/blog';
 
 import { POSTS_PER_PAGE, ArchivePageProps } from '../[[...page]]';
 

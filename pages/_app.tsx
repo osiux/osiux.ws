@@ -54,7 +54,7 @@ const App = ({ Component, pageProps }: AppProps) => (
 				<Navigation />
 				<Container>
 					<AnimatePresence
-						mode='wait'
+						mode="wait"
 						initial={false}
 						onExitComplete={() => window.scrollTo(0, 0)}
 					>

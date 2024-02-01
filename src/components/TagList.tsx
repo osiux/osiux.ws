@@ -32,7 +32,7 @@ const TagList = ({ tags }: { tags: string[] }) => {
 
 				return (
 					<TagItem key={tag} tag={tagSlug}>
-						<Link href={`/blog/tag/${tag}`} passHref>
+						<Link href={`/blog/tag/${tag}`}>
 							{tag}
 						</Link>
 					</TagItem>

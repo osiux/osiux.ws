@@ -15,7 +15,6 @@ const NotFoundPage = () => (
 				src="/images/salem.png"
 				alt="Salem"
 				width="300"
-				height="300"
 			/>
 			<h1 tw="mt-10">NOT FOUND</h1>
 			<p>You just hit a route that doesn&#39;t exist... the sadness.</p>

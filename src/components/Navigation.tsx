@@ -15,7 +15,7 @@ import { motion } from 'framer-motion';
 
 const Header = tw.header`w-full font-heading bg-gray-50 transition-colors duration-300 dark:bg-gray-800`;
 const Nav = tw.nav`max-w-3xl mx-auto w-full  flex items-center flex-wrap md:(max-w-4xl flex-nowrap) mt-8 mb-8 md:mt-8`;
-const BrandLink = tw.a`font-bold text-gray-800 text-3xl flex-1 transition-colors duration-300 dark:text-gray-100 ml-2 md:ml-0`;
+const BrandLink = tw(Link)`font-bold text-gray-800 text-3xl flex-1 transition-colors duration-300 dark:text-gray-100 ml-2 md:ml-0`;
 
 const ToggleMenuButton = tw.button`inline-flex p-3 rounded md:hidden ml-auto outline-none focus:outline-none`;
 const DarkModeButton = tw.button`bg-transparent inline-flex p-3 ml-auto outline-none focus:outline-none md:order-3`;
@@ -31,7 +31,7 @@ const NavList = styled(motion.ul)(({ open }: NavListProps) => [
     }`,
 ]);
 const NavListItem = tw.li`ml-2 my-3 md:my-0`;
-const NavLink = tw.a`px-4 py-2 rounded-lg transition-colors duration-300 text-gray-800 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-500`;
+const NavLink = tw(Link)`px-4 py-2 rounded-lg transition-colors duration-300 text-gray-800 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-500`;
 
 const Form = tw.form`relative mx-auto text-gray-600`;
 
@@ -79,9 +79,9 @@ const Navigation = () => {
 	return (
 		<Header>
 			<Nav>
-				<Link href="/" passHref>
-					<BrandLink>Eduardo Reveles</BrandLink>
-				</Link>
+				<BrandLink href="/">
+					Eduardo Reveles
+				</BrandLink>
 				<DarkModeButton
 					role="button"
 					aria-label="Toggle Dark Mode"
@@ -110,19 +110,19 @@ const Navigation = () => {
 					open={menuOpen}
 				>
 					<NavListItem>
-						<Link href="/blog" passHref legacyBehavior>
-							<NavLink>Blog</NavLink>
-						</Link>
+						<NavLink href="/blog" passHref legacyBehavior>
+							Blog
+						</NavLink>
 					</NavListItem>
 					<NavListItem>
-						<Link href="/about" passHref legacyBehavior>
-							<NavLink>About</NavLink>
-						</Link>
+						<NavLink href="/about" passHref legacyBehavior>
+							About
+						</NavLink>
 					</NavListItem>
 					<NavListItem>
-						<Link href="/contact" passHref legacyBehavior>
-							<NavLink>Contact</NavLink>
-						</Link>
+						<NavLink href="/contact" passHref legacyBehavior>
+							Contact
+						</NavLink>
 					</NavListItem>
 					<NavListItem tw="hidden">
 						<Form onSubmit={searchSubmit}>

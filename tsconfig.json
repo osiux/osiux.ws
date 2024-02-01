@@ -17,10 +17,9 @@
 		"paths": {
 			"@app/*": ["src/*"],
 			"@images/*": ["images/*"],
-			"contentlayer/generated": ["./.contentlayer/generated"]
 		},
 		"jsxImportSource": "@emotion/react",
-		"incremental": true
+		"incremental": true,
 	},
 	"include": [
 		"next-env.d.ts",
@@ -28,7 +27,7 @@
 		"twin.d.ts",
 		"**/*.ts",
 		"**/*.tsx",
-		".contentlayer/generated"
+		"withTwin.mjs",
 	],
-	"exclude": ["node_modules"]
+	"exclude": ["node_modules"],
 }

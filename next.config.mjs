@@ -1,6 +1,7 @@
-const withPlugins = require('next-compose-plugins');
-const pwa = require('next-pwa');
-const { withContentlayer  } = require('next-contentlayer');
+import withPlugins from 'next-compose-plugins';
+import pwa from 'next-pwa';
+
+import withTwin from './withTwin.mjs';
 
 /**
  * @type {import('next').NextConfig}
@@ -11,19 +12,19 @@ const nextConfig = {
 		disableStaticImages: true,
 	},
 	webpack: (config, { isServer }) => {
-		if (!isServer) {
-			config.resolve.fallback = {
-				fs: false,
-				module: false,
-				process: require.resolve('process/browser'),
-			};
-		}
+		// if (!isServer) {
+		// 	config.resolve.fallback = {
+		// 		fs: false,
+		// 		module: false,
+		// 		process: process,
+		// 	};
+		// }
 		return config;
 	},
 	experimental: { esmExternals: true },
 };
 
-module.exports = withPlugins(
+export default withPlugins(
 	[
 		[
 			pwa,
@@ -36,7 +37,7 @@ module.exports = withPlugins(
 				},
 			},
 		],
-		withContentlayer,
+		withTwin,
 	],
 	nextConfig,
 );

@@ -37,7 +37,6 @@ const onRenderContent = (target: any) => {
 					alt="Cats"
 					tw="rounded-tl-3xl rounded-tr-3xl"
 					width="300"
-					height="300"
 				/>
 			) : (
 				<Image
@@ -45,7 +44,6 @@ const onRenderContent = (target: any) => {
 					alt="Amelia"
 					tw="rounded-tl-3xl rounded-tr-3xl"
 					width="300"
-					height="300"
 				/>
 			)}
 			<ImageCaption>
@@ -66,7 +64,7 @@ const About = () => (
 			onRenderContent={onRenderContent}
 		/>
 		<Section>
-			<Image css={tw`mx-auto`} src="/images/eduardo-reveles.jpg" alt="Eduardo Reveles" width="300" height="300" />
+			<Image css={tw`mx-auto`} src="/images/eduardo-reveles.jpg" alt="Eduardo Reveles" width="300" />
 			<PhotoCredit>
 				Photo by{' '}
 				<a href="https://unsplash.com/@melspadawan?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
@@ -101,8 +99,8 @@ const About = () => (
 				invested in the Javascript ecosystem.
 			</p>
 			<p>
-				<Link href="/about/uses" legacyBehavior>
-					<a tw="underline">My Uses page.</a>
+				<Link tw="underline" href="/about/uses">
+					My Uses page.
 				</Link>
 			</p>
 		</Section>

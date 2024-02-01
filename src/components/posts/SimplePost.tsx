@@ -2,9 +2,9 @@ import tw, { styled } from 'twin.macro';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BlurhashCanvas } from 'react-blurhash';
-import type { Post } from 'contentlayer/generated';
 
 import { formatDate } from '@app/utils/dates';
+import { Post } from '@app/utils/blog';
 import TagList from '@app/components/TagList';
 
 const Article = tw.article`mb-16 flex flex-wrap w-full md:flex-nowrap`;
@@ -17,7 +17,9 @@ const ImageCaption = styled.div`
 `;
 const Meta = tw.p`transition-colors duration-100 text-gray-600 text-sm mb-2 mt-2 md:mt-0 dark:text-gray-300`;
 const Title = tw.h2`text-2xl font-bold mb-2 font-heading`;
-const ArticleLink = tw.a`transition-colors duration-300 text-gray-900 dark:text-gray-100 hover:underline`;
+const ArticleLink = tw(
+	Link,
+)`transition-colors duration-300 text-gray-900 dark:text-gray-100 hover:underline`;
 const Excerpt = tw.p`leading-relaxed mt-2 prose max-w-full!`;
 
 type PostMeta = Pick<
@@ -26,8 +28,7 @@ type PostMeta = Pick<
 	| 'slug'
 	| 'date'
 	| 'tags'
-	| 'unsplash'
-	| 'imgix'
+	| 'image'
 	| 'excerpt'
 	| 'readingTime'
 >;
@@ -100,9 +101,9 @@ const SimplePost = ({
 					{readingTime?.text}
 				</Meta>
 				<Title>
-					<Link href={`/blog/${slug}`} passHref>
-						<ArticleLink>{title}</ArticleLink>
-					</Link>
+					<ArticleLink href={`/blog/${slug}`} passHref>
+						{title}
+					</ArticleLink>
 				</Title>
 				{excerpt && <Excerpt>{excerpt}</Excerpt>}
 				<TagList tags={tags} />

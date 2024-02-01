@@ -30,7 +30,7 @@ const Item = styled.li`
 	}
 `;
 
-const ItemLink = styled.a`
+const ItemLink = styled(Link)`
 	${tw`no-underline! text-center inline-block border border-solid p-1 w-8 text-sm hover:bg-gray-300`}
 
 	&.current {
@@ -77,17 +77,14 @@ const Pagination = ({
 							fixedWidth
 						/>
 					) : (
-						<Link href={nextPath} as={basePath} passHref>
-							<ItemLink
-								title="First Page"
-								className={currentPage === 1 ? 'disabled' : ''}
-							>
-								<FontAwesomeIcon
-									icon={faStepBackward}
-									fixedWidth
-								/>
-							</ItemLink>
-						</Link>
+						<ItemLink
+							href={nextPath}
+							as={basePath}
+							title="First Page"
+							className={currentPage === 1 ? 'disabled' : ''}
+						>
+							<FontAwesomeIcon icon={faStepBackward} fixedWidth />
+						</ItemLink>
 					)}
 				</Item>
 				<Item>
@@ -98,17 +95,14 @@ const Pagination = ({
 							fixedWidth
 						/>
 					) : (
-						<Link href={nextPath} as={prevLink} passHref>
-							<ItemLink
-								title="Previous Page"
-								className={currentPage === 1 ? 'disabled' : ''}
-							>
-								<FontAwesomeIcon
-									icon={faChevronLeft}
-									fixedWidth
-								/>
-							</ItemLink>
-						</Link>
+						<ItemLink
+							href={nextPath}
+							as={prevLink}
+							title="Previous Page"
+							className={currentPage === 1 ? 'disabled' : ''}
+						>
+							<FontAwesomeIcon icon={faChevronLeft} fixedWidth />
+						</ItemLink>
 					)}
 				</Item>
 				{[...Array(totalPages)].map((_val, page) => {
@@ -119,18 +113,16 @@ const Pagination = ({
 
 					return (
 						<Item key={page} className="number">
-							<Link href={nextPath} as={pageLink} passHref>
-								<ItemLink
-									title={`Go to Page ${page + 1}`}
-									className={
-										currentPage === page + 1
-											? 'current'
-											: ''
-									}
-								>
-									{page + 1}
-								</ItemLink>
-							</Link>
+							<ItemLink
+								href={nextPath}
+								as={pageLink}
+								title={`Go to Page ${page + 1}`}
+								className={
+									currentPage === page + 1 ? 'current' : ''
+								}
+							>
+								{page + 1}
+							</ItemLink>
 						</Item>
 					);
 				})}
@@ -142,19 +134,16 @@ const Pagination = ({
 							fixedWidth
 						/>
 					) : (
-						<Link href={nextPath} as={nextLink} passHref>
-							<ItemLink
-								title="Next Page"
-								className={
-									currentPage === totalPages ? 'disabled' : ''
-								}
-							>
-								<FontAwesomeIcon
-									icon={faChevronRight}
-									fixedWidth
-								/>
-							</ItemLink>
-						</Link>
+						<ItemLink
+							href={nextPath}
+							as={nextLink}
+							title="Next Page"
+							className={
+								currentPage === totalPages ? 'disabled' : ''
+							}
+						>
+							<FontAwesomeIcon icon={faChevronRight} fixedWidth />
+						</ItemLink>
 					)}
 				</Item>
 				<Item>
@@ -165,23 +154,16 @@ const Pagination = ({
 							fixedWidth
 						/>
 					) : (
-						<Link
+						<ItemLink
 							href={nextPath}
 							as={`${basePath}${prefix}${totalPages}`}
-							passHref
+							title="Last Page"
+							className={
+								currentPage === totalPages ? 'disabled' : ''
+							}
 						>
-							<ItemLink
-								title="Last Page"
-								className={
-									currentPage === totalPages ? 'disabled' : ''
-								}
-							>
-								<FontAwesomeIcon
-									icon={faStepForward}
-									fixedWidth
-								/>
-							</ItemLink>
-						</Link>
+							<FontAwesomeIcon icon={faStepForward} fixedWidth />
+						</ItemLink>
 					)}
 				</Item>
 			</Paginator>
