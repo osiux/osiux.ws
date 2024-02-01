@@ -12,7 +12,6 @@
         "prepare": "husky install"
     },
     "dependencies": {
-        "@code-hike/mdx": "next",
         "@emotion/babel-preset-css-prop": "11.11.0",
         "@emotion/css": "11.11.2",
         "@emotion/react": "11.11.1",
@@ -31,7 +30,7 @@
         "@vercel/node": "3.0.6",
         "blurhash": "2.0.5",
         "cache-manager-fs-hash": "^1.0.0",
-        "date-fns": "^3.2.0",
+        "date-fns": "^3.3.1",
         "form-data": "4.0.0",
         "framer-motion": "^10.18.0",
         "fs-extra": "^11.2.0",
@@ -43,6 +42,7 @@
         "mdx-embed": "^1.1.2",
         "next": "latest",
         "next-compose-plugins": "2.2.1",
+        "next-mdx-remote": "^4.4.1",
         "next-pwa": "5.6.0",
         "next-remote-watch": "2.0.0",
         "next-seo": "6.1.0",
@@ -51,7 +51,6 @@
         "node-abort-controller": "3.1.1",
         "process": "0.11.10",
         "react": "latest",
-        "react-blurhash": "0.3.0",
         "react-dom": "latest",
         "react-hint": "3.2.1",
         "react-intersection-observer": "9.5.2",

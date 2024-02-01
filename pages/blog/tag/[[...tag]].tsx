@@ -8,7 +8,7 @@ import Pagination from '@app/components/Pagination';
 import Layout from '@app/components/Layout';
 
 import { comparePostDates } from '@app/utils/dates';
-import { Post, getBlogPosts } from '@app/utils/blog';
+import { getBlogPosts } from '@app/utils/blog';
 
 import { POSTS_PER_PAGE, ArchivePageProps } from '../[[...page]]';
 
@@ -43,6 +43,8 @@ const TagPage = ({ posts, tag, totalPages, currentPage }: TagPageProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+	const allPosts = await getBlogPosts();
+
 	const [, page] = params?.tag?.[1]?.split('-') ?? [, 1];
 	const tag = params?.tag?.[0];
 
@@ -68,6 +70,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+	const allPosts = await getBlogPosts();
+
 	const tags = allPosts.reduce<{ [key: string]: number }>((acc, item) => {
 		item.tags?.forEach((tag) => {
 			if (acc[tag]) {

@@ -28,9 +28,7 @@ Once the installation is complete, a `contentlayer.config.ts` file needs to be c
 
 In my case I only have one type of content, blog posts coming from MDX files.
 
-<CH.Section>
-
-Use `defineDocumentType` for each type of content type you want Contentlayer to manage. Using the [fields](focus://7:13) property we map [frontmatter](https://mdxjs.com/guides/frontmatter/) fields from the document to object properties you can freely use (and to typescript types!).
+Use `defineDocumentType` for each type of content type you want Contentlayer to manage. Using the `fields` property we map [frontmatter](https://mdxjs.com/guides/frontmatter/) fields from the document to object properties you can freely use (and to typescript types!).
 
 ```js contentlayer.config.ts
 import { defineDocumentType } from 'contentlayer/source-files';
@@ -50,13 +48,9 @@ const Post = defineDocumentType(() => ({
 }));
 ```
 
-You see that [computedFields](focus://14) property? 
+You see that `computedFields` property? 
 
-</CH.Section>
-
-<CH.Section>
-
-This are some kind of virtual fields that can go through and extra process, for example to [get the slug](focus://5:8) from the file name, or to get some extra metadata like [reading time](focus://2,9).
+This are some kind of virtual fields that can go through and extra process, for example to **get the slug** from the file name, or to get some extra metadata like **reading time**.
 
 ```ts contentlayer.config.ts
 import type { ComputedFields } from 'contentlayer/source-files';
@@ -71,11 +65,7 @@ const computedFields: ComputedFields = {
 };
 ```
 
-</CH.Section>
-
-<CH.Section>
-
-Finally we complete the configuration using `makeSource`. We need to [add the content types](focus://9) defined above and we have the option to set [extra configuration for MDX files, like using remark and rehype plugins](focus://2:4,10:16).
+Finally we complete the configuration using `makeSource`. We need to **add the content types** defined above and we have the option to set **extra configuration for MDX files, like using remark and rehype plugins**.
 
 ```js contentlayer.config.ts
 import { makeSource } from 'contentlayer/source-files';
@@ -100,11 +90,9 @@ const contentLayerConfig = makeSource(async () => {
 export default contentLayerConfig;
 ```
 
-</CH.Section>
-
 With this we are almost done with the configuration, but since we are using NextJS we can hook up to its build process to autogenerate the content and enable live-reload. To do this we need to add some changes on `next.config.js`. In my case I'm using [next-compose-plugins](https://github.com/cyrilwanner/next-compose-plugins) so it looks like this:
 
-```js next.config.js focus=2,4:6,12
+```js next.config.js
 const withPlugins = require('next-compose-plugins');
 const { createContentlayerPlugin } = require('next-contentlayer');
 
@@ -128,7 +116,7 @@ With everything in place, running `yarn dev` (or `yarn build` for production) wi
 
 For my content I defined a content type called `Post`, so for example to look for the single post when a slug is accessed:
 
-```js pages/[slug].tsx focus=1,4:6
+```js pages/[slug].tsx
 import { allPosts } from 'contentlayer/generated';
 
 export const getStaticProps = async ({ params }) => {
@@ -146,7 +134,7 @@ export const getStaticProps = async ({ params }) => {
 
 And since I'm using MDX we need the `useMDXComponent` hook to render the content:
 
-```js pages/[slug].tsx focus=1,5,9
+```js pages/[slug].tsx
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import type { Post } from 'contentlayer/generated'; // Typescript type too!
 

@@ -1,14 +1,20 @@
+import withTwin from './withTwin.mjs';
 import withPlugins from 'next-compose-plugins';
 import pwa from 'next-pwa';
-
-import withTwin from './withTwin.mjs';
 
 /**
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
 	images: {
-		domains: ['osiux.ws', 'www.osiux.ws', 'images.unsplash.com'],
+		remotePatterns: [
+			{
+				hostname: 'images.unsplash.com',
+			},
+			{
+				hostname: '*.osiux.ws',
+			}
+		],
 		disableStaticImages: true,
 	},
 	webpack: (config, { isServer }) => {

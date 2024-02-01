@@ -13,10 +13,6 @@ type HomeProps = {
 	posts: Post[];
 };
 
-const posts = getBlogPosts();
-
-console.log(posts);
-
 const Home = ({ posts }: HomeProps) => (
 	<Layout>
 		<NextSeo title="Home" />
@@ -27,6 +23,7 @@ const Home = ({ posts }: HomeProps) => (
 );
 
 export const getStaticProps: GetStaticProps = async () => {
+	const posts = await getBlogPosts();
 	const sortedPosts = posts.sort(comparePostDates);
 
 	return {

@@ -1,11 +1,9 @@
-import tw, { styled } from 'twin.macro';
-import Link from 'next/link';
-import Image from 'next/image';
-import { BlurhashCanvas } from 'react-blurhash';
-
-import { formatDate } from '@app/utils/dates';
-import { Post } from '@app/utils/blog';
 import TagList from '@app/components/TagList';
+import { Post } from '@app/utils/blog';
+import { formatDate } from '@app/utils/dates';
+import Image from 'next/image';
+import Link from 'next/link';
+import tw, { styled } from 'twin.macro';
 
 const Article = tw.article`mb-16 flex flex-wrap w-full md:flex-nowrap`;
 const ImageCaption = styled.div`
@@ -28,9 +26,10 @@ type PostMeta = Pick<
 	| 'slug'
 	| 'date'
 	| 'tags'
-	| 'image'
 	| 'excerpt'
 	| 'readingTime'
+	| 'unsplash'
+	| 'imgix'
 >;
 
 const SimplePost = ({
@@ -49,23 +48,17 @@ const SimplePost = ({
 		<Article>
 			{unsplash && (
 				<div tw="mr-3">
-					<Link href={`/blog/${slug}`} passHref>
-						<a tw="relative block overflow-hidden">
-							<BlurhashCanvas
-								hash={unsplash.blur_hash}
-								width={500}
-								height={350}
-								punch={1}
-								tw="w-full md:max-w-full rounded-md absolute top-0 left-0"
-							/>
-							<Image
-								tw="w-full md:max-w-full rounded-md"
-								width={500}
-								height={350}
-								src={`${unsplash.url}&w=500&h=350&fit=clamp`}
-								alt={`${unsplash.description} by ${unsplash.user.name} @ unsplash`}
-							/>
-						</a>
+					<Link
+						tw="relative block overflow-hidden"
+						href={`/blog/${slug}`}
+					>
+						<Image
+							tw="w-full md:max-w-full rounded-md"
+							width={500}
+							height={350}
+							src={`${unsplash.url}&w=500&h=350&fit=clamp`}
+							alt={`${unsplash.description} by ${unsplash.user.name} @ unsplash`}
+						/>
 					</Link>
 					<ImageCaption>
 						Photo by{' '}
@@ -83,15 +76,16 @@ const SimplePost = ({
 			)}
 			{imgix && (
 				<div tw="mr-3">
-					<Link href={`/blog/${slug}`} passHref>
-						<a tw="relative block overflow-hidden">
-							<img
-								src={imgix.url}
-								alt={title}
-								width={500}
-								height={350}
-							/>
-						</a>
+					<Link
+						tw="relative block overflow-hidden"
+						href={`/blog/${slug}`}
+					>
+						<img
+							src={imgix.url}
+							alt={title}
+							width={500}
+							height={350}
+						/>
 					</Link>
 				</div>
 			)}
@@ -101,7 +95,7 @@ const SimplePost = ({
 					{readingTime?.text}
 				</Meta>
 				<Title>
-					<ArticleLink href={`/blog/${slug}`} passHref>
+					<ArticleLink href={`/blog/${slug}`}>
 						{title}
 					</ArticleLink>
 				</Title>

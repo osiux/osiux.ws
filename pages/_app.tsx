@@ -14,7 +14,7 @@ import 'react-hint/css/index.css';
 import '@fontsource/roboto';
 import '@fontsource/open-sans';
 import '@fontsource/open-sans/700.css';
-import '@code-hike/mdx/dist/index.css';
+import 'highlight.js/styles/stackoverflow-dark.css';
 
 config.autoAddCss = false;
 

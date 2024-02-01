@@ -1,14 +1,16 @@
-import { Fragment } from 'react';
-import tw, { styled } from 'twin.macro';
-import { NextSeo } from 'next-seo';
-import type { GetStaticProps, GetStaticPaths } from 'next';
-
-import { formatDate } from '@app/utils/dates';
-import { getBlogPosts, Post } from '@app/utils/blog';
-import TagList from '@app/components/TagList';
 import Layout from '@app/components/Layout';
 import components from '@app/components/MDXComponents';
+import TagList from '@app/components/TagList';
 import Webmentions from '@app/components/Webmentions';
+import { Post, getBlogPosts } from '@app/utils/blog';
+import { formatDate } from '@app/utils/dates';
+import hljs from 'highlight.js';
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import { MDXRemote } from 'next-mdx-remote';
+import { NextSeo } from 'next-seo';
+import { useEffect } from 'react';
+import { Fragment } from 'react';
+import tw, { styled } from 'twin.macro';
 
 const Title = tw.h1`break-words font-heading font-bold text-3xl mb-5 md:(text-5xl mb-10) text-gray-800`;
 const Meta = tw.p`mb-10 flex flex-col transition-colors duration-300 md:flex-row md:items-center`;
@@ -48,7 +50,10 @@ const getOgImageUrl = (title: string, description?: string) => {
 
 const PostPage = ({ post }: PostPage) => {
 	const formattedDate = formatDate(post.date);
-	const PostContent = getMDXComponent(post.body.code);
+
+	useEffect(() => {
+		hljs.initHighlighting();
+	}, [])
 
 	return (
 		<Layout>
@@ -98,7 +103,7 @@ const PostPage = ({ post }: PostPage) => {
 				</Meta>
 
 				<Content>
-					<PostContent components={components} />
+					<MDXRemote {...post.content} components={components} />
 				</Content>
 			</Article>
 
@@ -108,9 +113,17 @@ const PostPage = ({ post }: PostPage) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+	const allPosts = await getBlogPosts();
+
 	const post = allPosts.find(
 		(post) => post.slug === (params?.slug as string),
 	);
+
+	if (!post) {
+		return {
+			notFound: true,
+		};
+	}
 
 	return {
 		props: {
@@ -120,6 +133,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+	const allPosts = await getBlogPosts();
+
 	return {
 		paths: allPosts.map((post) => ({ params: { slug: post.slug } })),
 		fallback: false,

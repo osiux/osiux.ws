@@ -1,12 +1,11 @@
-import React from 'react';
-import tw, { styled } from 'twin.macro';
-import Link from 'next/link';
+import Layout from '@app/components/Layout';
+import { NextSeo } from 'next-seo';
 import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 // @ts-ignore
 import ReactHintFactory from 'react-hint';
-import { NextSeo } from 'next-seo';
-
-import Layout from '@app/components/Layout';
+import tw, { styled } from 'twin.macro';
 
 const UnderlineSpan = tw.span`cursor-pointer border-b-2 border-dotted border-gray-900 transition-colors duration-300 ease-linear dark:border-gray-100`;
 const Section = styled.section`
@@ -37,6 +36,7 @@ const onRenderContent = (target: any) => {
 					alt="Cats"
 					tw="rounded-tl-3xl rounded-tr-3xl"
 					width="300"
+					height="300"
 				/>
 			) : (
 				<Image
@@ -44,6 +44,7 @@ const onRenderContent = (target: any) => {
 					alt="Amelia"
 					tw="rounded-tl-3xl rounded-tr-3xl"
 					width="300"
+					height="300"
 				/>
 			)}
 			<ImageCaption>
@@ -64,7 +65,13 @@ const About = () => (
 			onRenderContent={onRenderContent}
 		/>
 		<Section>
-			<Image css={tw`mx-auto`} src="/images/eduardo-reveles.jpg" alt="Eduardo Reveles" width="300" />
+			<Image
+				css={tw`mx-auto`}
+				src="/images/eduardo-reveles.jpg"
+				alt="Eduardo Reveles"
+				width="300"
+				height="300"
+			/>
 			<PhotoCredit>
 				Photo by{' '}
 				<a href="https://unsplash.com/@melspadawan?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
@@ -80,9 +87,9 @@ const About = () => (
 				<UnderlineSpan data-rh="Laravel, NodeJs, React">
 					Full Stack Developer
 				</UnderlineSpan>{' '}
-				living in Mexico, currently working as Senior Application
+				living in Mexico, currently working as Senior Software
 				Engineer at{' '}
-				<a href="https://sironamedical.com/">Sirona Medical</a>.
+				<a href="https://www.accruesavings.com/">Accrue Savings</a>.
 			</p>
 			<p>
 				Proudly married to a great{' '}
@@ -90,7 +97,7 @@ const About = () => (
 					photographer & developer
 				</a>
 				, we have{' '}
-				<UnderlineSpan data-rh-image="cats">3 cats</UnderlineSpan> and{' '}
+				<UnderlineSpan data-rh-image="cats">4 cats</UnderlineSpan> and{' '}
 				<UnderlineSpan data-rh-image="dog">a dog</UnderlineSpan>
 			</p>
 			<p>

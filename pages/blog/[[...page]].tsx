@@ -10,8 +10,6 @@ import { Post, getBlogPosts } from '@app/utils/blog';
 
 export const POSTS_PER_PAGE = 10;
 
-const allPosts = getBlogPosts();
-
 export type ArchivePageProps = {
 	posts: Post[];
 	totalPages: number;
@@ -32,6 +30,7 @@ const ArchivePage = ({ posts, totalPages, currentPage }: ArchivePageProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+	const allPosts = await getBlogPosts();
 	const [, page] = params?.page?.[0]?.split('-') ?? [, 1];
 
 	const sortedPosts = allPosts.sort(comparePostDates);
@@ -49,6 +48,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+	const allPosts = await getBlogPosts();
 	const paths = Array.from(
 		{ length: Math.ceil(allPosts.length / POSTS_PER_PAGE) },
 		(_, i) => ({
