@@ -1,0 +1,15 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+	flickrLink: string;
+}
+
+const { flickrLink } = Astro.props;
+---
+
+<Image
+	src={`https://live.staticflickr.com/${flickrLink}`}
+	alt={flickrLink}
+	inferSize
+/>

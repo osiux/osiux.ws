@@ -1,0 +1,20 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<footer class="pb-10">
+	<p class="text-center text-sm">
+		© {new Date().getFullYear()}, Made with{' '}
+		<span role="img" aria-label="heart" class="text-red-600"> ❤️ </span>{
+			' '
+		}
+		, cats and <a href="https://astro.build/">Astro</a>.{' '}
+		<a
+			href="https://github.com/osiux/osiux.ws"
+			title="Github Repository"
+			class="inline-flex"
+		>
+			Source code in <Icon name="logos:github-icon" class="ml-1" />
+		</a>
+	</p>
+</footer>

@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	body {
+		@apply bg-gray-50 font-serif dark:bg-gray-800 dark:text-gray-100;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	.prose h1,
+	.prose h2,
+	.prose h3,
+	.prose h4,
+	.prose h5,
+	.prose h6 {
+		@apply font-sans font-bold text-gray-700 dark:text-gray-100;
+	}
+
+	.prose a {
+		@apply dark:text-gray-300;
+	}
+
+	blockquote *:last-child,
+	li *:last-child,
+	p *:last-child {
+		@apply mb-0;
+	}
+
+	blockquote p {
+		@apply dark:text-gray-100;
+	}
+
+	/* Code in text */
+	p > code,
+	li > code,
+	dd > code,
+	td > code {
+		@apply bg-yellow-100 dark:text-gray-800 dark:bg-gray-300;
+		word-wrap: break-word;
+		box-decoration-break: clone;
+		padding: 0.1rem 0.3rem 0.2rem;
+		border-radius: 0.2rem;
+	}
+}
+@layer components {
+	nav[aria-label='Pagination'] {
+		@apply isolate flex -space-x-px rounded-md justify-center;
+	}
+
+	nav[aria-label='Pagination'] ul {
+		@apply list-none flex;
+	}
+
+	nav[aria-label='Pagination'] ul li a {
+		@apply relative block rounded bg-transparent px-3 py-1.5 hover:bg-neutral-100 focus:bg-neutral-100 focus:outline-none active:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:active:bg-neutral-700;
+	}
+
+	nav[aria-label='Pagination'] ul li [aria-current='page'] {
+		@apply relative block rounded px-3 py-1.5 font-medium bg-gray-300 focus:outline-none dark:bg-slate-900;
+	}
+}
+
+.visually-hidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+.ch-editor-body pre code > div > div {
+	height: 100% !important;
+}

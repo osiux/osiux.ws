@@ -1,0 +1,103 @@
+---
+import { twMerge } from 'tailwind-merge';
+import { Icon } from 'astro-icon/components';
+
+const pathname = new URL(Astro.request.url).pathname;
+---
+
+<script>
+	const toggleTheme = () => {
+		const currentTheme =
+			document.documentElement.attributes.getNamedItem(
+				'data-theme',
+			)?.value;
+
+		document.dispatchEvent(
+			new CustomEvent('set-theme', {
+				detail: currentTheme === 'light' ? 'dark' : 'light',
+			}),
+		);
+	};
+
+	const openMenu = () => {
+		const menu = document.getElementById('nav-menu');
+		menu?.classList.toggle('flex');
+		menu?.classList.toggle('hidden');
+	};
+
+	document
+		.getElementById('toggle-theme')
+		?.addEventListener('click', toggleTheme);
+	document.getElementById('toggle-menu')?.addEventListener('click', openMenu);
+</script>
+<header class="w-full font-heading bg-gray-50 dark:bg-gray-800">
+	<nav
+		class="max-w-3xl mx-auto w-full flex items-center flex-wrap md:max-w-4xl md:flex-nowrap mt-8 mb-8 md:mt-8"
+	>
+		<a
+			href="/"
+			class="font-sans font-bold text-gray-800 text-3xl flex-1 dark:text-gray-100 ml-2 md:ml-0"
+		>
+			Eduardo Reveles
+		</a>
+		<button
+			class="bg-transparent inline-flex p-3 ml-auto outline-none focus:outline-none md:order-3"
+			role="button"
+			aria-label="Toggle Dark Mode"
+			id="toggle-theme"
+		>
+			<Icon name="fa6-solid:sun" class="hidden dark:inline-block" />
+			<Icon name="fa6-solid:moon" class="inline-block dark:hidden" />
+		</button>
+		<button
+			class="inline-flex p-3 rounded md:hidden ml-auto outline-none focus:outline-none"
+			role="button"
+			aria-label="Toggle Menu"
+			id="toggle-menu"
+		>
+			<Icon name="fa6-solid:bars" />
+			<Icon name="fa6-solid:xmark" />
+		</button>
+		<ul
+			id="nav-menu"
+			class="hidden flex-col items-center justify-center flex-none w-full place-items-center text-xl md:flex md:flex-row md:w-auto"
+		>
+			<li class="ml-2 my-3 md:my-0">
+				<a
+					class={twMerge(
+						'px-4 py-2 rounded-lg text-gray-800 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-500',
+						pathname.startsWith('/blog') &&
+							'bg-gray-200 dark:bg-gray-500',
+					)}
+					href="/blog"
+				>
+					Blog
+				</a>
+			</li>
+			<li class="ml-2 my-3 md:my-0">
+				<a
+					class={twMerge(
+						'px-4 py-2 rounded-lg text-gray-800 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-500',
+						pathname.startsWith('/about') &&
+							'bg-gray-200 dark:bg-gray-500',
+					)}
+					href="/about"
+				>
+					About
+				</a>
+			</li>
+			<li class="ml-2 my-3 md:my-0">
+				<a
+					class={twMerge(
+						'px-4 py-2 rounded-lg text-gray-800 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-500',
+						pathname === '/contact' &&
+							'bg-gray-200 dark:bg-gray-500',
+					)}
+					href="/contact"
+				>
+					Contact
+				</a>
+			</li>
+		</ul>
+	</nav>
+</header>

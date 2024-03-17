@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+
+import MainLayout from '../../layouts/main.astro';
+
+import Eduardo from '../../images/eduardo-reveles.jpg';
+---
+
+<MainLayout title="About">
+	<section class="prose md:prose-xl !max-w-full dark:text-gray-100">
+		<Image class="mx-auto !w-3/4" src={Eduardo} alt="Eduardo Reveles" />
+		<p class="text-center !text-sm mb-3">
+			Photo by{' '}
+			<a
+				href="https://unsplash.com/@melspadawan?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+			>
+				Melissa Castillo
+			</a>{' '}
+			on{' '}
+			<a
+				href="https://unsplash.com/@melspadawan/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+			>
+				Unsplash
+			</a>
+		</p>
+		<p>
+			Hi! I&apos;m Eduardo.{' '}
+			<span
+				class="cursor-pointer border-b-2 border-dotted border-gray-900 ease-linear dark:border-gray-100"
+				data-rh="Laravel, NodeJs, React"
+			>
+				Full Stack Developer
+			</span>{' '}
+			living in Mexico, currently working as Senior Software Engineer at{
+				' '
+			}
+			<a href="https://www.accruesavings.com/">Accrue Savings</a>.
+		</p>
+		<p>
+			Proudly married to a great{' '}
+			<a href="https://unsplash.com/@melspadawan/">
+				photographer & developer
+			</a>
+			, we have{' '}
+			<span
+				class="cursor-pointer border-b-2 border-dotted border-gray-900 ease-linear dark:border-gray-100"
+				data-rh-image="cats">4 cats</span
+			> and{' '}
+			<span
+				class="cursor-pointer border-b-2 border-dotted border-gray-900 ease-linear dark:border-gray-100"
+				data-rh-image="dog">a dog</span
+			>
+		</p>
+		<p>
+			Through my career I&apos;ve used several languages, PHP being my
+			main one for most part of it, but lately I&apos;ve been very
+			invested in the Javascript ecosystem.
+		</p>
+		<p>
+			<a class="underline" href="/about/uses"> My Uses page. </a>
+		</p>
+	</section>
+</MainLayout>

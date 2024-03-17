@@ -1,0 +1,65 @@
+---
+import type { GetStaticPathsOptions } from 'astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import slugify from 'slugify';
+import Pagination from '@philnash/astro-pagination';
+
+import MainLayout from '../../../../layouts/main.astro';
+import SimplePost from '../../../../components/SimplePost.astro';
+import { tagStyles, type TagType } from '../../../../components/TagList.astro';
+import { comparePostDates } from '../../../../lib/dates';
+
+export const POSTS_PER_PAGE = 10;
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+	const allPosts = await getCollection('posts');
+
+	const tags = allPosts.reduce<{ [key: string]: CollectionEntry<'posts'>[] }>(
+		(acc, item) => {
+			item.data.tags?.forEach((tag) => {
+				if (acc[tag]) {
+					acc[tag].push(item);
+				} else {
+					acc[tag] = [item];
+				}
+			});
+
+			return acc;
+		},
+		{},
+	);
+
+	const paths = Object.keys(tags)
+		.map((tag) => {
+			const posts = tags[tag];
+			const sortedPosts = posts.sort(comparePostDates);
+
+			return paginate(sortedPosts, {
+				params: { tag },
+				pageSize: 10,
+			});
+		})
+		.flat();
+
+	return paths;
+}
+
+const { tag } = Astro.params;
+const { page } = Astro.props;
+const tagSlug = slugify(tag, { lower: true, strict: true }) as TagType;
+---
+
+<MainLayout title={`Archive - Tag: ${tag} - Page ${page}`}>
+	<h1 class="font-heading font-bold text-5xl mb-10">
+		Archive - Tag: <span
+			class={`mr-2 px-3 py-1 rounded-md inline-block mt-2 md:mt-0 ${tagStyles[tagSlug]}`}
+			>{tag}</span
+		>
+	</h1>
+	{page.data.map((post) => <SimplePost post={post} />)}
+	<Pagination
+		page={page}
+		urlPattern={`/blog/tag/${tag}/{}`}
+		firstPageUrl={`/blog/tag/${tag}`}
+	/>
+</MainLayout>
