@@ -1,16 +1,18 @@
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import { remarkReadingTime } from './plugins/remark-reading-time.mjs';
 import mdx from '@astrojs/mdx';
-import slug from 'rehype-slug';
-import headings from 'rehype-autolink-headings';
+import sitemap from '@astrojs/sitemap';
+import tailwind from '@astrojs/tailwind';
+import icon from 'astro-icon';
+import { defineConfig } from 'astro/config';
+import { h, s } from 'hastscript';
 import { toString } from 'mdast-util-to-string';
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
-import { h, s } from 'hastscript';
-import { remarkReadingTime } from './plugins/remark-reading-time.mjs';
-import icon from 'astro-icon';
+import headings from 'rehype-autolink-headings';
+import slug from 'rehype-slug';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://www.osiux.ws',
 	prefetch: true,
 	image: {
 		domains: ['images.unsplash.com', '*.osiux.ws', 'live.staticflickr.com'],
@@ -91,5 +93,6 @@ export default defineConfig({
 				],
 			},
 		}),
+		sitemap(),
 	],
 });
