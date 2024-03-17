@@ -47,6 +47,10 @@
 		padding: 0.1rem 0.3rem 0.2rem;
 		border-radius: 0.2rem;
 	}
+
+	.prose pre.astro-code {
+		@apply whitespace-pre-wrap break-words text-left;
+	}
 }
 @layer components {
 	nav[aria-label='Pagination'] {
