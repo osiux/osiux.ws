@@ -1,12 +1,16 @@
 ---
 import { Image } from 'astro:assets';
+import { YouTube } from '@astro-community/astro-embed-youtube';
+import { Tweet } from '@astro-community/astro-embed-twitter';
+import { Vimeo } from '@astro-community/astro-embed-vimeo';
 
-import YouTube from '../components/YouTube.astro';
 import Flickr from '../components/Flickr.astro';
 
 export const components = {
 	Image,
 	YouTube,
 	Flickr,
+	Tweet,
+	Vimeo,
 };
 ---
