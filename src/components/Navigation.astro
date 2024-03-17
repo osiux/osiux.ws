@@ -6,6 +6,9 @@ const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <script>
+	const menu = document.getElementById('nav-menu');
+	const toggleButton = document.getElementById('toggle-menu');
+
 	const toggleTheme = () => {
 		const currentTheme =
 			document.documentElement.attributes.getNamedItem(
@@ -20,15 +23,16 @@ const pathname = new URL(Astro.request.url).pathname;
 	};
 
 	const openMenu = () => {
-		const menu = document.getElementById('nav-menu');
 		menu?.classList.toggle('flex');
 		menu?.classList.toggle('hidden');
+		toggleButton?.classList.toggle('is-open');
+		toggleButton?.classList.toggle('is-closed');
 	};
 
 	document
 		.getElementById('toggle-theme')
 		?.addEventListener('click', toggleTheme);
-	document.getElementById('toggle-menu')?.addEventListener('click', openMenu);
+	toggleButton?.addEventListener('click', openMenu);
 </script>
 <header class="w-full font-heading bg-gray-50 dark:bg-gray-800">
 	<nav
@@ -50,13 +54,19 @@ const pathname = new URL(Astro.request.url).pathname;
 			<Icon name="fa6-solid:moon" class="inline-block dark:hidden" />
 		</button>
 		<button
-			class="inline-flex p-3 rounded md:hidden ml-auto outline-none focus:outline-none"
+			class="inline-flex p-3 rounded md:hidden ml-auto outline-none focus:outline-none group is-closed"
 			role="button"
 			aria-label="Toggle Menu"
 			id="toggle-menu"
 		>
-			<Icon name="fa6-solid:bars" />
-			<Icon name="fa6-solid:xmark" />
+			<Icon
+				name="fa6-solid:bars"
+				class="group-[.is-open]:hidden group-[.is-closed]:inline-block"
+			/>
+			<Icon
+				name="fa6-solid:xmark"
+				class="group-[.is-open]:inline-block group-[.is-closed]:hidden"
+			/>
 		</button>
 		<ul
 			id="nav-menu"
