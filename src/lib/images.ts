@@ -116,3 +116,9 @@ export const fetchPostImage = async (
 
 	return { type: 'unsplash', ...unsplashImage };
 };
+
+export const getOgImageUrl = (title: string, description?: string) => {
+	let cardUrl = `https://cards.microlink.io/?preset=simple&headline=${title}&caption=${description ?? ''}`;
+
+	return `https://i.microlink.io/${encodeURIComponent(cardUrl)}`;
+};

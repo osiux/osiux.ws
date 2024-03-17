@@ -1,6 +1,7 @@
 ---
 import Themes from 'astro-themes';
 import { ViewTransitions } from 'astro:transitions';
+import { SEO, type Props as SeoProps } from 'astro-seo';
 
 import '@fontsource/roboto';
 import '@fontsource/open-sans';
@@ -10,21 +11,52 @@ import '../styles/base.css';
 
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+import { getOgImageUrl } from '../lib/images';
 
-const { title } = Astro.props;
+interface Props {
+	title: string;
+	description?: string;
+	openGraph?: Partial<SeoProps['openGraph']>;
+}
+
+const { title, description, openGraph } = Astro.props;
+
+const ogImageUrl = getOgImageUrl(title, description);
+
+const defaultOpenGraph: SeoProps['openGraph'] = {
+	basic: {
+		title: `${title} - Eduardo Reveles`,
+		url: 'https://www.osiux.ws/',
+		type: 'website',
+		image: ogImageUrl,
+	},
+	optional: {
+		locale: 'en_US',
+		siteName: 'Eduardo Reveles',
+	},
+};
 ---
 
 <html lang="en">
 	<head>
 		<Themes />
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta
 			name="viewport"
 			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5,user-scalable=yes"
 		/>
-		<meta
-			name="description"
-			content="Personal website for Eduardo Reveles"
+		<SEO
+			title={title}
+			titleTemplate="%s - Eduardo Reveles"
+			description={description ?? "Personal website for Eduardo Reveles"}
+			charset="utf-8"
+			twitter={{
+				creator: '@osiux',
+			}}
+			openGraph={{
+				...defaultOpenGraph,
+				...openGraph,
+			}}
 		/>
 		<link
 			rel="apple-touch-icon"
@@ -44,16 +76,8 @@ const { title } = Astro.props;
 			name="theme-color"
 			content="#111827"
 		/>
-		<meta name="robots" content="index,follow" />
 		<link rel="sitemap" href="/sitemap-index.xml" />
-		<title>{title} - Eduardo Reveles</title>
 		<ViewTransitions />
-
-		<meta name="twitter:creator" content="@osiux" />
-		<meta property="og:locale" content="en_US" /><meta
-			property="og:site_name"
-			content="Eduardo Reveles"
-		/>
 	</head>
 	<body>
 		<Navigation />

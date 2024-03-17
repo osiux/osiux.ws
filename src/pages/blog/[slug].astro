@@ -15,10 +15,11 @@ const { Content, remarkPluginFrontmatter } = await entry.render();
 import MainLayout from '../../layouts/main.astro';
 import { components } from '../../lib/components.astro';
 import TagList from '../../components/TagList.astro';
-import { formatDate } from '../../lib/dates';
+import { formatDate, formatISO } from '../../lib/dates';
+import { getOgImageUrl } from '../../lib/images';
 
 const {
-	entry: { slug },
+	entry: { slug, data },
 } = Astro.props;
 
 const getGithubEditLink = (slug: string) => {
@@ -26,7 +27,25 @@ const getGithubEditLink = (slug: string) => {
 };
 ---
 
-<MainLayout title={remarkPluginFrontmatter.title}>
+<MainLayout
+	title={remarkPluginFrontmatter.title}
+	description={data.excerpt ?? ''}
+	openGraph={{
+		basic: {
+			type: 'article',
+			url: `https://www.osiux.ws/blog/${slug}`,
+			title: remarkPluginFrontmatter.title,
+			image: getOgImageUrl(
+				remarkPluginFrontmatter.ogImage,
+				data.excerpt ?? '',
+			),
+		},
+		article: {
+			publishedTime: formatISO(remarkPluginFrontmatter.date),
+			tags: remarkPluginFrontmatter.tags,
+		},
+	}}
+>
 	<article class="min-w-full mb-12">
 		<h1
 			class="break-words font-heading font-bold text-3xl mb-5 md:text-5xl md:mb-10 text-gray-800 dark:text-gray-100"
