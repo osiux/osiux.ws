@@ -1,0 +1,66 @@
+---
+import Themes from 'astro-themes';
+
+import '@fontsource/roboto';
+import '@fontsource/open-sans';
+import '@fontsource/open-sans/700.css';
+
+import '../styles/base.css';
+
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<Themes />
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta
+			name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5,user-scalable=yes"
+		/>
+		<meta
+			name="description"
+			content="Personal website for Eduardo Reveles"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/apple-touch-icon.png"
+		/><link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="/favicon-32x32.png"
+		/><link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="/favicon-16x16.png"
+		/><link rel="manifest" href="/site.webmanifest" /><meta
+			name="theme-color"
+			content="#111827"
+		/>
+		<meta name="robots" content="index,follow" />
+		<title>{title} - Eduardo Reveles</title>
+
+		<meta name="twitter:creator" content="@osiux" />
+		<meta property="og:locale" content="en_US" /><meta
+			property="og:site_name"
+			content="Eduardo Reveles"
+		/>
+	</head>
+	<body>
+		<Navigation />
+		<div
+			class="h-screen antialiased grid grid-rows-layout max-w-3xl mx-auto w-full py-6 px-3 md:max-w-4xl md:px-0 md:pt-0 md:pb-16"
+		>
+			<main class="my-4 md:my-10">
+				<slot />
+			</main>
+			<Footer />
+		</div>
+	</body>
+</html>

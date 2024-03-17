@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+
+import MainLayout from '../layouts/main.astro';
+import { comparePostDates } from '../lib/dates';
+import SimplePost from '../components/SimplePost.astro';
+
+const posts = await getCollection('posts');
+const sortedPosts = posts.sort(comparePostDates);
+const POSTS_ON_HOME = 3;
+
+const postsToDisplay = sortedPosts.slice(0, POSTS_ON_HOME);
+---
+
+<MainLayout title="Home">
+	{postsToDisplay.map((post) => <SimplePost post={post} />)}
+</MainLayout>

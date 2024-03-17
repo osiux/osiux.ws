@@ -1,0 +1,66 @@
+---
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+	const blogEntries = await getCollection('posts');
+	return blogEntries.map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await entry.render();
+
+import MainLayout from '../../layouts/main.astro';
+import { components } from '../../lib/components.astro';
+import TagList from '../../components/TagList.astro';
+import { formatDate } from '../../lib/dates';
+
+const {
+	entry: { slug },
+} = Astro.props;
+
+const getGithubEditLink = (slug: string) => {
+	return `https://github.com/osiux/osiux.ws/edit/main/content/posts/${slug}.mdx`;
+};
+---
+
+<MainLayout title={remarkPluginFrontmatter.title}>
+	<article class="min-w-full mb-12">
+		<h1
+			class="break-words font-heading font-bold text-3xl mb-5 md:text-5xl md:mb-10 text-gray-800 dark:text-gray-100"
+		>
+			{remarkPluginFrontmatter.title}
+		</h1>
+		<div class="mb-10 flex flex-col md:flex-row md:items-center">
+			<abbr
+				class="block mb-5 md:inline md:mb-0"
+				title={remarkPluginFrontmatter.date}
+				>{formatDate(remarkPluginFrontmatter.date)}</abbr
+			>
+			{
+				remarkPluginFrontmatter.tags.length && (
+					<>
+						<span class="hidden md:inline mx-2">&mdash;</span>
+						<TagList tags={remarkPluginFrontmatter.tags} />
+					</>
+				)
+			}
+			<span class="hidden md:inline mx-2">&mdash;</span>
+			<a
+				class="underline"
+				target="_blank"
+				rel="noopener noreferrer"
+				href={getGithubEditLink(slug)}
+			>
+				Edit in Github
+			</a>
+		</div>
+		<div
+			class="text-justify prose md:prose-xl !max-w-full dark:text-gray-100"
+		>
+			<Content components={components} />
+		</div>
+	</article>
+</MainLayout>

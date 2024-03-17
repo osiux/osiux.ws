@@ -1,0 +1,77 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+
+import MainLayout from '../layouts/main.astro';
+
+import GetInTouch from '../images/get-in-touch.svg';
+---
+
+<MainLayout title="Contact">
+	<section class="prose md:prose-xl flex max-w-full dark:text-gray-100">
+		<div class="flex items-center flex-col w-2/3 justify-center">
+			<p>
+				If you want to get in touch with me feel free to email me at{
+					' '
+				}
+				<a class="underline" href="me@osiux.ws?subject=Hello!" rel="me"
+					>me@osiux.ws</a
+				> or send me a message in any of my social networks.
+			</p>
+			<ul class="list-none flex justify-center !m-0 text-3xl !p-0">
+				<li class="pl-3">
+					<a href="https://github.com/osiux" title="Github" rel="me">
+						<Icon name="logos:github-icon" />
+					</a>
+				</li>
+				<li class="pl-3">
+					<a
+						href="https://www.linkedin.com/in/ereveles/"
+						title="Linkedin"
+					>
+						<Icon name="logos:linkedin-icon" />
+					</a>
+				</li>
+				<li class="pl-3">
+					<a
+						href="https://stackoverflow.com/users/717643/eduardo-reveles"
+						title="Stack Overflow"
+					>
+						<Icon name="logos:stackoverflow-icon" />
+					</a>
+				</li>
+				<li class="pl-3">
+					<a
+						href="https://twitter.com/osiux"
+						title="Twitter"
+						rel="me"
+					>
+						<Icon name="logos:twitter" />
+					</a>
+				</li>
+				<li class="pl-3">
+					<a
+						href="https://www.instagram.com/oso96_2000/"
+						title="Instagram"
+					>
+						<Icon name="logos:instagram-icon" />
+					</a>
+				</li>
+				<li class="pl-3">
+					<a
+						href="https://www.last.fm/user/oso96_2000"
+						title="Last.fm"
+					>
+						<Icon name="logos:lastfm" />
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="text-center w-1/3">
+			<Image src={GetInTouch} alt="Get in touch" />
+			<a class="!text-xs" href="https://storyset.com/online"
+				>Online illustrations by Storyset</a
+			>
+		</div>
+	</section>
+</MainLayout>

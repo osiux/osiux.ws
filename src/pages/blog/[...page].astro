@@ -1,0 +1,26 @@
+---
+import type { GetStaticPathsOptions } from 'astro';
+import { getCollection } from 'astro:content';
+import Pagination from '@philnash/astro-pagination';
+
+import MainLayout from '../../layouts/main.astro';
+import SimplePost from '../../components/SimplePost.astro';
+import { comparePostDates } from '../../lib/dates';
+
+export const POSTS_PER_PAGE = 10;
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+	const allPosts = await getCollection('posts');
+	const sortedPosts = allPosts.sort(comparePostDates);
+
+	return paginate(sortedPosts, { pageSize: 10 });
+}
+
+const { page } = Astro.props;
+---
+
+<MainLayout title={`Archive - Page: ${page}`}>
+	<h1 class="text-5xl mb-10">Archive</h1>
+	{page.data.map((post) => <SimplePost post={post} />)}
+	<Pagination page={page} urlPattern={`/blog/{}`} firstPageUrl="/blog" />
+</MainLayout>

@@ -1,0 +1,93 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import { formatISO } from 'date-fns';
+
+import { formatDate } from '../lib/dates';
+import { fetchPostImage } from '../lib/images';
+import TagList from '../components/TagList.astro';
+
+interface Props {
+	post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+const formattedDate = formatDate(post.data.date);
+const { remarkPluginFrontmatter } = await post.render();
+const image = await fetchPostImage(post.data.image);
+---
+
+<article class="mb-16 flex flex-wrap w-full md:flex-nowrap">
+	{
+		image?.type === 'unsplash' && (
+			<div class="mr-3">
+				<a
+					class="relative block overflow-hidden"
+					href={`/blog/${post.slug}`}
+				>
+					<Image
+						class="w-full md:max-w-full rounded-md"
+						width={500}
+						height={350}
+						src={`${image.url}&w=500&h=350&fit=clamp`}
+						alt={`${image.description} by ${image?.user?.name} @ unsplash`}
+					/>
+				</a>
+				<div class="inline-block w-full text-sm">
+					Photo by{' '}
+					<a
+						class="underline"
+						href={`${image?.user?.link}?utm_source=osiux.ws&utm_medium=referral`}
+					>
+						{image?.user?.name}
+					</a>{' '}
+					on{' '}
+					<a href="https://unsplash.com/?utm_source=osiux.ws&utm_medium=referral">
+						Unsplash
+					</a>
+				</div>
+			</div>
+		)
+	}
+	{
+		image?.type === 'imgix' && (
+			<div class="mr-3">
+				<a
+					class="relative block overflow-hidden"
+					href={`/blog/${post.slug}`}
+				>
+					<Image
+						src={image.url as string}
+						alt={post.data.title}
+						width={500}
+						height={350}
+					/>
+				</a>
+			</div>
+		)
+	}
+	<div class="w-full md:flex-grow">
+		<p class="text-gray-600 text-sm mb-2 mt-2 md:mt-0 dark:text-gray-300">
+			<abbr title={formatISO(post.data.date)}>{formattedDate}</abbr> &mdash;{
+				' '
+			}
+			{remarkPluginFrontmatter.minutesRead}
+		</p>
+		<h2 class="text-2xl font-bold mb-2 font-heading">
+			<a
+				class="text-gray-900 dark:text-gray-100 hover:underline"
+				href={`/blog/${post.slug}`}
+			>
+				{post.data.title}
+			</a>
+		</h2>
+		{
+			post.data.excerpt && (
+				<p class="leading-relaxed my-2 prose !max-w-full dark:text-gray-300">
+					{post.data.excerpt}
+				</p>
+			)
+		}
+		<TagList tags={post.data.tags} />
+	</div>
+</article>
