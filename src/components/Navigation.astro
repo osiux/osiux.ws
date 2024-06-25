@@ -7,7 +7,6 @@ const pathname = new URL(Astro.request.url).pathname;
 
 <script>
 	const menu = document.getElementById('nav-menu');
-	const toggleButton = document.getElementById('toggle-menu');
 
 	const toggleTheme = () => {
 		const currentTheme =
@@ -23,16 +22,33 @@ const pathname = new URL(Astro.request.url).pathname;
 	};
 
 	const openMenu = () => {
+	const toggleButton = document.getElementById('toggle-menu');
 		menu?.classList.toggle('flex');
 		menu?.classList.toggle('hidden');
 		toggleButton?.classList.toggle('is-open');
 		toggleButton?.classList.toggle('is-closed');
 	};
 
-	document
-		.getElementById('toggle-theme')
-		?.addEventListener('click', toggleTheme);
-	toggleButton?.addEventListener('click', openMenu);
+	const attachEvents = () => {
+	const toggleButton = document.getElementById('toggle-menu');
+		document
+			.getElementById('toggle-theme')
+			?.addEventListener('click', toggleTheme);
+		toggleButton?.addEventListener('click', openMenu);
+	};
+
+	const detachEvents = () => {
+	const toggleButton = document.getElementById('toggle-menu');
+		document
+			.getElementById('toggle-theme')
+			?.removeEventListener('click', toggleTheme);
+		toggleButton?.removeEventListener('click', openMenu);
+	};
+
+	attachEvents();
+
+	document.addEventListener('astro:before-swap', detachEvents);
+	document.addEventListener('astro:after-swap', attachEvents);
 </script>
 
 <header class="w-full font-heading bg-gray-50 dark:bg-gray-800">
