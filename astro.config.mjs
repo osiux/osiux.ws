@@ -31,7 +31,7 @@ export default defineConfig({
 						properties: {
 							ariaHidden: true,
 							tabIndex: -1,
-							class: '!absolute !mt-0 !border-none !leading-none !-left-10 !top-2',
+							class: 'absolute! mt-0! border-none! leading-none! -left-10! top-2!',
 						},
 						content: (node) => {
 							return [

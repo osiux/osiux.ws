@@ -67,7 +67,7 @@ const image = await fetchPostImage(post.data.image);
 			</div>
 		)
 	}
-	<div class="w-full md:flex-grow">
+	<div class="w-full md:grow">
 		<p class="text-gray-600 text-sm mb-2 mt-2 md:mt-0 dark:text-gray-300">
 			<abbr title={formatISO(post.data.date)}>{formattedDate}</abbr> &mdash;{
 				' '
@@ -84,7 +84,7 @@ const image = await fetchPostImage(post.data.image);
 		</h2>
 		{
 			post.data.excerpt && (
-				<p class="leading-relaxed my-2 prose !max-w-full dark:text-gray-300">
+				<p class="leading-relaxed my-2 prose max-w-full! dark:text-gray-300">
 					{post.data.excerpt}
 				</p>
 			)
