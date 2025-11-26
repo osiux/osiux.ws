@@ -6,8 +6,8 @@ const pathname = new URL(Astro.request.url).pathname;
 console.log(pathname);
 
 const linkClass = (isActive: boolean) => {
-	const base = 'px-4 py-2 rounded-lg text-gray-800 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-500';
-	const active = 'bg-gray-200 dark:bg-gray-500';
+	const base = 'px-3 py-1 text-gray-600 dark:text-gray-400! hover:text-gray-900! dark:hover:text-gray-100! transition-colors';
+	const active = 'text-gray-900! dark:text-white! font-medium underline decoration-2 underline-offset-4';
 	return isActive ? `${base} ${active}` : base;
 };
 ---
@@ -58,45 +58,45 @@ const linkClass = (isActive: boolean) => {
 	document.addEventListener('astro:after-swap', attachEvents);
 </script>
 
-<header class="w-full font-heading bg-gray-50 dark:bg-gray-800">
+<header class="w-full font-heading bg-white dark:bg-[#1a1a1a]! border-b border-gray-100 dark:border-gray-800!">
 	<nav
-		class="max-w-3xl mx-auto w-full flex items-center flex-wrap md:max-w-4xl md:flex-nowrap mt-8 mb-8 md:mt-8"
+		class="max-w-3xl mx-auto w-full flex items-center flex-wrap md:max-w-4xl md:flex-nowrap py-6"
 	>
 		<a
 			href="/"
-			class="font-sans font-bold text-gray-800 text-3xl flex-1 dark:text-gray-100 ml-2 md:ml-0"
+			class="font-sans font-semibold text-gray-900 text-2xl flex-1 dark:text-white! ml-2 md:ml-0 tracking-tight"
 		>
 			Eduardo Reveles
 		</a>
 		<button
-			class="bg-transparent inline-flex p-3 ml-auto outline-none focus:outline-none md:order-3"
+			class="bg-transparent inline-flex p-2 ml-auto outline-none focus:outline-none md:order-3 text-gray-600 dark:text-gray-400! hover:text-gray-900 dark:hover:text-gray-100! transition-colors"
 			role="button"
 			aria-label="Toggle Dark Mode"
 			id="toggle-theme"
 		>
-			<Icon name="fa6-solid:sun" class="hidden dark:inline-block" />
-			<Icon name="fa6-solid:moon" class="inline-block dark:hidden" />
+			<Icon name="fa6-solid:sun" class="hidden dark:inline-block w-5 h-5" />
+			<Icon name="fa6-solid:moon" class="inline-block dark:hidden w-5 h-5" />
 		</button>
 		<button
-			class="inline-flex p-3 rounded md:hidden ml-auto outline-none focus:outline-none group is-closed"
+			class="inline-flex p-2 rounded md:hidden ml-2 outline-none focus:outline-none group is-closed text-gray-600 dark:text-gray-400!"
 			role="button"
 			aria-label="Toggle Menu"
 			id="toggle-menu"
 		>
 			<Icon
 				name="fa6-solid:bars"
-				class="group-[.is-open]:hidden group-[.is-closed]:inline-block"
+				class="group-[.is-open]:hidden group-[.is-closed]:inline-block w-5 h-5"
 			/>
 			<Icon
 				name="fa6-solid:xmark"
-				class="group-[.is-open]:inline-block group-[.is-closed]:hidden"
+				class="group-[.is-open]:inline-block group-[.is-closed]:hidden w-5 h-5"
 			/>
 		</button>
 		<ul
 			id="nav-menu"
-			class="hidden flex-col items-center justify-center flex-none w-full place-items-center text-xl md:flex md:flex-row md:w-auto"
+			class="hidden flex-col items-center justify-center flex-none w-full place-items-center md:flex md:flex-row md:w-auto md:gap-1"
 		>
-			<li class="ml-2 my-3 md:my-0">
+			<li class="my-3 md:my-0">
 				<a
 					class={linkClass(pathname.startsWith('/blog'))}
 					href="/blog"
@@ -104,7 +104,7 @@ const linkClass = (isActive: boolean) => {
 					Blog
 				</a>
 			</li>
-			<li class="ml-2 my-3 md:my-0">
+			<li class="my-3 md:my-0">
 				<a
 					class={linkClass(pathname.startsWith('/about'))}
 					href="/about"
@@ -112,7 +112,7 @@ const linkClass = (isActive: boolean) => {
 					About
 				</a>
 			</li>
-			<li class="ml-2 my-3 md:my-0">
+			<li class="my-3 md:my-0">
 				<a
 					class={linkClass(pathname === '/contact')}
 					href="/contact"

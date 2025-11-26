@@ -1,44 +1,31 @@
 ---
 import slugify from 'slugify';
 
-export const tagStyles = {
-	gatsbyjs: 'bg-violet-700 text-white hover:bg-violet-900',
-	development: 'bg-green-600 text-white hover:bg-green-800',
-	travel: 'bg-yellow-500 hover:bg-yellow-600 bg:text-white',
-	fontawesome: 'bg-blue-900 text-white hover:bg-blue-700',
-	video: 'bg-red-500 text-white hover:bg-red-600',
-	nextjs: 'bg-gray-900 text-white hover:bg-gray-700',
-};
-
-export type TagType = keyof typeof tagStyles;
-
 interface Props {
 	tags: string[];
 }
 
 const { tags } = Astro.props;
 
-const getTagClass = (tagSlug: TagType) => {
-	const base = 'mr-2 px-3 py-1 rounded-md bg-gray-300 text-gray-800 hover:bg-gray-400';
-	const customStyle = tagStyles[tagSlug];
-	return customStyle ? `${base} ${customStyle}` : base;
+const getTagClass = () => {
+	return 'text-sm px-2 py-1 rounded border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-400 hover:border-gray-400 dark:hover:border-gray-400 hover:text-gray-900 dark:hover:text-gray-200';
 };
 ---
 
 {
 	tags.length && (
-		<ul class="list-none flex">
+		<ul class="list-none flex flex-wrap gap-2">
 			{tags.map((tag) => {
 				const tagSlug = slugify(tag, {
 					lower: true,
 					strict: true,
-				}) as TagType;
+				});
 
 				return (
-					<li
-						class={getTagClass(tagSlug)}
-					>
-						<a href={`/blog/tag/${tag}`}>{tag}</a>
+					<li>
+						<a href={`/blog/tag/${tag}`} class={getTagClass()}>
+							{tag}
+						</a>
 					</li>
 				);
 			})}
