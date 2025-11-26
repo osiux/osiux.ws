@@ -3,8 +3,6 @@ import { Icon } from 'astro-icon/components';
 
 const pathname = new URL(Astro.request.url).pathname;
 
-console.log(pathname);
-
 const linkClass = (isActive: boolean) => {
 	const base = 'px-3 py-1 text-gray-600 dark:text-gray-400! hover:text-gray-900! dark:hover:text-gray-100! transition-colors';
 	const active = 'text-gray-900! dark:text-white! font-medium underline decoration-2 underline-offset-4';
@@ -13,8 +11,6 @@ const linkClass = (isActive: boolean) => {
 ---
 
 <script>
-	const menu = document.getElementById('nav-menu');
-
 	const toggleTheme = () => {
 		const currentTheme =
 			document.documentElement.attributes.getNamedItem(
@@ -29,7 +25,8 @@ const linkClass = (isActive: boolean) => {
 	};
 
 	const openMenu = () => {
-	const toggleButton = document.getElementById('toggle-menu');
+		const toggleButton = document.getElementById('toggle-menu');
+		const menu = document.getElementById('nav-menu');
 		menu?.classList.toggle('flex');
 		menu?.classList.toggle('hidden');
 		toggleButton?.classList.toggle('is-open');

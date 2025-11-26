@@ -8,9 +8,9 @@ import GetInTouch from '../images/get-in-touch.svg';
 ---
 
 <MainLayout title="Contact">
-	<section class="prose md:prose-xl flex max-w-full dark:text-gray-100">
-		<div class="flex items-center flex-col w-2/3 justify-center">
-			<p>
+	<section class="prose md:prose-xl flex flex-col md:flex-row max-w-full dark:text-gray-100 gap-8">
+		<div class="flex items-center flex-col w-full md:w-2/3 justify-center px-4 md:px-0">
+			<p class="text-center md:text-left">
 				If you want to get in touch with me feel free to email me at{
 					' '
 				}
@@ -18,13 +18,13 @@ import GetInTouch from '../images/get-in-touch.svg';
 					>me@osiux.ws</a
 				> or send me a message in any of my social networks.
 			</p>
-			<ul class="list-none flex justify-center m-0! text-3xl p-0!">
-				<li class="pl-3">
+			<ul class="list-none flex flex-wrap justify-center m-0! text-4xl md:text-3xl p-0! gap-4 md:gap-0">
+				<li class="md:pl-3">
 					<a href="https://github.com/osiux" title="Github" rel="me" class="dark:invert dark:brightness-0 dark:contrast-100 transition-all hover:opacity-80">
 						<Icon name="logos:github-icon" />
 					</a>
 				</li>
-				<li class="pl-3">
+				<li class="md:pl-3">
 					<a
 						href="https://www.linkedin.com/in/ereveles/"
 						title="Linkedin"
@@ -33,7 +33,7 @@ import GetInTouch from '../images/get-in-touch.svg';
 						<Icon name="logos:linkedin-icon" />
 					</a>
 				</li>
-				<li class="pl-3">
+				<li class="md:pl-3">
 					<a
 						href="https://stackoverflow.com/users/717643/eduardo-reveles"
 						title="Stack Overflow"
@@ -42,7 +42,7 @@ import GetInTouch from '../images/get-in-touch.svg';
 						<Icon name="logos:stackoverflow-icon" />
 					</a>
 				</li>
-				<li class="pl-3">
+				<li class="md:pl-3">
 					<a
 						href="https://twitter.com/osiux"
 						title="Twitter"
@@ -52,7 +52,7 @@ import GetInTouch from '../images/get-in-touch.svg';
 						<Icon name="logos:twitter" />
 					</a>
 				</li>
-				<li class="pl-3">
+				<li class="md:pl-3">
 					<a
 						href="https://www.instagram.com/oso96_2000/"
 						title="Instagram"
@@ -61,7 +61,7 @@ import GetInTouch from '../images/get-in-touch.svg';
 						<Icon name="logos:instagram-icon" />
 					</a>
 				</li>
-				<li class="pl-3">
+				<li class="md:pl-3">
 					<a
 						href="https://www.last.fm/user/oso96_2000"
 						title="Last.fm"
@@ -72,8 +72,8 @@ import GetInTouch from '../images/get-in-touch.svg';
 				</li>
 			</ul>
 		</div>
-		<div class="text-center w-1/3">
-			<Image src={GetInTouch} alt="Get in touch" />
+		<div class="text-center w-full md:w-1/3 px-8 md:px-0">
+			<Image src={GetInTouch} alt="Get in touch" class="max-w-[200px] md:max-w-full mx-auto" />
 			<a class="text-xs!" href="https://storyset.com/online"
 				>Online illustrations by Storyset</a
 			>
