@@ -1,7 +1,7 @@
 import { remarkReadingTime } from './plugins/remark-reading-time.mjs';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
 import { h, s } from 'hastscript';
@@ -12,15 +12,13 @@ import slug from 'rehype-slug';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.osiux.ws',
+	vite: { plugins: [tailwindcss()] },
+	site: 'https://www.osiux.ws',
 	prefetch: true,
 	image: {
 		domains: ['images.unsplash.com', '*.osiux.ws', 'live.staticflickr.com'],
 	},
 	integrations: [
-		tailwind({
-			applyBaseStyles: false,
-		}),
 		mdx({
 			remarkPlugins: [remarkReadingTime],
 			rehypePlugins: [

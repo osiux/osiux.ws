@@ -1,6 +1,6 @@
 ---
 import Themes from 'astro-themes';
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import { SEO, type Props as SeoProps } from 'astro-seo';
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer"
 
@@ -75,7 +75,7 @@ const defaultOpenGraph: SeoProps['openGraph'] = {
 			content="#111827"
 		/>
 		<link rel="sitemap" href="/sitemap-index.xml" />
-		<ViewTransitions />
+		<ClientRouter />
 	</head>
 	<body>
 		<Navigation />

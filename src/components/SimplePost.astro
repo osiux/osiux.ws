@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
 import { Image } from 'astro:assets';
 import { formatISO } from 'date-fns';
 
@@ -13,7 +14,7 @@ interface Props {
 
 const { post } = Astro.props;
 const formattedDate = formatDate(post.data.date);
-const { remarkPluginFrontmatter } = await post.render();
+const { remarkPluginFrontmatter } = await render(post);
 const image = await fetchPostImage(post.data.image);
 ---
 
@@ -23,7 +24,7 @@ const image = await fetchPostImage(post.data.image);
 			<div class="mr-3">
 				<a
 					class="relative block overflow-hidden"
-					href={`/blog/${post.slug}`}
+					href={`/blog/${post.id}`}
 				>
 					<Image
 						class="w-full md:max-w-full rounded-md"
@@ -54,7 +55,7 @@ const image = await fetchPostImage(post.data.image);
 			<div class="mr-3">
 				<a
 					class="relative block overflow-hidden"
-					href={`/blog/${post.slug}`}
+					href={`/blog/${post.id}`}
 				>
 					<Image
 						src={image.url as string}
@@ -76,7 +77,7 @@ const image = await fetchPostImage(post.data.image);
 		<h2 class="text-2xl font-bold mb-2 font-heading">
 			<a
 				class="text-gray-900 dark:text-gray-100 hover:underline"
-				href={`/blog/${post.slug}`}
+				href={`/blog/${post.id}`}
 			>
 				{post.data.title}
 			</a>
