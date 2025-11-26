@@ -1,12 +1,10 @@
 ---
 import type { GetStaticPathsOptions } from 'astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
-import slugify from 'slugify';
 import Pagination from '@philnash/astro-pagination';
 
 import MainLayout from '../../../../layouts/main.astro';
 import SimplePost from '../../../../components/SimplePost.astro';
-import { tagStyles, type TagType } from '../../../../components/TagList.astro';
 import { comparePostDates } from '../../../../lib/dates';
 
 export const POSTS_PER_PAGE = 10;
@@ -46,13 +44,12 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 
 const { tag } = Astro.params;
 const { page } = Astro.props;
-const tagSlug = slugify(tag, { lower: true, strict: true }) as TagType;
 ---
 
 <MainLayout title={`Archive - Tag: ${tag} - Page ${page}`}>
 	<h1 class="font-heading font-bold text-5xl mb-10">
 		Archive - Tag: <span
-			class={`mr-2 px-3 py-1 rounded-md inline-block mt-2 md:mt-0 ${tagStyles[tagSlug]}`}
+			class="mr-2 px-3 py-1 rounded-md inline-block mt-2 md:mt-0"
 			>{tag}</span
 		>
 	</h1>

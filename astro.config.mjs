@@ -45,7 +45,7 @@ export default defineConfig({
 										ariaHidden: true,
 									},
 									s(
-										'svg.dark:fill-current.dark:text-gray-100',
+										'svg',
 										{
 											'aria-hidden': true,
 											focusable: false,
@@ -53,6 +53,7 @@ export default defineConfig({
 											width: 30,
 											version: '1.1',
 											viewBox: '0 0 16 16',
+											class: 'fill-gray-400 dark:fill-gray-500 hover:fill-gray-600 dark:hover:fill-gray-300 transition-colors',
 										},
 										[
 											s('path', {

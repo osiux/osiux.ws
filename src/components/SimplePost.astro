@@ -18,32 +18,32 @@ const { remarkPluginFrontmatter } = await render(post);
 const image = await fetchPostImage(post.data.image);
 ---
 
-<article class="mb-16 flex flex-wrap w-full md:flex-nowrap">
+<article class="mb-20 flex flex-wrap w-full md:flex-nowrap gap-6">
 	{
 		image?.type === 'unsplash' && (
-			<div class="mr-3">
+			<div class="w-full md:w-80 md:flex-shrink-0">
 				<a
-					class="relative block overflow-hidden"
+					class="relative block overflow-hidden rounded-lg"
 					href={`/blog/${post.id}`}
 				>
 					<Image
-						class="w-full md:max-w-full rounded-md"
+						class="w-full object-cover aspect-[4/3]"
 						width={500}
 						height={350}
 						src={`${image.url}&w=500&h=350&fit=clamp`}
 						alt={`${image.description} by ${image?.user?.name} @ unsplash`}
 					/>
 				</a>
-				<div class="inline-block w-full text-sm">
+				<div class="inline-block w-full text-sm mt-2 text-gray-500 dark:text-gray-500">
 					Photo by{' '}
 					<a
-						class="underline"
+						class="underline hover:text-gray-900 dark:hover:text-gray-300"
 						href={`${image?.user?.link}?utm_source=osiux.ws&utm_medium=referral`}
 					>
 						{image?.user?.name}
 					</a>{' '}
 					on{' '}
-					<a href="https://unsplash.com/?utm_source=osiux.ws&utm_medium=referral">
+					<a class="hover:text-gray-900 dark:hover:text-gray-300" href="https://unsplash.com/?utm_source=osiux.ws&utm_medium=referral">
 						Unsplash
 					</a>
 				</div>
@@ -52,9 +52,9 @@ const image = await fetchPostImage(post.data.image);
 	}
 	{
 		image?.type === 'imgix' && (
-			<div class="mr-3">
+			<div class="w-full md:w-80 md:flex-shrink-0">
 				<a
-					class="relative block overflow-hidden"
+					class="relative block overflow-hidden rounded-lg"
 					href={`/blog/${post.id}`}
 				>
 					<Image
@@ -62,21 +62,22 @@ const image = await fetchPostImage(post.data.image);
 						alt={post.data.title}
 						width={500}
 						height={350}
+						class="w-full object-cover aspect-[4/3]"
 					/>
 				</a>
 			</div>
 		)
 	}
-	<div class="w-full md:grow">
-		<p class="text-gray-600 text-sm mb-2 mt-2 md:mt-0 dark:text-gray-300">
+	<div class="w-full md:flex-1 min-w-0">
+		<p class="text-gray-500 text-sm mb-3 dark:text-gray-500">
 			<abbr title={formatISO(post.data.date)}>{formattedDate}</abbr> &mdash;{
 				' '
 			}
 			{remarkPluginFrontmatter.minutesRead}
 		</p>
-		<h2 class="text-2xl font-bold mb-2 font-heading">
+		<h2 class="text-2xl font-semibold mb-3 font-heading leading-tight">
 			<a
-				class="text-gray-900 dark:text-gray-100 hover:underline"
+				class="text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
 				href={`/blog/${post.id}`}
 			>
 				{post.data.title}
@@ -84,7 +85,7 @@ const image = await fetchPostImage(post.data.image);
 		</h2>
 		{
 			post.data.excerpt && (
-				<p class="leading-relaxed my-2 prose max-w-full! dark:text-gray-300">
+				<p class="leading-relaxed mb-4 text-gray-700 dark:text-gray-400">
 					{post.data.excerpt}
 				</p>
 			)

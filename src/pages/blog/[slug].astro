@@ -46,29 +46,29 @@ const getGithubEditLink = (slug: string) => {
 		},
 	}}
 >
-	<article class="min-w-full mb-12">
+	<article class="min-w-full mb-16">
 		<h1
-			class="wrap-break-word font-heading font-bold text-3xl mb-5 md:text-5xl md:mb-10 text-gray-800 dark:text-gray-100"
+			class="wrap-break-word font-heading font-semibold text-3xl mb-6 md:text-4xl md:mb-8 text-gray-900 dark:text-gray-100 leading-tight tracking-tight"
 		>
 			{remarkPluginFrontmatter.title}
 		</h1>
-		<div class="mb-10 flex flex-col md:flex-row md:items-center">
+		<div class="mb-12 flex flex-col md:flex-row md:items-center text-sm text-gray-500 dark:text-gray-500">
 			<abbr
-				class="block mb-5 md:inline md:mb-0"
+				class="block mb-3 md:inline md:mb-0"
 				title={remarkPluginFrontmatter.date}
 				>{formatDate(remarkPluginFrontmatter.date)}</abbr
 			>
 			{
 				remarkPluginFrontmatter.tags.length && (
 					<>
-						<span class="hidden md:inline mx-2">&mdash;</span>
+						<span class="hidden md:inline mx-3 text-gray-300 dark:text-gray-600">•</span>
 						<TagList tags={remarkPluginFrontmatter.tags} />
 					</>
 				)
 			}
-			<span class="hidden md:inline mx-2">&mdash;</span>
+			<span class="hidden md:inline mx-3 text-gray-300 dark:text-gray-600">•</span>
 			<a
-				class="underline"
+				class="underline hover:text-gray-900 dark:hover:text-blue-300 transition-colors"
 				target="_blank"
 				rel="noopener noreferrer"
 				href={getGithubEditLink(slug)}
@@ -77,7 +77,7 @@ const getGithubEditLink = (slug: string) => {
 			</a>
 		</div>
 		<div
-			class="text-justify prose md:prose-xl max-w-full! dark:text-gray-100"
+			class="prose md:prose-lg max-w-full! dark:text-gray-100"
 		>
 			<Content components={components} />
 		</div>
