@@ -1,6 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+@config "../../tailwind.config.mjs";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @layer base {
 	body {
@@ -49,7 +52,7 @@
 	}
 
 	.prose pre.astro-code {
-		@apply whitespace-pre-wrap break-words text-left;
+		@apply whitespace-pre-wrap wrap-break-word text-left;
 	}
 }
 @layer components {

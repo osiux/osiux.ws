@@ -1,16 +1,16 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
 	const blogEntries = await getCollection('posts');
 	return blogEntries.map((entry) => ({
-		params: { slug: entry.slug },
+		params: { slug: entry.id },
 		props: { entry },
 	}));
 }
 
 const { entry } = Astro.props;
-const { Content, remarkPluginFrontmatter } = await entry.render();
+const { Content, remarkPluginFrontmatter } = await render(entry);
 
 import MainLayout from '../../layouts/main.astro';
 import { components } from '../../lib/components.astro';
@@ -19,11 +19,11 @@ import { formatDate, formatISO } from '../../lib/dates';
 import { getOgImageUrl } from '../../lib/images';
 
 const {
-	entry: { slug, data },
+	entry: { id: slug, data },
 } = Astro.props;
 
 const getGithubEditLink = (slug: string) => {
-	return `https://github.com/osiux/osiux.ws/edit/main/content/posts/${slug}.mdx`;
+	return `https://github.com/osiux/osiux.ws/edit/main/src/data/posts/${slug}.mdx`;
 };
 ---
 
@@ -48,7 +48,7 @@ const getGithubEditLink = (slug: string) => {
 >
 	<article class="min-w-full mb-12">
 		<h1
-			class="break-words font-heading font-bold text-3xl mb-5 md:text-5xl md:mb-10 text-gray-800 dark:text-gray-100"
+			class="wrap-break-word font-heading font-bold text-3xl mb-5 md:text-5xl md:mb-10 text-gray-800 dark:text-gray-100"
 		>
 			{remarkPluginFrontmatter.title}
 		</h1>
@@ -77,7 +77,7 @@ const getGithubEditLink = (slug: string) => {
 			</a>
 		</div>
 		<div
-			class="text-justify prose md:prose-xl !max-w-full dark:text-gray-100"
+			class="text-justify prose md:prose-xl max-w-full! dark:text-gray-100"
 		>
 			<Content components={components} />
 		</div>
